@@ -17,24 +17,118 @@
 
 	<div id="frost_pannel">
 		<div class="row">
-			<div class="large-3 large-push-2 columns">
+			<div class="large-3 columns">
 				<label for="file1" class="button">upload input file
 										<br> (emission line intensities)</label>
 				<input type="file" id="file1" class="show-for-sr"> </div>
-			<div class="large-3 large-push-2 columns end">
+			<div class="large-3 columns end">
 				<label for="file2" class="button">upload input file
 										<br> (emission line uncertainties)</label>
 				<input type="file" id="file2" class="show-for-sr"> </div>
 		</div>
+		
+		
+		
 		<div class="row">
-			<div class="large-3 large-push-2 columns end">
+			<h4>List of emission lines</h4>
+			
+			<div class="medium-2  columns">
 				<select id="menu"></select>
 			</div>
-
+			<div class="medium-2  columns">
+				<select id="menu"></select>
+			</div>
+			<div class="medium-2  columns">
+				<select id="menu"></select>
+			</div>
+			<div class="medium-2  columns">
+				<select id="menu"></select>
+			</div>
+			<div class="medium-2  columns">
+				<select id="menu"></select>
+			</div>
+			<div class="medium-2  columns">
+				<select id="menu"></select>
+			</div>
+			<div class="medium-2  columns">
+				<select id="menu"></select>
+			</div>
+			<div class="medium-2  columns">
+				<select id="menu"></select>
+			</div><div class="medium-2  columns">
+				<select id="menu"></select>
+			</div><div class="medium-2  columns">
+				<select id="menu"></select>
+			</div><div class="medium-2  columns">
+				<select id="menu"></select>
+			</div><div class="medium-2  columns">
+				<select id="menu"></select>
+			</div><div class="medium-2  columns">
+				<select id="menu"></select>
+			</div><div class="medium-2  columns">
+				<select id="menu"></select>
+			</div><div class="medium-2  columns">
+				<select id="menu"></select>
+			</div><div class="medium-2  columns">
+				<select id="menu"></select>
+			</div><div class="medium-2  columns">
+				<select id="menu"></select>
+			</div><div class="medium-2  columns">
+				<select id="menu"></select>
+			</div><div class="medium-2  columns">
+				<select id="menu"></select>
+			</div><div class="medium-2  columns">
+				<select id="menu"></select>
+			</div><div class="medium-2  columns">
+				<select id="menu"></select>
+			</div><div class="medium-2  columns">
+				<select id="menu"></select>
+			</div><div class="medium-2  columns">
+				<select id="menu"></select>
+			</div><div class="medium-2  columns">
+				<select id="menu"></select>
+			</div><div class="medium-2  columns">
+				<select id="menu"></select>
+			</div><div class="medium-2  columns">
+				<select id="menu"></select>
+			</div><div class="medium-2  columns">
+				<select id="menu"></select>
+			</div><div class="medium-2  columns">
+				<select id="menu"></select>
+			</div><div class="medium-2  columns">
+				<select id="menu"></select>
+			</div><div class="medium-2  columns">
+				<select id="menu"></select>
+			</div><div class="medium-2  columns">
+				<select id="menu"></select>
+			</div><div class="medium-2  columns">
+				<select id="menu"></select>
+			</div><div class="medium-2  columns">
+				<select id="menu"></select>
+			</div><div class="medium-2  columns">
+				<select id="menu"></select>
+			</div><div class="medium-2  columns">
+				<select id="menu"></select>
+			</div><div class="medium-2  columns">
+				<select id="menu"></select>
+			</div><div class="medium-2  columns">
+				<select id="menu"></select>
+			</div><div class="medium-2  columns">
+				<select id="menu"></select>
+			</div><div class="medium-2  columns">
+				<select id="menu"></select>
+			</div><div class="medium-2  columns">
+				<select id="menu"></select>
+			</div><div class="medium-2  columns">
+				<select id="menu"></select>
+			</div><div class="medium-2  columns">
+				<select id="menu"></select>
+			</div>
 		</div>
+		
 		<div class="row">
-			<fieldset class="large-9 large-push-2 cell physical-properties">
-				<legend>Check these physical properties</legend>
+			<h4>Check these physical properties</h4>
+			<fieldset>
 				<input id="checkbox1" type="checkbox">
 				<label for="checkbox1">n / cm^(-3)</label>
 				<input id="checkbox2" type="checkbox">
@@ -52,46 +146,21 @@
 			</fieldset>
 		</div>
 		<div class="row">
-			<!--domanda file opzionali-->
-			<fieldset class="large-4 large-push-2 cell">
-				<legend>Do you want the optional files?</legend>
+			<h4>Do you want the optional files?</h4>
+			<fieldset class="large-5 columns">
 				<input type="radio" name="optional" value="0" id="yes-optional" required>
 				<label for="yes-optional">YES</label>
 				<input type="radio" name="optional" value="1" id="no-optional">
 				<label for="no-optional">NO</label>
 			</fieldset>
-		</div>
-		<!--riga email e run button-->
-		<div class="row">
-			<div class="large-3 large-push-2 columns">
+			<div class="large-3 columns">
 				<label>Your email address for notifications
 										<input type="email" placeholder="Valid email"> </label>
 			</div>
-			<div class="large-2 large-push-3 columns end">
+			<div class="large-2  columns">
 				<button class="success button expanded run" id="run">RUN</button>
 			</div>
 		</div>
-		<!--<input type="file" id="files" name="files[]" multiple />
-		<output id="list"></output>
-
-		<script>
-			function handleFileSelect(evt) {
-				var files = evt.target.files; // FileList object
-
-				// files is a FileList of File objects. List some properties.
-				var output = [];
-				for (var i = 0, f; f = files[i]; i++) {
-					output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
-						f.size, ' bytes, last modified: ',
-						f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
-						'</li>');
-				}
-				document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
-			}
-
-			document.getElementById('files').addEventListener('change', handleFileSelect, false);
-		</script>-->
-
 	</div>
 
 	<script src="js/jquery.js"></script>
@@ -149,7 +218,7 @@
 					filterResult: true,
 					selectAll: true,
 					get: "zmultiselect",
-					placeholder: "List of emission lines 1",
+					placeholder: "Column 1",
 					live: '#menu_live'
 				});
 			});

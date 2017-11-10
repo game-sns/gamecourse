@@ -4,19 +4,6 @@ body {
 	font-family: Quicksand;
 }
 
-.button.hollow.secondary:hover,
-.button.hollow.secondary:focus {
-	border-color: #F78536;
-	color: #fff;
-}
-
-.button:hover,
-.button:focus {
-	border-color: #E67526;
-	color: #fff;
-	background-color: #E67526;
-}
-
 h1,
 h2,
 h3,
@@ -55,9 +42,6 @@ body {
 
 
 /*TEMPORARY FIX COLORE BIANCO*/
-.physical-properties {
-	color: #fff;
-}
 
 label {
 	color: #fff;
