@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>GAME | Home</title>
+	<link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="foundation-icons/foundation-icons.css">
+	<link rel="stylesheet" href="css/foundation.css" />
+	<link rel="stylesheet" href="css/zmultiselect.css">
+
+	<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+	<div id="frost_pannel">
+		<div class="row">
+			<div class="large-3 large-push-2 columns">
+				<label for="file1" class="button">upload input file
+										<br> (emission line intensities)</label>
+				<input type="file" id="file1" class="show-for-sr"> </div>
+			<div class="large-3 large-push-2 columns end">
+				<label for="file2" class="button">upload input file
+										<br> (emission line uncertainties)</label>
+				<input type="file" id="file2" class="show-for-sr"> </div>
+		</div>
+		<div class="row">
+			<div class="large-3 large-push-2 columns end">
+				<select id="menu"></select>
+			</div>
+
+		</div>
+		<div class="row">
+			<fieldset class="large-9 large-push-2 cell physical-properties">
+				<legend>Check these physical properties</legend>
+				<input id="checkbox1" type="checkbox">
+				<label for="checkbox1">n / cm^(-3)</label>
+				<input id="checkbox2" type="checkbox">
+				<label for="checkbox2">N_H / cm^(-2)</label>
+				<input id="checkbox3" type="checkbox">
+				<label for="checkbox3">G / G_0</label>
+				<input id="checkbox4" type="checkbox">
+				<label for="checkbox4">U</label>
+				<input id="checkbox5" type="checkbox">
+				<label for="checkbox5">Z / Z_0</label>
+				<input id="checkbox6" type="checkbox">
+				<label for="checkbox6">F_esc</label>
+				<input id="checkbox7" type="checkbox">
+				<label for="checkbox7">A_V</label>
+			</fieldset>
+		</div>
+		<div class="row">
+			<!--domanda file opzionali-->
+			<fieldset class="large-4 large-push-2 cell">
+				<legend>Do you want the optional files?</legend>
+				<input type="radio" name="optional" value="0" id="yes-optional" required>
+				<label for="yes-optional">YES</label>
+				<input type="radio" name="optional" value="1" id="no-optional">
+				<label for="no-optional">NO</label>
+			</fieldset>
+		</div>
+		<!--riga email e run button-->
+		<div class="row">
+			<div class="large-3 large-push-2 columns">
+				<label>Your email address for notifications
+										<input type="email" placeholder="Valid email"> </label>
+			</div>
+			<div class="large-2 large-push-3 columns end">
+				<button class="success button expanded run" id="run">RUN</button>
+			</div>
+		</div>
+		<!--<input type="file" id="files" name="files[]" multiple />
+		<output id="list"></output>
+
+		<script>
+			function handleFileSelect(evt) {
+				var files = evt.target.files; // FileList object
+
+				// files is a FileList of File objects. List some properties.
+				var output = [];
+				for (var i = 0, f; f = files[i]; i++) {
+					output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
+						f.size, ' bytes, last modified: ',
+						f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
+						'</li>');
+				}
+				document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+			}
+
+			document.getElementById('files').addEventListener('change', handleFileSelect, false);
+		</script>-->
+
+	</div>
+
+	<script src="js/jquery.js"></script>
+	<script src="js/foundation.min.js"></script>
+	
+<!--	PRENDE IL PRIMO FILE DI INPUT E LEGGE QUANTE COLONNE CI SONO NELLA PRIMA RIGA-->
+	<script>
+		document.getElementById('file1').onchange = function () {
+			var file = this.files[0];
+			var reader = new FileReader();
+			reader.onload = function (progressEvent) {
+				
+				//console.log(this.result);
+				
+				var riga = this.result.substr(0, this.result.indexOf("\n"));
+				var conta = 1;
+				for (var i = 0; i < riga.length; i++) {
+					if(riga[i]===' '){
+						conta++;
+					}
+				}
+				alert("Nel primo file ci sono "+conta+" colonne");
+							
+			}
+			reader.readAsText(file);
+		};
+	</script>
+
+	<!--Load zmultiselect-->
+	<script src="js/zmultiselect.min.js"></script>
+
+	<!--Load lables data into menu from an url-->
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			// Handler when the DOM is fully loaded
+
+			var filepath = '../input/input/library_labels.dat';
+
+			$.get(filepath, function(data) {
+				var lines = new Array(3024);
+				lines = data.split(/\n/);
+				var x = document.getElementById("menu");
+
+				for (var line = 0; line < 3024; line++) {
+
+					var option = document.createElement("option");
+					option.text = lines[line];
+					option.value = lines[line];
+					x.add(option);
+				}
+
+				//<!--Activate zmultiselect on menu-->
+				$("#menu").zmultiselect({
+					filter: true,
+					filterResult: true,
+					selectAll: true,
+					get: "zmultiselect",
+					placeholder: "List of emission lines 1",
+					live: '#menu_live'
+				});
+			});
+		});
+	</script>
+
+	<!--Run button-->
+	<script>
+		$("#run").click(function() {
+			alert($("#menu").zmultiselect('getValue'));
+		});
+	</script>
+</body>
+
+</html>

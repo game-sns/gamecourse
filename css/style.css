@@ -1,0 +1,68 @@
+/*General*/
+
+body {
+	font-family: Quicksand;
+}
+
+.button.hollow.secondary:hover,
+.button.hollow.secondary:focus {
+	border-color: #F78536;
+	color: #fff;
+}
+
+.button:hover,
+.button:focus {
+	border-color: #E67526;
+	color: #fff;
+	background-color: #E67526;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: Quicksand;
+}
+
+
+/*General*/
+
+body {
+	background-image: url(../img/galaxy.jpg);
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-attachment: fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	
+	background-position: bottom center;
+	font-size: 1.7em; 
+	color: #fff;
+}
+
+#frost_pannel {
+	background-color:rgba(0, 0, 0, 0.8); 
+	margin: 1.5em;
+	padding: 2em;
+	min-height: 700px;
+}
+
+
+
+
+/*TEMPORARY FIX COLORE BIANCO*/
+.physical-properties {
+	color: #fff;
+}
+
+label {
+	color: #fff;
+}
+
+legend {
+	color: #fff;
+}
