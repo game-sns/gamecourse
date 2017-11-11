@@ -15,7 +15,7 @@
 
 <body>
 
-	<div id="frost_pannel">
+	<div id="frost_pannel" class="noselect">
 		<div class="row">
 			<div class="large-3 columns">
 				<label for="file1" class="button">upload input file
@@ -163,20 +163,20 @@
 		<div class="row">
 			<h4>Check these physical properties :</h4>
 			<ul>
-				<li><input class="checkbox" id="checkbox1" type="checkbox" for="checkbox1">
-					<label for="checkbox1">n / cm^(-3)</label></li>
-				<li><input class="checkbox" id="checkbox2" type="checkbox">
-					<label for="checkbox2">N_H / cm^(-2)</label></li>
-				<li><input class="checkbox" id="checkbox3" type="checkbox">
-					<label for="checkbox3">G / G_0</label></li>
-				<li><input class="checkbox" id="checkbox4" type="checkbox">
-					<label for="checkbox4">U</label></li>
-				<li><input class="checkbox" id="checkbox5" type="checkbox">
-					<label for="checkbox5">Z / Z_0</label></li>
-				<li><input class="checkbox" id="checkbox6" type="checkbox">
-					<label for="checkbox6">F_esc</label></li>
-				<li><input class="checkbox" id="checkbox7" type="checkbox">
-					<label for="checkbox7">A_V</label></li>
+				<li>
+					<label for="checkbox1"><input class="checkbox" id="checkbox1" type="checkbox" for="checkbox1">n / cm^(-3)</label></li>
+				<li>
+					<label for="checkbox2"><input class="checkbox" id="checkbox2" type="checkbox">N_H / cm^(-2)</label></li>
+				<li>
+					<label for="checkbox3"><input class="checkbox" id="checkbox3" type="checkbox">G / G_0</label></li>
+				<li>
+					<label for="checkbox4"><input class="checkbox" id="checkbox4" type="checkbox">U</label></li>
+				<li>
+					<label for="checkbox5"><input class="checkbox" id="checkbox5" type="checkbox">Z / Z_0</label></li>
+				<li>
+					<label for="checkbox6"><input class="checkbox" id="checkbox6" type="checkbox">F_esc</label></li>
+				<li>
+					<label for="checkbox7"><input class="checkbox" id="checkbox7" type="checkbox">A_V</label></li>
 			</ul>
 		</div>
 		<div class="row">
@@ -221,6 +221,7 @@
 			}
 			reader.readAsText(file);
 		};
+
 	</script>
 
 	<!--Load zmultiselect-->
@@ -257,6 +258,7 @@
 				});
 			});
 		});
+
 	</script>
 
 	<!--Run button-->
@@ -264,6 +266,7 @@
 		$("#run").click(function() {
 			alert($("#menu").zmultiselect('getValue'));
 		});
+
 	</script>
 </body>
 

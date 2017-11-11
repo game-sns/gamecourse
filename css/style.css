@@ -42,10 +42,18 @@ ul {
 
 li {
 	display: inline-block;
-	padding: 0 5px 0 5px;
-	margin: 0;
 	border-radius: 2px;
 	background-color: rgba(255, 255, 255, 0.4);
+}
+
+li:active {
+	background-color: rgba(255, 255, 255, 0.7);
+}
+
+li label {
+	color: #fff;
+	padding: 5px;
+	min-width: 100px;
 }
 
 .checkbox {
@@ -53,15 +61,18 @@ li {
 	height: 15px;
 }
 
-
-
+.noselect {
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+}
 
 /*TEMPORARY FIX COLORE BIANCO*/
 
 label {
 	color: #fff;
-	margin: 0;
-	padding: 0;
 }
 
 legend {
