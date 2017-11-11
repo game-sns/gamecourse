@@ -32,130 +32,40 @@
 		<div class="row">
 			<h4>List of emission lines</h4>
 
-			<div class="medium-2  columns">
+			<div class="medium-3  columns">
 				<select id="menu"></select>
 			</div>
-			<div class="medium-2  columns">
+			<div class="medium-3  columns">
 				<select id="menu"></select>
 			</div>
-			<div class="medium-2  columns">
+			<div class="medium-3  columns">
 				<select id="menu"></select>
 			</div>
-			<div class="medium-2  columns">
+			<div class="medium-3  columns">
 				<select id="menu"></select>
 			</div>
-			<div class="medium-2  columns">
+			<div class="medium-3  columns">
 				<select id="menu"></select>
 			</div>
-			<div class="medium-2  columns">
+			<div class="medium-3  columns">
 				<select id="menu"></select>
 			</div>
-			<div class="medium-2  columns">
+			<div class="medium-3  columns">
 				<select id="menu"></select>
 			</div>
-			<div class="medium-2  columns">
+			<div class="medium-3  columns">
 				<select id="menu"></select>
 			</div>
-			<div class="medium-2  columns">
+			<div class="medium-3  columns">
 				<select id="menu"></select>
 			</div>
-			<div class="medium-2  columns">
+			<div class="medium-3  columns">
 				<select id="menu"></select>
 			</div>
-			<div class="medium-2  columns">
+			<div class="medium-3  columns">
 				<select id="menu"></select>
 			</div>
-			<div class="medium-2  columns">
-				<select id="menu"></select>
-			</div>
-			<div class="medium-2  columns">
-				<select id="menu"></select>
-			</div>
-			<div class="medium-2  columns">
-				<select id="menu"></select>
-			</div>
-			<div class="medium-2  columns">
-				<select id="menu"></select>
-			</div>
-			<div class="medium-2  columns">
-				<select id="menu"></select>
-			</div>
-			<div class="medium-2  columns">
-				<select id="menu"></select>
-			</div>
-			<div class="medium-2  columns">
-				<select id="menu"></select>
-			</div>
-			<div class="medium-2  columns">
-				<select id="menu"></select>
-			</div>
-			<div class="medium-2  columns">
-				<select id="menu"></select>
-			</div>
-			<div class="medium-2  columns">
-				<select id="menu"></select>
-			</div>
-			<div class="medium-2  columns">
-				<select id="menu"></select>
-			</div>
-			<div class="medium-2  columns">
-				<select id="menu"></select>
-			</div>
-			<div class="medium-2  columns">
-				<select id="menu"></select>
-			</div>
-			<div class="medium-2  columns">
-				<select id="menu"></select>
-			</div>
-			<div class="medium-2  columns">
-				<select id="menu"></select>
-			</div>
-			<div class="medium-2  columns">
-				<select id="menu"></select>
-			</div>
-			<div class="medium-2  columns">
-				<select id="menu"></select>
-			</div>
-			<div class="medium-2  columns">
-				<select id="menu"></select>
-			</div>
-			<div class="medium-2  columns">
-				<select id="menu"></select>
-			</div>
-			<div class="medium-2  columns">
-				<select id="menu"></select>
-			</div>
-			<div class="medium-2  columns">
-				<select id="menu"></select>
-			</div>
-			<div class="medium-2  columns">
-				<select id="menu"></select>
-			</div>
-			<div class="medium-2  columns">
-				<select id="menu"></select>
-			</div>
-			<div class="medium-2  columns">
-				<select id="menu"></select>
-			</div>
-			<div class="medium-2  columns">
-				<select id="menu"></select>
-			</div>
-			<div class="medium-2  columns">
-				<select id="menu"></select>
-			</div>
-			<div class="medium-2  columns">
-				<select id="menu"></select>
-			</div>
-			<div class="medium-2  columns">
-				<select id="menu"></select>
-			</div>
-			<div class="medium-2  columns">
-				<select id="menu"></select>
-			</div>
-			<div class="medium-2  columns">
-				<select id="menu"></select>
-			</div>
-			<div class="medium-2  columns">
+			<div class="medium-3  columns">
 				<select id="menu"></select>
 			</div>
 		</div>
@@ -197,77 +107,25 @@
 		</div>
 	</div>
 
-	<script src="js/jquery.js"></script>
-	<script src="js/foundation.min.js"></script>
-
-	<!--	PRENDE IL PRIMO FILE DI INPUT E LEGGE QUANTE COLONNE CI SONO NELLA PRIMA RIGA-->
-	<script>
-		document.getElementById('file1').onchange = function() {
-			var file = this.files[0];
-			var reader = new FileReader();
-			reader.onload = function(progressEvent) {
-
-				//console.log(this.result);
-
-				var riga = this.result.substr(0, this.result.indexOf("\n"));
-				var conta = 1;
-				for (var i = 0; i < riga.length; i++) {
-					if (riga[i] === ' ') {
-						conta++;
-					}
-				}
-				alert("Nel primo file ci sono " + conta + " colonne");
-
-			}
-			reader.readAsText(file);
-		};
-
-	</script>
-
-	<!--Load zmultiselect-->
-	<script src="js/zmultiselect.min.js"></script>
-
-	<!--Load lables data into menu from an url-->
-	<script>
-		document.addEventListener("DOMContentLoaded", function() {
-			// Handler when the DOM is fully loaded
-
-			var filepath = 'https://raw.githubusercontent.com/Archetipo95/GAMEplayground/master/input/input/library_labels.dat?token=ALQG36BWdFaeMUgrE8D39hIRvin05BV9ks5aDyrWwA%3D%3D';
-
-			$.get(filepath, function(data) {
-				var lines = new Array(3024);
-				lines = data.split(/\n/);
-				var x = document.getElementById("menu");
-
-				for (var line = 0; line < 500; line++) {
-
-					var option = document.createElement("option");
-					option.text = lines[line];
-					option.value = lines[line];
-					x.add(option);
-				}
-
-				//<!--Activate zmultiselect on menu-->
-				$("#menu").zmultiselect({
-					filter: true,
-					filterResult: true,
-					selectAll: true,
-					get: "zmultiselect",
-					placeholder: "Column 1",
-					live: '#menu_live'
-				});
-			});
-		});
-
-	</script>
-
-	<!--Run button-->
-	<script>
-		$("#run").click(function() {
-			alert($("#menu").zmultiselect('getValue'));
-		});
-
-	</script>
 </body>
+<script src="js/jquery.js"></script>
+<script src="js/foundation.min.js"></script>
+
+<!--SELEZIONATO IL PRIMO FILE DI INPUT LEGGE QUANTE COLONNE CI SONO NELLA PRIMA RIGA-->
+<script src="js_prova/leggi_file1.js"></script>
+
+<!--Load zmultiselect-->
+<script src="js/zmultiselect.min.js"></script>
+
+<!--CARICA LABLES IN MENU DA URL-->
+<script src="js_prova/carica_lables.js"></script>
+
+<!--Run button-->
+<script>
+	$("#run").click(function() {
+		alert($("#menu").zmultiselect('getValue'));
+	});
+
+</script>
 
 </html>
