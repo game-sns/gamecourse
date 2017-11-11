@@ -13,29 +13,44 @@ h6 {
 	font-family: Quicksand;
 }
 
-
-/*General*/
-
 body {
 	background-image: url(../img/galaxy.jpg);
-    background-repeat: no-repeat;
-    background-position: right top;
-    background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-position: right top;
+	background-attachment: fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
-	
+
 	background-position: bottom center;
-	font-size: 1.7em; 
+	font-size: 1.7em;
 	color: #fff;
 }
 
 #frost_pannel {
-	background-color:rgba(0, 0, 0, 0.8); 
+	background-color: rgba(0, 0, 0, 0.8);
 	margin: 1.5em;
 	padding: 2em;
 	min-height: 700px;
+}
+
+ul {
+	margin: 0;
+	list-style: none;
+}
+
+li {
+	display: inline-block;
+	padding: 0 5px 0 5px;
+	margin: 0;
+	border-radius: 2px;
+	background-color: rgba(255, 255, 255, 0.4);
+}
+
+.checkbox {
+	width: 15px;
+	height: 15px;
 }
 
 
@@ -45,6 +60,8 @@ body {
 
 label {
 	color: #fff;
+	margin: 0;
+	padding: 0;
 }
 
 legend {
