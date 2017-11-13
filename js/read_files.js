@@ -1,3 +1,7 @@
+function markFileAsRead(labelId, text) {
+    document.getElementById(labelId).innerHTML = text + "    <img src=\"img/checked.png\">";
+}
+
 /**
  * Counts columns in file
  * @param result reader of file to read
@@ -14,7 +18,6 @@ function countColumns(result, separator) {
     return counter;
 }
 
-
 /**
  * Shows number of columns in file
  * @param file file to read
@@ -25,8 +28,8 @@ function showNumberColumns(file) {
         var n_columns = countColumns(this.result, ' ');
         alert("Found " + n_columns + " columns in file");
     };
-    reader.readAsText(file);  // read -> alert user
-    // TODO: send file to server
+    reader.readAsText(file);
+    // TODO: send file to server and show loading icon
 }
 
 /**
@@ -37,7 +40,9 @@ function alertFileColumns() {
     files.forEach(
         function (element) {
             document.getElementById(element).onchange = function () {
-                showNumberColumns(this.files[0]);
+                var file = this.files[0];
+                showNumberColumns(file);
+                markFileAsRead(element + "Label", file.name);
             }
         });
 }
