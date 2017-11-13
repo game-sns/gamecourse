@@ -2,110 +2,129 @@
 <html lang="en">
 
 <head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>GAME | Home</title>
-	<link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" type="text/css" href="foundation-icons/foundation-icons.css">
-	<link rel="stylesheet" href="css/foundation.css" />
-	<link rel="stylesheet" href="css/zmultiselect.css">
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>GAME | Home</title>
+    <link href='https://fonts.googleapis.com/css?family=Quicksand'
+          rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css"
+          href="foundation-icons/foundation-icons.css">
+    <link rel="stylesheet" href="css/foundation.css"/>
+    <link rel="stylesheet" href="css/zmultiselect.css">
 
-	<link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-	<div id="frost_pannel" class="noselect">
-		<div class="row">
-			<div class="large-3 columns">
-				<label for="file1" class="button">upload input file
-										<br> (emission line intensities)</label>
-				<input type="file" id="file1" class="show-for-sr"> </div>
-			<div class="large-3 columns end">
-				<label for="file2" class="button">upload input file
-										<br> (emission line uncertainties)</label>
-				<input type="file" id="file2" class="show-for-sr"> </div>
-		</div>
+<div id="frost_pannel" class="noselect">
+    <div class="row">
+        <div class="large-3 columns">
+            <label for="file1" class="button">upload input file
+                <br> (emission line intensities)</label>
+            <input type="file" id="file1" class="show-for-sr"></div>
+        <div class="large-3 columns end">
+            <label for="file2" class="button">upload input file
+                <br> (emission line uncertainties)</label>
+            <input type="file" id="file2" class="show-for-sr"></div>
+    </div>
 
+    <div class="row">
+        <h4>List of emission lines</h4>
 
+        <div class="medium-3  columns">
+            <select class="menu"></select>
+        </div>
+        <div class="medium-3  columns">
+            <select class="menu"></select>
+        </div>
+        <div class="medium-3  columns">
+            <select class="menu"></select>
+        </div>
+        <div class="medium-3  columns">
+            <select class="menu"></select>
+        </div>
+        <div class="medium-3  columns">
+            <select class="menu"></select>
+        </div>
+        <div class="medium-3  columns">
+            <select class="menu"></select>
+        </div>
+        <div class="medium-3  columns">
+            <select class="menu"></select>
+        </div>
+        <div class="medium-3  columns">
+            <select class="menu"></select>
+        </div>
+        <div class="medium-3  columns">
+            <select class="menu"></select>
+        </div>
+        <div class="medium-3  columns">
+            <select class="menu"></select>
+        </div>
+        <div class="medium-3  columns">
+            <select class="menu"></select>
+        </div>
+        <div class="medium-3  columns">
+            <select class="menu"></select>
+        </div>
+    </div>
 
-		<div class="row">
-			<h4>List of emission lines</h4>
-
-			<div class="medium-3  columns">
-				<select class="menu"></select>
-			</div>
-			<div class="medium-3  columns">
-				<select class="menu"></select>
-			</div>
-			<div class="medium-3  columns">
-				<select class="menu"></select>
-			</div>
-			<div class="medium-3  columns">
-				<select class="menu"></select>
-			</div>
-			<div class="medium-3  columns">
-				<select class="menu"></select>
-			</div>
-			<div class="medium-3  columns">
-				<select class="menu"></select>
-			</div>
-			<div class="medium-3  columns">
-				<select class="menu"></select>
-			</div>
-			<div class="medium-3  columns">
-				<select class="menu"></select>
-			</div>
-			<div class="medium-3  columns">
-				<select class="menu"></select>
-			</div>
-			<div class="medium-3  columns">
-				<select class="menu"></select>
-			</div>
-			<div class="medium-3  columns">
-				<select class="menu"></select>
-			</div>
-			<div class="medium-3  columns">
-				<select class="menu"></select>
-			</div>
-		</div>
-
-		<div class="row">
-			<h4>Check these physical properties :</h4>
-			<ul>
-				<li>
-					<label for="checkbox1"><input class="checkbox" id="checkbox1" type="checkbox" for="checkbox1">n / cm^(-3)</label></li>
-				<li>
-					<label for="checkbox2"><input class="checkbox" id="checkbox2" type="checkbox">N_H / cm^(-2)</label></li>
-				<li>
-					<label for="checkbox3"><input class="checkbox" id="checkbox3" type="checkbox">G / G_0</label></li>
-				<li>
-					<label for="checkbox4"><input class="checkbox" id="checkbox4" type="checkbox">U</label></li>
-				<li>
-					<label for="checkbox5"><input class="checkbox" id="checkbox5" type="checkbox">Z / Z_0</label></li>
-				<li>
-					<label for="checkbox6"><input class="checkbox" id="checkbox6" type="checkbox">F_esc</label></li>
-				<li>
-					<label for="checkbox7"><input class="checkbox" id="checkbox7" type="checkbox">A_V</label></li>
-			</ul>
-		</div>
-		<div class="row">
-			<h4>Do you want the optional files?</h4>
-			<fieldset class="large-5 columns">
-				<input type="radio" name="optional" value="0" id="yes-optional" required>
-				<label for="yes-optional">YES</label>
-				<input type="radio" name="optional" value="1" id="no-optional">
-				<label for="no-optional">NO</label>
-			</fieldset>
-			<div class="large-3 columns">
-				<label>Your email address for notifications
-										<input type="email" placeholder="Valid email"> </label>
-			</div>
-			<div class="large-2  columns">
-				<button class="success button expanded run" id="run">RUN</button>
-			</div>
-		</div>
-	</div>
+    <div class="row">
+        <h4>Check these physical properties :</h4>
+        <ul>
+            <li>
+                <label for="checkbox1">
+                    <input class="checkbox" id="checkbox1" type="checkbox">
+                    n / cm <sup>-3</sup>
+                </label></li>
+            <li>
+                <label for="checkbox2"><input class="checkbox" id="checkbox2"
+                                              type="checkbox">
+                    N<sub>H</sub> / cm <sup>-2</sup></label></li>
+            <li>
+                <label for="checkbox3"><input class="checkbox" id="checkbox3"
+                                              type="checkbox">
+                    G / G<sub>0</sub></label>
+            </li>
+            <li>
+                <label for="checkbox4"><input class="checkbox" id="checkbox4"
+                                              type="checkbox">U</label></li>
+            <li>
+                <label for="checkbox5"><input class="checkbox" id="checkbox5"
+                                              type="checkbox">
+                    Z / Z<sub>0</sub>
+                </label>
+            </li>
+            <li>
+                <label for="checkbox6"><input class="checkbox" id="checkbox6"
+                                              type="checkbox">
+                    F<sub>esc</sub>
+                </label></li>
+            <li>
+                <label for="checkbox7"><input class="checkbox" id="checkbox7"
+                                              type="checkbox">
+                    A<sub>V</sub></label></li>
+        </ul>
+    </div>
+    <div class="row">
+        <h4>Do you want the optional files?</h4>
+        <fieldset class="large-5 columns">
+            <input type="radio" name="optional" value="0" id="yes-optional"
+                   required>
+            <label for="yes-optional">YES</label>
+            <input type="radio" name="optional" value="1" id="no-optional">
+            <label for="no-optional">NO</label>
+        </fieldset>
+        <div class="large-3 columns">
+            <label>Your email address for notifications
+                <input type="email" placeholder="Valid email"> </label>
+        </div>
+        <div class="large-2  columns">
+            <button class="success button expanded run" id="run">RUN</button>
+        </div>
+    </div>
+</div>
 
 </body>
 <script src="js/jquery.js"></script>
@@ -122,9 +141,9 @@
 
 <!--Run button-->
 <script>
-	$("#run").click(function() {
-		alert($("#menu").zmultiselect('getValue'));
-	});
+    $("#run").click(function () {
+        alert($("#menu").zmultiselect('getValue'));
+    });
 
 </script>
 
