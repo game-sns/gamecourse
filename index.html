@@ -61,41 +61,8 @@
 					$('#multiselect_' + k).multiselect('search', $('#txtSearch_' + k).val());
 				});
 			});
-
-			// build locale options
-			for (var locale in $.uix.multiselect.i18n) {
-				$('#selectLocale').append($('<option></option>').attr('value', locale).text(locale.length == 0 ? '(default)' : locale));
-			}
-			$('#selectLocale').val($('#multiselect').multiselect('locale'));
 		});
 	</script>
-	<style type="text/css">
-		.multiselect {
-			width: 450px;
-			height: 200px;
-		}
-
-		#locales {
-			padding-bottom: 16px;
-		}
-
-		div.debug_uiControls {
-			margin-top: 16px;
-		}
-
-		div.debug_log {
-			height: 100px;
-			overflow: auto;
-			border: 1px solid black;
-			padding: 8px;
-			margin-top: 16px;
-		}
-
-		.example-container {
-			overflow: visible;
-			width: 100%;
-		}
-	</style>
 </head>
 
 <body>
