@@ -25,7 +25,8 @@ function showNumberColumns(file) {
         var n_columns = countColumns(this.result, ' ');
         alert("Found " + n_columns + " columns in file");
     };
-    reader.readAsText(file);
+    reader.readAsText(file);  // read -> alert user
+    // TODO: send file to server
 }
 
 /**
