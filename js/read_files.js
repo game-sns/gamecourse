@@ -43,8 +43,18 @@ function alertFileColumns() {
                 var file = this.files[0];
                 showNumberColumns(file);
                 markFileAsRead(element + "Label", file.name);
+				/*ControllBothFileUpload(file);*/
             }
         });
 }
 
 alertFileColumns();
+/*
+function ControllBothFileUpload(file) {
+	var reader = new FileReader();
+	var files = ["fileInputs", "fileErrors"];
+	if(this.files[0].value != "") {
+		alert("File Trovato");
+	}
+}*/
+
