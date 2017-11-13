@@ -40,7 +40,7 @@
     // The jQuery.uix namespace will automatically be created if it doesn't exist
     $.widget("uix.multiselect", {
         options: {
-            availableListPosition: 'right',// 'top', 'right', 'bottom', 'left'; the position of the available list (default: 'right')
+            availableListPosition: 'left',// 'top', 'right', 'bottom', 'left'; the position of the available list (default: 'right')
             // beforesearch: null,            // a funciton called before searching. If the default is prevented, search will not happen (for version 2.1)
             collapsableGroups: true,       // tells whether the option groups can be collapsed or not (default: true)
             created: null,                 // a function called when the widget is done loading (default: null)
@@ -52,8 +52,8 @@
             moveEffectSpeed: null,         // string ('slow','fast') or number in millisecond (ignored if moveEffect is 'show') (default: null)
             optionRenderer: false,         // a function that will return the item element to be rendered in the list (default: false)
             optionGroupRenderer: false,    // a function that will return the group item element to be rendered (default: false)
-            searchDelay: 500,              // the search delay in ms (default: 500)
-            searchField: 'toggle',         // false, true, 'toggle'; set the search field behaviour (default: 'toggle')
+            searchDelay: 250,              // the search delay in ms (default: 500)
+            searchField: 'true',         // false, true, 'toggle'; set the search field behaviour (default: 'toggle')
             searchPreFilter: null,         // prepare the search term before filtering.
             searchFilter: null,            // a search filter. Will receive the term and OPTION element and should return a boolean value.
             searchHeader: 'available',     // 'available', 'selected'; set the list header that will host the search field (default: 'available')
@@ -61,9 +61,9 @@
             showDefaultGroupHeader: false, // show the default option group header (default: false)
             showEmptyGroups: false,        // always display option groups even if empty (default: false)
             splitRatio: 0.55,              // % of the left list's width of the widget total width (default 0.55)
-            sortable: false,               // if the selected list should be user sortable or not
+            sortable: true,               // if the selected list should be user sortable or not
             sortMethod: null,              // null, 'standard', 'natural'; a sort function name (see ItemComparators), or a custom function (default: null)
-            selectAll: 'both'              // 'available', 'selected', 'both', 'none' - Whether or not to display a select or deselect all icon (default: 'both')
+            selectAll: 'selected'              // 'available', 'selected', 'both', 'none' - Whether or not to display a select or deselect all icon (default: 'both')
         },
 
         _create: function() {

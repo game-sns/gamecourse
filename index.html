@@ -6,23 +6,17 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>GAME | Home</title>
 
-
-	<link type="text/css" href="css/common.css" rel="stylesheet" />
-	<link rel="stylesheet" href="https://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+	<link rel="stylesheet" href="css/jquery-ui.css" /> <!--DA TOGLIERE DOPO PIU AVANTI-->
 	<link type="text/css" href="css/jquery.uix.multiselect.css" rel="stylesheet" />
-	<script src="https://code.jquery.com/jquery-1.9.0.min.js"></script>
-	<script src="https://code.jquery.com/ui/1.9.2/jquery-ui.min.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="js/jquery.uix.multiselect.js"></script>
-	<script type="text/javascript" src="js/jquery.themeswitcher.min.js"></script>
 
 	<link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="foundation-icons/foundation-icons.css">
 	<link rel="stylesheet" href="css/foundation.css" />
-	<link rel="stylesheet" href="css/zmultiselect.css">
 
 	<link rel="stylesheet" href="css/style.css">
-
-
 
 	<script type="text/javascript">
 		$(function() {
@@ -33,7 +27,7 @@
 				moveEffectOptions: {
 					direction: 'vertical'
 				},
-				moveEffectSpeed: 'fast'
+				moveEffectSpeed: 'slow'
 			};
 			var widgets = {
 				'simple': $.extend($.extend({}, defaultOptions), {
@@ -108,6 +102,7 @@
 
 <div id="frost_pannel" class="noselect">
     <div class="row">
+		<h1>Galaxy Machine Learning for Emission Lines</h1>
         <div class="large-3 columns">
             <label for="fileInputs" id="fileInputsLabel" class="button">Upload
                 input file
@@ -122,11 +117,9 @@
     </div>
 
 		<div class="row">
-
 			<div id="content" style="font-size: .5em;">
 				<div id="usage_simple" style="position:relative;">
 					<form action="" method="get">
-						<h2>Simple usage</h2>
 						<div class="example-container ui-helper-clearfix">
 							<select id="multiselect_simple" name="multiselect" class="multiselect" multiple="multiple" style="width:100%; min-height: 200px;">
 						<option value="&quot;Ly-alpha 1216A&quot; 1216.0">"Ly-alpha 1216A" 1216.0</option>
@@ -3156,10 +3149,8 @@
 					</select>
 						</div>
 					</form>
-					<div id="debug_simple" class="debug_log"></div>
 				</div>
 			</div>
-
 		</div>
 
 		<div class="row">
@@ -3186,7 +3177,7 @@
 			<fieldset class="large-5 columns">
 				<input type="radio" name="optional" value="0" id="yes-optional" required>
 				<label for="yes-optional">YES</label>
-				<input type="radio" name="optional" value="1" id="no-optional">
+				<input type="radio" name="optional" value="1" id="no-optional" checked="checked">
 				<label for="no-optional">NO</label>
 			</fieldset>
 			<div class="large-3 columns">
@@ -3206,12 +3197,6 @@
 
 <!--SELEZIONATO IL PRIMO FILE DI INPUT LEGGE QUANTE COLONNE CI SONO NELLA PRIMA RIGA-->
 <script src="js/read_files.js"></script>
-
-<!--Load zmultiselect-->
-<script src="js/zmultiselect.min.js"></script>
-
-<!--CARICA LABLES IN MENU DA URL-->
-<script src="js/carica_lables.js"></script>
 
 <!--Run button-->
 <script>
