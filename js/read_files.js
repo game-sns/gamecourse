@@ -30,8 +30,16 @@ function showNumberColumns(file) {
 }
 
 /**
- * Shows user number of columns of file
+ * Shows user number of columns in files
  */
-document.getElementById('file1').onchange = function () {
-    showNumberColumns(this.files[0]);
-};
+function alertFileColumns() {
+    var files = ["fileInputs", "fileErrors"];
+    files.forEach(
+        function (element) {
+            document.getElementById(element).onchange = function () {
+                showNumberColumns(this.files[0]);
+            }
+        });
+}
+
+alertFileColumns();
