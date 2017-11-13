@@ -69,12 +69,6 @@ li label {
             user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
 }
 
-/*TEMPORARY FIX COLORE BIANCO*/
-
-label {
-	color: #fff;
-}
-
-legend {
-	color: #fff;
+#fileInputsLabel, #fileErrorsLabel {
+	display: inherit;
 }
