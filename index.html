@@ -2,14 +2,15 @@
 <html lang="en">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>GAME | Home</title>
 
-	<link rel="stylesheet" href="css/jquery-ui.css" /> <!--DA TOGLIERE DOPO PIU AVANTI-->
+	<link rel="stylesheet" href="css/jquery-ui.css" /><!--DA TOGLIERE DOPO PIU AVANTI-->
 	<link type="text/css" href="css/jquery.uix.multiselect.css" rel="stylesheet" />
-	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+	<script src="https://code.jquery.com/jquery-1.9.0.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.9.2/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="js/jquery.uix.multiselect.js"></script>
 
 	<link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
@@ -22,7 +23,6 @@
 		$(function() {
 
 			var defaultOptions = {
-				//availableListPosition: 'bottom',
 				moveEffect: 'blind',
 				moveEffectOptions: {
 					direction: 'vertical'
@@ -67,28 +67,28 @@
 
 <body>
 
-<div id="frost_pannel" class="noselect">
-    <div class="row">
-		<h1>Galaxy Machine Learning for Emission Lines</h1>
-        <div class="large-3 columns">
-            <label for="fileInputs" id="fileInputsLabel" class="button">Upload
+	<div id="frost_pannel" class="noselect">
+		<div class="row">
+			<h1>Galaxy Machine Learning for Emission Lines</h1>
+			<div class="large-3 columns">
+				<label for="fileInputs" id="fileInputsLabel" class="button">Upload
                 input file
                 <br> (emission line intensities)
             </label>
-            <input type="file" id="fileInputs" class="show-for-sr"></div>
-        <div class="large-3 columns end">
-            <label for="fileErrors" class="button" id="fileErrorsLabel">Upload
+				<input type="file" id="fileInputs" class="show-for-sr"></div>
+			<div class="large-3 columns end">
+				<label for="fileErrors" class="button" id="fileErrorsLabel">Upload
                 errors file
                 <br> (emission line uncertainties)</label>
-            <input type="file" id="fileErrors" class="show-for-sr"></div>
-    </div>
+				<input type="file" id="fileErrors" class="show-for-sr"></div>
+		</div>
 
 		<div class="row">
-			<div id="content" style="font-size: .5em;">
-				<div id="usage_simple" style="position:relative;">
-					<form action="" method="get">
-						<div class="example-container ui-helper-clearfix">
-							<select id="multiselect_simple" name="multiselect" class="multiselect" multiple="multiple" style="width:100%; min-height: 200px;">
+			<h4>List of emission lines in the input files :</h4>
+			<div id="usage_simple">
+				<form action="" method="get">
+					<div class="example-container ui-helper-clearfix">
+						<select id="multiselect_simple" name="multiselect" class="multiselect" multiple="multiple">
 						<option value="&quot;Ly-alpha 1216A&quot; 1216.0">"Ly-alpha 1216A" 1216.0</option>
 						<option value="&quot;Fe13  1216A&quot; 1216.0">"Fe13 1216A" 1216.0</option>
 						<option value="&quot;Fe 2  1216A&quot; 1216.0">"Fe 2 1216A" 1216.0</option>
@@ -3114,9 +3114,8 @@
 						<option value="ionization 0.0">ionization 0.0</option>
 						<option value="metallicity 0.0">metallicity 0.0</option>
 					</select>
-						</div>
-					</form>
-				</div>
+					</div>
+				</form>
 			</div>
 		</div>
 
@@ -3158,9 +3157,9 @@
 	</div>
 
 </body>
-	
 
-<script src="js/foundation.min.js"></script>
+
+<script src="js/foundation.js"></script>
 
 <script src="js/read_files.js"></script>
 
