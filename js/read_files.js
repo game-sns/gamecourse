@@ -38,51 +38,39 @@ alertFileColumns();
 Check if both files were uploaded
 */
 function missingUpload(file1, file2) {
-	if (file1.value === "" || file2.value === "")
-		return true;
-	else
-		return false;
+	return file1.value === "" || file2.value === "";
 }
 
 /*
 Check if uploaded files have same value
 */
 function sameUpload(file1, file2) {
-	if (file1.value === file2.value)
-		return true;
-	else
-		return false;
-}
-
-/**
- * return number of columns in file
- * @param file file to read
- */
-var number;
-function numberColumns(file) {
-	var reader = new FileReader();
-	reader.onload = function (progressEvent) {
-		number = 0;
-		number = countColumns(this.result, ' ');
-		//alert("Found " + n_columns + " columns in file");
-	};
-	reader.readAsText(file);
-	// TODO: send file to server and show loading icon
+	return file1.value === file2.value;
 }
 
 function checks() {
 	var file1 = document.getElementById("fileInputs");
 	var file2 = document.getElementById("fileErrors");
+	var files = [file1, file2];
 
-	if ((missingUpload(file1, file2) == false) && (sameUpload(file1, file2) == false) /*&& (numberColumns(blob1) === numberColumns(blob2))*/ ) {
+	if (
+		(missingUpload(file1, file2) === false) &&
+		(sameUpload(file1, file2) === false)
+    ) {
 		alert("Uploaded files seems OK");
 
-		var blob1 = file1.files[0];
-		var blob2 = file2.files[0];
-
-		alert(numberColumns(blob1));
-		alert(numberColumns(blob2));
-
+        files.forEach(
+            function (file) {
+                var reader = new FileReader();
+                reader.onload = function () {
+                    var numberOfColumns = countColumns(reader.result, " ");
+                    alert(
+                        "In file \"" + fileContent.name + "\" there are " + numberOfColumns + " columns"
+                    );
+                };
+                var fileContent = file.files[0];
+                reader.readAsText(fileContent);
+            });
 	} else
 		alert("There is something wrong with uploaded files");
 }
