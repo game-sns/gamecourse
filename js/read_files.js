@@ -1,4 +1,4 @@
-var columns_1, columns_2;  // number of columns in each input file
+var columns_1, columns_2; // number of columns in each input file
 var file1 = document.getElementById("fileInputs");
 var file2 = document.getElementById("fileErrors");
 var blob1 = file1.files[0];
@@ -61,10 +61,7 @@ function missingUpload(file1, file2) {
  * @returns {boolean} True iff files have same value
  */
 function sameUpload(file1, file2) {
-	if (file1.value === file2.value)
-		return true;
-	else
-		return false;
+	return file1.value === file2.value
 }
 
 /**
@@ -72,29 +69,44 @@ function sameUpload(file1, file2) {
  */
 function checks() {
 	if (
-	    (missingUpload(file1, file2) === false) &&
-        (sameUpload(file1, file2) === false) &&
-        (columns_1 === columns_2)
-    ) {
-		alert("Uploaded files seems OK");
-		alert("Found " + columns_1 + " columns in file \'" + blob1.name + "\'");
-		alert("Found " + columns_2 + " columns in file \'" + blob2.name + "\'");
+		(missingUpload(file1, file2) === false) &&
+		(sameUpload(file1, file2) === false) &&
+		(columns_1 === columns_2)
+	) {
+		return true;
 	} else {
-        alert("There is something wrong with uploaded files");
-    }
+		alert("There is something wrong with uploaded files");
+	}
 }
+
+/*Limited to 3 selectable elements just for test*/
+function setLimit(limit) {
+	console.log(limit);
+	$('#multiselect_simple').bind('multiselectChange', function (evt, ui) {
+		var selectedCount = $("option:selected", this).length;
+		$(this).find('option:not(:selected)').prop('disabled', selectedCount >= limit).end().multiselect('refresh');
+	});
+}
+
+var numFileUploaded = 0;
 
 /**
  * Sets number of column of file 1
  * @param evt event
  */
 function setFileColumnsNumber_1(evt) {
-    var reader = new FileReader();
-    var file = evt.target.files[0];
-    reader.onload = function (progressEvent) {
-        columns_1 = countColumns(this.result, ' ');
-    };
-    reader.readAsText(file);
+	var reader = new FileReader();
+	var file = evt.target.files[0];
+	reader.onload = function (progressEvent) {
+		columns_1 = countColumns(this.result, ' ');
+		numFileUploaded++;
+		if (numFileUploaded >= 2) {
+			if (checks()) {
+				setLimit(columns_1);
+			}
+		}
+	};
+	reader.readAsText(file);
 }
 
 /**
@@ -102,27 +114,28 @@ function setFileColumnsNumber_1(evt) {
  * @param evt event
  */
 function setFileColumnsNumber_2(evt) {
-    var reader = new FileReader();
-    var file = evt.target.files[0];
-    reader.onload = function (progressEvent) {
-        columns_2 = countColumns(this.result, ' ');
-    };
-    reader.readAsText(file);
+	var reader = new FileReader();
+	var file = evt.target.files[0];
+	reader.onload = function (progressEvent) {
+		columns_2 = countColumns(this.result, ' ');
+		numFileUploaded++;
+		if (numFileUploaded >= 2) {
+			if (checks()) {
+				setLimit(columns_1);
+			}
+		}
+	};
+	reader.readAsText(file);
 }
 
-alertFileColumns();
 document.getElementById("fileInputs").addEventListener(
-    "change", setFileColumnsNumber_1, false
+	"change", setFileColumnsNumber_1, false
 );
 document.getElementById("fileErrors").addEventListener(
-    "change", setFileColumnsNumber_2, false
+	"change", setFileColumnsNumber_2, false
 );
+
 $("#run").click(function () {
-    checks();
 });
 
-/*Limited to 3 selectable elements just for test*/
-$('#multiselect_simple').bind('multiselectChange', function (evt, ui) {
-	var selectedCount = $("option:selected", this).length;
-	$(this).find('option:not(:selected)').prop('disabled', selectedCount >= 3).end().multiselect('refresh');
-});
+alertFileColumns();
