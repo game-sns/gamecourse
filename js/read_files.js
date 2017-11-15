@@ -1,3 +1,15 @@
+var columns_1, columns_2;  // number of columns in each input file
+var file1 = document.getElementById("fileInputs");
+var file2 = document.getElementById("fileErrors");
+var blob1 = file1.files[0];
+var blob2 = file2.files[0];
+
+
+/**
+ * Marks file label as read
+ * @param labelId id of label to mark
+ * @param text optional text to show
+ */
 function markFileAsRead(labelId, text) {
 	document.getElementById(labelId).innerHTML = text + "    <img src=\"img/checked.png\">";
 }
@@ -32,21 +44,22 @@ function alertFileColumns() {
 		});
 }
 
-alertFileColumns();
-
-/*
-Check if both files were uploaded
-*/
+/**
+ * Checks if both files were uploaded
+ * @param file1 file1
+ * @param file2 file2
+ * @returns {boolean} True iff both files were uploaded
+ */
 function missingUpload(file1, file2) {
-	if (file1.value === "" || file2.value === "")
-		return true;
-	else
-		return false;
+	return file1.value === "" || file2.value === "";
 }
 
-/*
-Check if uploaded files have same value
-*/
+/**
+ * Checks if uploaded files have same value
+ * @param file1 blob
+ * @param file2 blob
+ * @returns {boolean} True iff files have same value
+ */
 function sameUpload(file1, file2) {
 	if (file1.value === file2.value)
 		return true;
@@ -55,40 +68,57 @@ function sameUpload(file1, file2) {
 }
 
 /**
- * return number of columns in file
- * @param file file to read
+ * Performs various checks on files before running GAME
  */
-var number;
-function numberColumns(file) {
-	var reader = new FileReader();
-	reader.onload = function (progressEvent) {
-		number = 0;
-		number = countColumns(this.result, ' ');
-		alert("Found " + number + " columns in file \"" + file.name + "\"");
-	};
-	reader.readAsText(file);
-	// TODO: send file to server and show loading icon
-}
-
 function checks() {
-	var file1 = document.getElementById("fileInputs");
-	var file2 = document.getElementById("fileErrors");
-
-	if ((missingUpload(file1, file2) == false) && (sameUpload(file1, file2) == false) /*&& (numberColumns(blob1) === numberColumns(blob2))*/ ) {
+	if (
+	    (missingUpload(file1, file2) === false) &&
+        (sameUpload(file1, file2) === false) &&
+        (columns_1 === columns_2)
+    ) {
 		alert("Uploaded files seems OK");
-
-		var blob1 = file1.files[0];
-		var blob2 = file2.files[0];
-
-		numberColumns(blob1);
-		numberColumns(blob2);
-
-	} else
-		alert("There is something wrong with uploaded files");
+		alert("Found " + columns_1 + " columns in file \'" + blob1.name + "\'");
+		alert("Found " + columns_2 + " columns in file \'" + blob2.name + "\'");
+	} else {
+        alert("There is something wrong with uploaded files");
+    }
 }
 
+/**
+ * Sets number of column of file 1
+ * @param evt event
+ */
+function setFileColumnsNumber_1(evt) {
+    var reader = new FileReader();
+    var file = evt.target.files[0];
+    reader.onload = function (progressEvent) {
+        columns_1 = countColumns(this.result, ' ');
+    };
+    reader.readAsText(file);
+}
+
+/**
+ * Sets number of column of file 2
+ * @param evt event
+ */
+function setFileColumnsNumber_2(evt) {
+    var reader = new FileReader();
+    var file = evt.target.files[0];
+    reader.onload = function (progressEvent) {
+        columns_2 = countColumns(this.result, ' ');
+    };
+    reader.readAsText(file);
+}
+
+alertFileColumns();
+document.getElementById("fileInputs").addEventListener(
+    "change", setFileColumnsNumber_1, false
+);
+document.getElementById("fileErrors").addEventListener(
+    "change", setFileColumnsNumber_2, false
+);
 $("#run").click(function () {
-	checks();
+    checks();
 });
 
 /*Limited to 3 selectable elements just for test*/
