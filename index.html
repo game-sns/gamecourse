@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GAME | Home</title>
     <link rel="stylesheet" href="css/jquery-ui.css" />
-    <!--DA TOGLIERE DOPO PIU AVANTI-->
+    <!-- TODO DA TOGLIERE DOPO PIU AVANTI -->
     <link type="text/css" href="css/jquery.uix.multiselect.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
     <script src="https://code.jquery.com/jquery-1.9.0.min.js"></script>
@@ -51,6 +51,7 @@
             });
         });
     </script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
 </head>
 
 <body>
@@ -3146,17 +3147,24 @@
     </div>
     <div class="row">
         <h4>Do you want the optional files?</h4>
-        <fieldset class="large-5 columns">
+        <fieldset>
             <input type="radio" name="optional" value="0" id="yes-optional" required>
             <label for="yes-optional">YES</label>
             <input type="radio" name="optional" value="1" id="no-optional" checked="checked">
             <label for="no-optional">NO</label>
         </fieldset>
-        <div class="large-3 columns">
-            <label>Your email address for notifications
-                <input type="email" placeholder="Valid email"> </label>
+    </div>
+    <div class="row">
+        <div class="large-4 columns">
+            <h4>Your email address for notifications</h4>
+            <input type="email" placeholder="Valid email">
         </div>
-        <div class="large-2  columns">
+        <div class="large-4 columns" style="width: 50%; margin: 0 auto;">
+            <div class="g-recaptcha"
+                 data-sitekey="6LeW4zgUAAAAABhlLXIC9dNc6oMvBocVMm-rauNM"
+                 style="text-align: center;"></div>
+        </div>
+        <div class="large-4 columns" style="vertical-align: bottom;">
             <button class="success button expanded run" id="run">RUN</button>
         </div>
     </div>
