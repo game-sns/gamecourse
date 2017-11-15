@@ -64,7 +64,7 @@ function numberColumns(file) {
 	reader.onload = function (progressEvent) {
 		number = 0;
 		number = countColumns(this.result, ' ');
-		//alert("Found " + n_columns + " columns in file");
+		alert("Found " + number + " columns in file \"" + file.name + "\"");
 	};
 	reader.readAsText(file);
 	// TODO: send file to server and show loading icon
@@ -80,8 +80,8 @@ function checks() {
 		var blob1 = file1.files[0];
 		var blob2 = file2.files[0];
 
-		alert(numberColumns(blob1));
-		alert(numberColumns(blob2));
+		numberColumns(blob1);
+		numberColumns(blob2);
 
 	} else
 		alert("There is something wrong with uploaded files");
