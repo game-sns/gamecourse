@@ -90,3 +90,9 @@ function checks() {
 $("#run").click(function () {
 	checks();
 });
+
+/*Limited to 3 selectable elements just for test*/
+$('#multiselect_simple').bind('multiselectChange', function (evt, ui) {
+	var selectedCount = $("option:selected", this).length;
+	$(this).find('option:not(:selected)').prop('disabled', selectedCount >= 3).end().multiselect('refresh');
+});
