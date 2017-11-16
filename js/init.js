@@ -20,7 +20,7 @@ $(function () {
             var values = $.map(ui.optionElements, function (opt) {
                 return $(opt).attr('value');
             }).join(', ');
-            $('#debug_' + k).prepend($('<div></div>').text('Multiselect change event! ' + (ui.optionElements.length == $('#multiselect_' + k).find('option').size() ? 'all ' : '') + (ui.optionElements.length + ' value' + (ui.optionElements.length > 1 ? 's were' : ' was')) + ' ' + (ui.selected ? 'selected' : 'deselected') + ' (' + values + ')'));
+            $('#debug_' + k).prepend($('<div></div>').text('Multiselect change event! ' + (ui.optionElements.length === $('#multiselect_' + k).find('option').size() ? 'all ' : '') + (ui.optionElements.length + ' value' + (ui.optionElements.length > 1 ? 's were' : ' was')) + ' ' + (ui.selected ? 'selected' : 'deselected') + ' (' + values + ')'));
         }).on('multiselectSearch', function (evt, ui) {
             $('#debug_' + k).prepend($('<div></div>').text('Multiselect beforesearch event! searching for "' + ui.term + '"'));
         }).closest('form').submit(function (evt) {
