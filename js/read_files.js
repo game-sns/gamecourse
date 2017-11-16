@@ -79,9 +79,11 @@ function checks() {
 	}
 }
 
-/*Limited to 3 selectable elements just for test*/
+/**
+ * Limited to 3 selectable elements just for test
+ * @param limit number of selectable elements
+ */
 function setLimit(limit) {
-	console.log(limit);
 	$('#multiselect_simple').bind('multiselectChange', function (evt, ui) {
 		var selectedCount = $("option:selected", this).length;
 		$(this).find('option:not(:selected)').prop('disabled', selectedCount >= limit).end().multiselect('refresh');

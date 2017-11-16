@@ -2,10 +2,7 @@
  * Moving effect
  */
 $(function () {
-	
-	
-	
-    var defaultOptions = {
+	var defaultOptions = {
         moveEffect: 'blind'
         , moveEffectOptions: {
             direction: 'vertical'
@@ -38,7 +35,10 @@ $(function () {
     });
 });
 
-
+/**
+ * Populate labels table
+ * @param url where to fetch data
+ */
 function populateLabelsTable(url) {
     $.ajax({
         type: 'GET',
