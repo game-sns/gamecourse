@@ -2,114 +2,114 @@
 <html lang="en">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GAME | Home</title>
-    <link rel="stylesheet" href="css/jquery-ui.css" />
-    <!-- TODO DA TOGLIERE DOPO PIU AVANTI -->
-    <link type="text/css" href="css/jquery.uix.multiselect.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
-    <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="foundation-icons/foundation-icons.css">
-    <link rel="stylesheet" href="css/foundation.css" />
-    <link rel="stylesheet" href="css/style.css">
-    <!-- Google APIs fore ReCaptcha -->
-    <script src="https://www.google.com/recaptcha/api.js"></script>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>GAME | Home</title>
+	<!-- TODO DA TOGLIERE DOPO PIU AVANTI -->
+	<link rel="stylesheet" href="css/jquery-ui.css" />
+	<link type="text/css" href="css/jquery.uix.multiselect.css" rel="stylesheet" />
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+	<link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="foundation-icons/foundation-icons.css">
+	<link rel="stylesheet" href="css/foundation.css" />
+	<link rel="stylesheet" href="css/style.css">
+	<!-- Google APIs fore ReCaptcha -->
+	<script src="https://www.google.com/recaptcha/api.js"></script>
 </head>
 
 <body>
-<div id="frost_pannel" class="noselect">
-    <div class="row">
-        <h1>Galaxy Machine Learning for Emission Lines</h1>
-        <div class="large-3 columns">
-            <label for="fileInputs" id="fileInputsLabel" class="button">Upload input file
+	<div id="frost_pannel" class="noselect">
+		<div class="row">
+			<h1>Galaxy Machine Learning for Emission Lines</h1>
+			<div class="large-3 columns">
+				<label for="fileInputs" id="fileInputsLabel" class="button">Upload input file
                 <br> (emission line intensities) </label>
-            <input type="file" id="fileInputs" class="show-for-sr"> </div>
-        <div class="large-3 columns end">
-            <label for="fileErrors" class="button" id="fileErrorsLabel">Upload errors file
+				<input type="file" id="fileInputs" class="show-for-sr"> </div>
+			<div class="large-3 columns end">
+				<label for="fileErrors" class="button" id="fileErrorsLabel">Upload errors file
                 <br> (emission line uncertainties)</label>
-            <input type="file" id="fileErrors" class="show-for-sr"> </div>
-    </div>
-    <div class="row">
-        <h4>List of emission lines in the input files :</h4>
-        <div id="usage_simple">
-            <form action="" method="get">
-                <div id="labels_selector"
-                     class="example-container ui-helper-clearfix">
-                    <select id="multiselect_simple" name="multiselect" class="multiselect" multiple="multiple">
+				<input type="file" id="fileErrors" class="show-for-sr"> </div>
+		</div>
+		<div class="row">
+			<h4>List of emission lines in the input files :</h4>
+			<div id="usage_simple">
+				<form action="" method="get">
+					<div id="labels_selector" class="example-container ui-helper-clearfix">
+						<select id="multiselect_simple" name="multiselect" class="multiselect" multiple="multiple">
                         <option value="&quot;Ly-alpha 1216A&quot; 1216.0">"Ly-alpha 1216A" 1216.0</option>
                     </select>
-                </div>
-            </form>
-        </div>
-    </div>
-    <div class="row">
-        <h4>Check these physical properties :</h4>
-        <ul>
-            <li>
-                <label for="checkbox1">
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="row">
+			<h4>Check these physical properties :</h4>
+			<ul>
+				<li>
+					<label for="checkbox1">
                     <input class="checkbox" id="checkbox1" type="checkbox"
                            for="checkbox1"> n / cm<sup>-3
                 </sup></label>
-            </li>
-            <li>
-                <label for="checkbox2">
+				</li>
+				<li>
+					<label for="checkbox2">
                     <input class="checkbox" id="checkbox2" type="checkbox"> N
                     <sub>H</sub> / cm<sup>-2</sup>
                 </label>
-            </li>
-            <li>
-                <label for="checkbox3">
+				</li>
+				<li>
+					<label for="checkbox3">
                     <input class="checkbox" id="checkbox3" type="checkbox">G / G
                     <sub>0</sub></label>
-            </li>
-            <li>
-                <label for="checkbox4">
+				</li>
+				<li>
+					<label for="checkbox4">
                     <input class="checkbox" id="checkbox4"
                            type="checkbox">U</label>
-            </li>
-            <li>
-                <label for="checkbox5">
+				</li>
+				<li>
+					<label for="checkbox5">
                     <input class="checkbox" id="checkbox5" type="checkbox">Z / Z
                     <sub>0</sub></label>
-            </li>
-            <li>
-                <label for="checkbox6">
+				</li>
+				<li>
+					<label for="checkbox6">
                     <input class="checkbox" id="checkbox6"
                            type="checkbox">F<sub>esc
                 </sub></label>
-            </li>
-            <li>
-                <label for="checkbox7">
+				</li>
+				<li>
+					<label for="checkbox7">
                     <input class="checkbox" id="checkbox7"
                            type="checkbox">A<sub>V</sub></label>
-            </li>
-        </ul>
-    </div>
-    <div class="row">
-        <h4>Do you want the optional files?</h4>
-        <fieldset>
-            <input type="radio" name="optional" value="0" id="yes-optional" required>
-            <label for="yes-optional">YES</label>
-            <input type="radio" name="optional" value="1" id="no-optional" checked="checked">
-            <label for="no-optional">NO</label>
-        </fieldset>
-    </div>
-    <div class="row">
-        <div class="large-4 columns">
-            <h4>Your email address:</h4>
-            <input type="email" placeholder="Valid email">
-        </div>
-        <div class="large-4 columns" style="text-align: center;">
-            <div class="g-recaptcha"
-                 data-sitekey="6LeW4zgUAAAAABhlLXIC9dNc6oMvBocVMm-rauNM"
-                 style="display: inline-block;"></div>
-        </div>
-        <div class="large-4 columns" style="vertical-align: bottom;">
-            <button class="success button expanded run" id="run">RUN</button>
-        </div>
-    </div>
-</div>
+				</li>
+			</ul>
+		</div>
+		<div class="row">
+			<div class="medium-4 columns end">
+				<h4>Do you want the optional files?</h4>
+				<fieldset>
+					<input type="radio" name="optional" value="0" id="yes-optional" required>
+					<label for="yes-optional">YES</label>
+					<input type="radio" name="optional" value="1" id="no-optional" checked="checked">
+					<label for="no-optional">NO</label>
+				</fieldset>
+			</div>
+			<div class="medium-4 columns end">
+				<h4>Your email address:</h4>
+				<input type="email" placeholder="Valid email">
+			</div>
+		</div>
+		<div class="row">
+			<div class="large-4 columns">
+				<div class="g-recaptcha" data-sitekey="6LeW4zgUAAAAABhlLXIC9dNc6oMvBocVMm-rauNM"></div>
+			</div>
+			<div class="large-4 columns end">
+				<h4>You are NOT ready to run</h4>
+				<button class="success button expanded run" id="run">RUN</button>
+			</div>
+		</div>
+	</div>
 </body>
 
 <!-- loads these scripts when page has done loading -->

@@ -2,6 +2,9 @@
  * Moving effect
  */
 $(function () {
+	
+	
+	
     var defaultOptions = {
         moveEffect: 'blind'
         , moveEffectOptions: {
@@ -50,4 +53,4 @@ function populateLabelsTable(url) {
     })
 }
 
-populateLabelsTable("data/labels_selector.txt");
+populateLabelsTable("../data/labels_selector.txt");
