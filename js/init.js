@@ -1,41 +1,4 @@
 /**
- * Moving effect
- */
-$(function () {
-	var defaultOptions = {
-        moveEffect: 'blind'
-        , moveEffectOptions: {
-            direction: 'vertical'
-        }
-        , moveEffectSpeed: 'slow'
-    };
-    var widgets = {
-        'simple': $.extend($.extend({}, defaultOptions), {
-            sortMethod: 'normal'
-            , sortable: true
-        })
-    };
-    $.each(widgets, function (k, i) {
-        $('#multiselect_' + k).multiselect(i).on('multiselectChange', function (evt, ui) {
-            var values = $.map(ui.optionElements, function (opt) {
-                return $(opt).attr('value');
-            }).join(', ');
-            $('#debug_' + k).prepend($('<div></div>').text('Multiselect change event! ' + (ui.optionElements.length === $('#multiselect_' + k).find('option').size() ? 'all ' : '') + (ui.optionElements.length + ' value' + (ui.optionElements.length > 1 ? 's were' : ' was')) + ' ' + (ui.selected ? 'selected' : 'deselected') + ' (' + values + ')'));
-        }).on('multiselectSearch', function (evt, ui) {
-            $('#debug_' + k).prepend($('<div></div>').text('Multiselect beforesearch event! searching for "' + ui.term + '"'));
-        }).closest('form').submit(function (evt) {
-            evt.preventDefault();
-            evt.stopPropagation();
-            $('#debug_' + k).prepend($('<div></div>').text("Submit query = " + $(this).serialize()));
-            return false;
-        });
-        $('#btnSearch_' + k).click(function () {
-            $('#multiselect_' + k).multiselect('search', $('#txtSearch_' + k).val());
-        });
-    });
-});
-
-/**
  * Populate labels table
  * @param url where to fetch data
  */
@@ -45,7 +8,13 @@ function populateLabelsTable(url) {
         url: url,
         dataType: 'text',
         success: function (data) {
-            $("#multiselect_simple").html(data);
+            var options = data.split("\n");
+            for (var i = 0; i < options.length; i++) {
+                $("#labels_selector").append(
+                    options[i]
+                )
+            }
+            $("#labels_selector").trigger("chosen:updated");
         },
         error: function (e) {
             console.log(e.message);
@@ -53,4 +22,4 @@ function populateLabelsTable(url) {
     })
 }
 
-populateLabelsTable("../data/labels_selector.txt");
+populateLabelsTable("data/labels_options.txt");
