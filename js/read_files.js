@@ -15,6 +15,22 @@ function markFileAsRead(labelId, text) {
 }
 
 /**
+ * Mark Files button on upload
+ */
+function FileUploaded() {
+	var files = ["fileInputs", "fileErrors"];
+	files.forEach(
+		function (element) {
+			document.getElementById(element).onchange = function () {
+				var file = this.files[0];
+				markFileAsRead(element + "Label", file.name);
+			}
+		});
+}
+
+FileUploaded();
+
+/**
  * Counts columns in file
  * @param result reader of file to read
  * @param separator char (or string) which separates one column from the next
@@ -28,20 +44,6 @@ function countColumns(result, separator) {
 		}
 	}
 	return counter;
-}
-
-/**
- * Shows user number of columns in files
- */
-function alertFileColumns() {
-	var files = ["fileInputs", "fileErrors"];
-	files.forEach(
-		function (element) {
-			document.getElementById(element).onchange = function () {
-				var file = this.files[0];
-				markFileAsRead(element + "Label", file.name);
-			}
-		});
 }
 
 /**
@@ -64,6 +66,10 @@ function sameUpload(file1, file2) {
 	return file1.value === file2.value
 }
 
+function sameNumberColumns(col1, col2) {
+	return col1 === col2;
+}
+
 /**
  * Performs various checks on files before running GAME
  */
@@ -71,26 +77,34 @@ function checks() {
 	if (
 		(missingUpload(file1, file2) === false) &&
 		(sameUpload(file1, file2) === false) &&
-		(columns_1 === columns_2)
+		(sameNumberColumns(columns_1, columns_2))
 	) {
 		return true;
 	} else {
-		alert("There is something wrong with uploaded files");
+		if (missingUpload(file1, file2)) {
+			alert("Missing a file");
+		}
+		if (sameUpload(file1, file2)) {
+			alert("Same files uploaded");
+		}
+		if (sameNumberColumns(columns_1, columns_2) === false) {
+			alert("Different number of columns");
+		}
 	}
 }
 
 /**
- * Limited to 3 selectable elements just for test
+ * Limit selectable elements
  * @param limit number of selectable elements
  */
 function setLimit(limit) {
-	$('#multiselect_simple').bind('multiselectChange', function (evt, ui) {
-		var selectedCount = $("option:selected", this).length;
-		$(this).find('option:not(:selected)').prop('disabled', selectedCount >= limit).end().multiselect('refresh');
-	});
+	//TODO
+
+	alert("LIMIT SET TO " + limit);
 }
 
-var numFileUploaded = 0;
+var numFileUploaded1 = 0;
+var numFileUploaded2 = 0;
 
 /**
  * Sets number of column of file 1
@@ -101,8 +115,8 @@ function setFileColumnsNumber_1(evt) {
 	var file = evt.target.files[0];
 	reader.onload = function (progressEvent) {
 		columns_1 = countColumns(this.result, ' ');
-		numFileUploaded++;
-		if (numFileUploaded >= 2) {
+		numFileUploaded1++;
+		if (numFileUploaded1 >= 1 && numFileUploaded2 >= 1) {
 			if (checks()) {
 				setLimit(columns_1);
 			}
@@ -120,8 +134,8 @@ function setFileColumnsNumber_2(evt) {
 	var file = evt.target.files[0];
 	reader.onload = function (progressEvent) {
 		columns_2 = countColumns(this.result, ' ');
-		numFileUploaded++;
-		if (numFileUploaded >= 2) {
+		numFileUploaded2++;
+		if (numFileUploaded1 >= 1 && numFileUploaded2 >= 1) {
 			if (checks()) {
 				setLimit(columns_1);
 			}
@@ -137,9 +151,6 @@ document.getElementById("fileErrors").addEventListener(
 	"change", setFileColumnsNumber_2, false
 );
 
-$("#run").click(function () {});
-
-alertFileColumns();
 
 $("input[type='checkbox']").change(function () {
 	if ($(this).is(":checked")) {
@@ -174,3 +185,6 @@ $(document).ready(function () {
 		$(this).parent().removeClass("blueBackground");
 	});
 });
+
+/* RUN button click*/
+$("#run").click(function () {});
