@@ -41,6 +41,11 @@ h1 {
 	margin: 1em;
 	padding: 1.2em;
 	min-height: 700px;
+	border-radius: 2px;
+}
+
+.button {
+	border-radius: 2px;
 }
 
 ul {
@@ -55,21 +60,27 @@ li {
 }
 
 li:active {
-	background-color: rgba(255, 255, 255, 0.7);
+	background-color: rgba(255, 255, 255, 0.8);
 }
 
 .blueBackground {
 	background-color: rgba(33, 153, 232, 0.80);
 }
 
-label {
-	color: #fff;
-}
-
 li label {
 	color: #fff;
 	padding: 5px;
 	min-width: 100px;
+}
+
+.small_input_style {
+	border-radius: 2px;
+	padding: 5px;
+}
+
+.small_input_label {
+	padding: 0;
+	margin: 0;
 }
 
 .checkbox {
@@ -79,38 +90,13 @@ li label {
 
 .noselect {
 	-webkit-user-select: none;
-	/* Safari */
 	-khtml-user-select: none;
-	/* Konqueror HTML */
 	-moz-user-select: none;
-	/* Firefox */
 	-ms-user-select: none;
-	/* Internet Explorer/Edge */
 	user-select: none;
-	/* Non-prefixed version, currently supported by Chrome and Opera */
 }
 
 #fileInputsLabel,
 #fileErrorsLabel {
 	display: inherit;
-}
-
-#usage_simple {
-	position: relative;
-	font-size: .5em;
-}
-
-#multiselect_simple {
-	width: 70%;
-	min-height: 250px;
-}
-
-.radio_style {
-	border-radius: 2px;
-	padding: 5px;
-}
-
-.radio_label {
-	padding: 0;
-	margin: 0;
 }
