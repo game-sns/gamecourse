@@ -27,6 +27,7 @@
 	<div id="frost_pannel" class="noselect">
 		<div class="row">
 			<h1>Galaxy Machine Learning for Emission Lines</h1>
+			<h4>Upload your files :</h4>
 			<div class="large-3 columns">
 				<label for="fileInputs" id="fileInputsLabel" class="button">Upload input file
 					<br> (emission line intensities) </label>
@@ -38,7 +39,7 @@
 		</div>
 		<div class="row">
 			<div class="clearfix">
-				<h4>List of emission lines in the input files :</h4>
+				<h4>List of emission lines corresponding in the input files :</h4>
 				<div class="large-5">
 					<select data-placeholder="Select labels of input file" multiple class="chosen-select" tabindex="-1" id="labels_selector"> </select>
 				</div>
@@ -112,18 +113,19 @@
 		</div>
 		<div class="row">
 			<h4>Your email address:</h4>
-			<div class="medium-4">
-				<input type="email" placeholder="Valid email"> </div>
-		</div>
-		<div class="row">
-			<div class="large-4 columns">
-				<div class="g-recaptcha" data-sitekey="6LeW4zgUAAAAABhlLXIC9dNc6oMvBocVMm-rauNM"></div>
+			<div class="medium-4 columns">
+				<input type="email" placeholder="Valid email">
 			</div>
-			<div class="large-4 columns end">
-				<h4>You are NOT ready to run</h4>
-				<button class="success button expanded run" id="run">RUN</button>
+			<div class="medium-4 columns">
+				<button class="alert button expanded run" id="run">You are NOT ready to run</button>
 			</div>
 		</div>
+		
+<!--TODO: mettere in modo che compaia quando si preme il tasto run. è l'ultimo check prima di inviare i dati al server-->
+<!--		<div class="large-4">
+			<div class="g-recaptcha" data-sitekey="6LeW4zgUAAAAABhlLXIC9dNc6oMvBocVMm-rauNM"></div>
+		</div>-->
+
 	</div>
 </body>
 <!-- loads these scripts when page has done loading -->
