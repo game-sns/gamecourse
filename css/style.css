@@ -38,8 +38,8 @@ h1 {
 
 #frost_pannel {
 	background-color: rgba(0, 0, 0, 0.8);
-	margin: 1.5em;
-	padding: 2em;
+	margin: 1em;
+	padding: 1.2em;
 	min-height: 700px;
 }
 
@@ -58,8 +58,8 @@ li:active {
 	background-color: rgba(255, 255, 255, 0.7);
 }
 
-.greenBackground{
-    background-color: rgba(0, 255, 0, 0.4);  
+.blueBackground {
+	background-color: rgba(33, 153, 232, 0.80);
 }
 
 label {
@@ -105,3 +105,12 @@ li label {
 	min-height: 250px;
 }
 
+.radio_style {
+	border-radius: 2px;
+	padding: 5px;
+}
+
+.radio_label {
+	padding: 0;
+	margin: 0;
+}

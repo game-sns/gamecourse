@@ -137,15 +137,40 @@ document.getElementById("fileErrors").addEventListener(
 	"change", setFileColumnsNumber_2, false
 );
 
-$("#run").click(function () {
-});
+$("#run").click(function () {});
 
 alertFileColumns();
 
-$("input[type='checkbox']").change(function(){
-    if($(this).is(":checked")){
-        $(this).parent().addClass("greenBackground"); 
-    }else{
-        $(this).parent().removeClass("greenBackground");  
-    }
+$("input[type='checkbox']").change(function () {
+	if ($(this).is(":checked")) {
+		$(this).parent().addClass("blueBackground");
+	} else {
+		$(this).parent().removeClass("blueBackground");
+	}
+});
+
+/* RADIO BUTTONS DONT SUPPORT UNCHECKED TRIGGER SO THIS IS THE SOLUTION*/
+$("input[type='radio']").change(function () {
+	if ($(this).is(":checked")) {
+		$(this).parent().addClass("blueBackground");
+	}
+});
+
+function setupDeselectEvent() {
+	var selected = {};
+	$('input[type="radio"]').on('click', function () {
+		if (this.name in selected && this != selected[this.name])
+			$(selected[this.name]).trigger("deselect");
+		selected[this.name] = this;
+	}).filter(':checked').each(function () {
+		selected[this.name] = this;
+	});
+}
+
+$(document).ready(function () {
+	setupDeselectEvent(true);
+
+	$('input[name="optional"]').on('deselect', function () {
+		$(this).parent().removeClass("blueBackground");
+	});
 });
