@@ -3,8 +3,6 @@ var file1 = document.getElementById("fileInputs");
 var file2 = document.getElementById("fileErrors");
 var blob1 = file1.files[0];
 var blob2 = file2.files[0];
-
-
 /**
  * Marks file label as read
  * @param labelId id of label to mark
@@ -13,23 +11,19 @@ var blob2 = file2.files[0];
 function markFileAsRead(labelId, text) {
 	document.getElementById(labelId).innerHTML = text + "    <img src=\"img/checked.png\">";
 }
-
 /**
  * Mark Files button on upload
  */
 function FileUploaded() {
 	var files = ["fileInputs", "fileErrors"];
-	files.forEach(
-		function (element) {
-			document.getElementById(element).onchange = function () {
-				var file = this.files[0];
-				markFileAsRead(element + "Label", file.name);
-			}
-		});
+	files.forEach(function (element) {
+		document.getElementById(element).onchange = function () {
+			var file = this.files[0];
+			markFileAsRead(element + "Label", file.name);
+		}
+	});
 }
-
 FileUploaded();
-
 /**
  * Counts columns in file
  * @param result reader of file to read
@@ -45,7 +39,6 @@ function countColumns(result, separator) {
 	}
 	return counter;
 }
-
 /**
  * Checks if both files were uploaded
  * @param file1 file1
@@ -55,7 +48,6 @@ function countColumns(result, separator) {
 function missingUpload(file1, file2) {
 	return file1.value === "" || file2.value === "";
 }
-
 /**
  * Checks if uploaded files have same value
  * @param file1 blob
@@ -69,16 +61,12 @@ function sameUpload(file1, file2) {
 function sameNumberColumns(col1, col2) {
 	return col1 === col2;
 }
-
 /**
  * Performs various checks on files before running GAME
  */
 function checks() {
 	if (
-		(missingUpload(file1, file2) === false) &&
-		(sameUpload(file1, file2) === false) &&
-		(sameNumberColumns(columns_1, columns_2))
-	) {
+		(missingUpload(file1, file2) === false) && (sameUpload(file1, file2) === false) && (sameNumberColumns(columns_1, columns_2))) {
 		return true;
 	} else {
 		if (missingUpload(file1, file2)) {
@@ -92,20 +80,55 @@ function checks() {
 		}
 	}
 }
-
 /**
  * Limit selectable elements
  * @param limit number of selectable elements
  */
-function setLimit(limit) {
-	//TODO
 
-	alert("LIMIT SET TO " + limit);
+var limit = 0;
+
+function setLimit(colonne) {
+	limit = colonne;
+}
+
+function getLimit() {
+	return limit;
+}
+
+function loadChosen() {
+	loadScript("js/chosen.jquery.js", function () {
+		//alert('jQuery has been loaded. 1');
+		loadScript("js/docsupport/prism.js", function () {
+			//alert('jQuery has been loaded. 2');
+			loadScript("js/docsupport/init.js", function () {
+				//alert('jQuery has been loaded. 3');
+				loadScript("js/init.js", function () {
+					//alert('jQuery has been loaded. 4');
+				});
+			});
+		});
+	});
+
+	function loadScript(url, completeCallback) {
+		var script = document.createElement('script'),
+			done = false,
+			head = document.getElementsByTagName("head")[0];
+		script.src = url;
+		script.onload = script.onreadystatechange = function () {
+			if (!done && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {
+				done = true;
+				completeCallback();
+				// IE memory leak
+				script.onload = script.onreadystatechange = null;
+				head.removeChild(script);
+			}
+		};
+		head.appendChild(script);
+	}
 }
 
 var numFileUploaded1 = 0;
 var numFileUploaded2 = 0;
-
 /**
  * Sets number of column of file 1
  * @param evt event
@@ -119,6 +142,7 @@ function setFileColumnsNumber_1(evt) {
 		if (numFileUploaded1 >= 1 && numFileUploaded2 >= 1) {
 			if (checks()) {
 				setLimit(columns_1);
+				loadChosen();
 			}
 		}
 	};
@@ -138,53 +162,13 @@ function setFileColumnsNumber_2(evt) {
 		if (numFileUploaded1 >= 1 && numFileUploaded2 >= 1) {
 			if (checks()) {
 				setLimit(columns_1);
+				loadChosen();
 			}
 		}
 	};
 	reader.readAsText(file);
 }
-
-document.getElementById("fileInputs").addEventListener(
-	"change", setFileColumnsNumber_1, false
-);
-document.getElementById("fileErrors").addEventListener(
-	"change", setFileColumnsNumber_2, false
-);
-
-
-$("input[type='checkbox']").change(function () {
-	if ($(this).is(":checked")) {
-		$(this).parent().addClass("blueBackground");
-	} else {
-		$(this).parent().removeClass("blueBackground");
-	}
-});
-
-/* RADIO BUTTONS DONT SUPPORT UNCHECKED TRIGGER SO THIS IS THE SOLUTION*/
-$("input[type='radio']").change(function () {
-	if ($(this).is(":checked")) {
-		$(this).parent().addClass("blueBackground");
-	}
-});
-
-function setupDeselectEvent() {
-	var selected = {};
-	$('input[type="radio"]').on('click', function () {
-		if (this.name in selected && this != selected[this.name])
-			$(selected[this.name]).trigger("deselect");
-		selected[this.name] = this;
-	}).filter(':checked').each(function () {
-		selected[this.name] = this;
-	});
-}
-
-$(document).ready(function () {
-	setupDeselectEvent(true);
-
-	$('input[name="optional"]').on('deselect', function () {
-		$(this).parent().removeClass("blueBackground");
-	});
-});
-
+document.getElementById("fileInputs").addEventListener("change", setFileColumnsNumber_1, false);
+document.getElementById("fileErrors").addEventListener("change", setFileColumnsNumber_2, false);
 /* RUN button click*/
 $("#run").click(function () {});
