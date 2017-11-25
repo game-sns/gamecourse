@@ -170,5 +170,14 @@ function setFileColumnsNumber_2(evt) {
 }
 document.getElementById("fileInputs").addEventListener("change", setFileColumnsNumber_1, false);
 document.getElementById("fileErrors").addEventListener("change", setFileColumnsNumber_2, false);
+
+
+function markRunButtonReady(labelId) {
+	document.getElementById(labelId).innerHTML = 'You are ready to run';
+	document.getElementById(labelId).style.backgroundColor = "green";
+}
+
 /* RUN button click*/
-$("#run").click(function () {});
+$("#run").click(function () {
+	markRunButtonReady('run');
+});
