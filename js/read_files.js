@@ -177,7 +177,29 @@ function markRunButtonReady(labelId) {
 	document.getElementById(labelId).style.backgroundColor = "green";
 }
 
+function stampa() {
+	document.getElementById('result').innerHTML = "";
+	//$('#result').html("<br />$(form).serializeArray():<br />" + JSON.stringify($('form').serializeArray()));
+	
+	//checkbox state
+	var checks = [];
+	for (var i = 1; i < 8; i++) {
+		checks[i] = document.getElementById('checkbox' + i);
+		$('#result').append("Checkbox" + i + ": " + checks[i].checked + '<br />');
+	}
+	
+	//optional
+	var optionalprop = document.getElementsByName('optional_files');
+	$('#result').append("Optional files yes: " + optionalprop[0].value + '<br />');
+	$('#result').append("Optional files no: " + optionalprop[1].value + '<br />');
+	
+	//email
+	var email = document.getElementById('email');
+	$('#result').append("Email: " + email.value + '<br />');
+}
+
 /* RUN button click*/
 $("#run").click(function () {
-	markRunButtonReady('run');
+	markRunButtonReady("run");
+	stampa();
 });

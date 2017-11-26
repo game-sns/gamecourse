@@ -5,7 +5,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>GAME | Home</title>
-	
+
 	<!-- fonts adn icons -->
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Quicksand" />
 	<link rel="stylesheet" type="text/css" href="foundation-icons/foundation-icons.css" />
@@ -20,8 +20,8 @@
 	<script src="https://www.google.com/recaptcha/api.js"></script>
 </head>
 
-<body>
-	<div id="frost_pannel" class="noselect">
+<body class="noselect">
+	<div id="frost_pannel">
 		<div class="row">
 			<h1>Galaxy Machine Learning for Emission Lines</h1>
 			<h4>Upload your files :</h4>
@@ -44,85 +44,93 @@
 		</div>
 		<div class="row">
 			<h4>Check these physical properties :</h4>
-			<ul>
-				<li>
-					<label class="small_input_label" for="checkbox1">
+			<form>
+				<ul>
+					<li><form>
+						<label class="small_input_label" for="checkbox1">
 						<div class="small_input_style">
 							<input class="checkbox" id="checkbox1" type="checkbox" for="checkbox1"> n / cm<sup>-3</sup></div>
-					</label>
-				</li>
-				<li>
-					<label class="small_input_label" for="checkbox2">
+						</label></form>
+					</li>
+					<li>
+						<label class="small_input_label" for="checkbox2">
 						<div class="small_input_style">
 							<input class="checkbox" id="checkbox2" type="checkbox"> N <sub>H</sub> / cm<sup>-2</sup></div>
 					</label>
-				</li>
-				<li>
-					<label class="small_input_label" for="checkbox3">
+					</li>
+					<li>
+						<label class="small_input_label" for="checkbox3">
 						<div class="small_input_style">
 							<input class="checkbox" id="checkbox3" type="checkbox"> G / G <sub>0</sub></div>
 					</label>
-				</li>
-				<li>
-					<label class="small_input_label" for="checkbox4">
+					</li>
+					<li>
+						<label class="small_input_label" for="checkbox4">
 						<div class="small_input_style">
 							<input class="checkbox" id="checkbox4" type="checkbox"> U</div>
 					</label>
-				</li>
-				<li>
-					<label class="small_input_label" for="checkbox5">
+					</li>
+					<li>
+						<label class="small_input_label" for="checkbox5">
 						<div class="small_input_style">
 							<input class="checkbox" id="checkbox5" type="checkbox"> Z / Z <sub>0</sub></div>
 					</label>
-				</li>
-				<li>
-					<label class="small_input_label" for="checkbox6">
+					</li>
+					<li>
+						<label class="small_input_label" for="checkbox6">
 						<div class="small_input_style">
 							<input class="checkbox" id="checkbox6" type="checkbox"> F<sub>esc</sub></div>
 					</label>
-				</li>
-				<li>
-					<label class="small_input_label" for="checkbox7">
+					</li>
+					<li>
+						<label class="small_input_label" for="checkbox7">
 						<div class="small_input_style">
 							<input class="checkbox" id="checkbox7" type="checkbox"> A<sub>V</sub></div>
 					</label>
-				</li>
-			</ul>
+					</li>
+				</ul>
+			</form>
 		</div>
 		<div class="row">
 			<h4>Do you want the optional files?</h4>
-			<fieldset>
+			<form>
 				<ul>
 					<li>
 						<label class="small_input_label" for="yes-optional">
 							<div class="small_input_style">
-								<input type="radio" name="optional" value="0" id="yes-optional"> YES</div>
+								<input type="radio" name="optional_files" value="0" id="yes-optional"> YES</div>
 						</label>
 					</li>
 					<li>
 						<label class="small_input_label" for="no-optional">
 							<div class="small_input_style blueBackground">
-								<input type="radio" name="optional" value="1" id="no-optional" checked> NO</div>
+								<input type="radio" name="optional_files" value="1" id="no-optional" checked> NO</div>
 						</label>
 					</li>
 				</ul>
-			</fieldset>
+			</form>
 		</div>
 		<div class="row">
 			<h4>Your email address:</h4>
 			<div class="medium-6 large-4 columns">
-				<input type="email" placeholder="Valid email">
+				<input id="email" type="email" placeholder="Valid email">
 			</div>
 			<div class="medium-6 large-4 columns">
 				<button class="alert button expanded run" id="run">You are NOT ready to run</button>
 			</div>
 		</div>
 		
-<!--TODO: mettere in modo che compaia quando si preme il tasto run. è l'ultimo check prima di inviare i dati al server-->
-<!--		<div class="large-4">
+
+		<!--TODO: mettere in modo che compaia quando si preme il tasto run. è l'ultimo check prima di inviare i dati al server-->
+		<!--		<div class="large-4">
 			<div class="g-recaptcha" data-sitekey="6LeW4zgUAAAAABhlLXIC9dNc6oMvBocVMm-rauNM"></div>
 		</div>-->
 
+	</div>
+	
+	<div id="frost_pannel">
+		<h1>CONSOLE FOR DEBUG</h1>
+		<div id=result></div>
 	</div>
 </body>
 <!-- jQuery -->

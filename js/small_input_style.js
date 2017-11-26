@@ -26,7 +26,7 @@ function setupDeselectEvent() {
 $(document).ready(function () {
 	setupDeselectEvent(true);
 
-	$('input[name="optional"]').on('deselect', function () {
+	$('input[name="optional_files"]').on('deselect', function () {
 		$(this).parent().removeClass("blueBackground");
 	});
 });
