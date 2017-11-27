@@ -70,20 +70,23 @@ function sameNumberColumns(col1, col2) {
  * Performs various checks on files before running GAME
  */
 function checks() {
-	if (
-		(missingUpload(file1, file2) === false) && (sameUpload(file1, file2) === false) && (sameNumberColumns(columns_1, columns_2))) {
-		return true;
-	} else {
-		if (missingUpload(file1, file2)) {
-			alert("There is an error with uploaded files: Missing a file");
-		}
-		if (sameUpload(file1, file2)) {
-			alert("There is an error with uploaded files: Same files uploaded");
-		}
-		if (sameNumberColumns(columns_1, columns_2) === false) {
-			alert("There is an error with uploaded files: Different number of columns");
-		}
-	}
+    console.log("performing checks...");
+    return (missingUpload(file1, file2) === false) && (sameUpload(file1, file2) === false) && (sameNumberColumns(columns_1, columns_2));
+}
+
+/**
+ * Shows alert boxes with errors
+ */
+function alertErrors() {
+    if (missingUpload(file1, file2)) {
+        alert("There is an error with uploaded files: Missing a file");
+    }
+    if (sameUpload(file1, file2)) {
+        alert("There is an error with uploaded files: Same files uploaded");
+    }
+    if (sameNumberColumns(columns_1, columns_2) === false) {
+        alert("There is an error with uploaded files: Different number of columns");
+    }
 }
 
 /**
@@ -100,7 +103,9 @@ function setFileColumnsNumber_1(evt) {
 			if (checks()) {
 				setLimit(columns_1);
 				loadChoosen();
-			}
+            } else {
+                alertErrors();
+            }
 		}
 	};
 	reader.readAsText(file);
@@ -120,7 +125,9 @@ function setFileColumnsNumber_2(evt) {
 			if (checks()) {
 				setLimit(columns_1);
 				loadChoosen();
-			}
+            } else {
+                alertErrors();
+            }
 		}
 	};
 	reader.readAsText(file);
@@ -184,7 +191,7 @@ function markRunButtonNotReady(labelId) {
  * Checks if every input is valid
  */
 function checkEverything() {
-    if (false) {
+    if (checks()) {
         markRunButtonReady("run");
     } else {
         markRunButtonNotReady("run");
@@ -217,19 +224,46 @@ function printAll() {
 	$('#result').append("Email: " + email.value + '<br />');
 }
 
+/**
+ * Sets event listeners
+ */
+function setCheckEventListeners() {
+    var elements = [
+        "fileInputs",
+        "fileErrors"
+    ];  // ids of elements to set
+
+    elements.forEach(function (element) {
+        document.getElementById(element).onchange = function () {
+            checkEverything();
+        };  // add event listener on change event
+    });
+}
+
+/**
+ * Start program
+ */
+function init() {
+    document.getElementById("fileInputs").addEventListener("change", setFileColumnsNumber_1, false);
+    document.getElementById("fileErrors").addEventListener("change", setFileColumnsNumber_2, false);
+    FileUploaded();
+    countPhysicalPropSelected();
+    setCheckEventListeners();
+}
+
 /* RUN button click*/
 $("#run").click(function () {
 	printAll();
 });
 
 
-var columns_1, columns_2; // number of columns in each input file
+// global vars
+var columns_1, columns_2;  // number of columns in each input file
 var file1 = document.getElementById("fileInputs");
 var file2 = document.getElementById("fileErrors");
-FileUploaded();
 var numFileUploaded1 = 0;
 var numFileUploaded2 = 0;
-document.getElementById("fileInputs").addEventListener("change", setFileColumnsNumber_1, false);
-document.getElementById("fileErrors").addEventListener("change", setFileColumnsNumber_2, false);
 var physicalPropSelected = 0;
-countPhysicalPropSelected();
+
+// global functions
+init();
