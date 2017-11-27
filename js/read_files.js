@@ -4,20 +4,7 @@
  * @param text optional text to show
  */
 function markFileAsRead(labelId, text) {
-	document.getElementById(labelId).innerHTML = text + "    <img src=\"img/checked.png\">";
-}
-
-/**
- * Mark Files button on upload
- */
-function FileUploaded() {
-	var files = ["fileInputs", "fileErrors"];
-	files.forEach(function (element) {
-		document.getElementById(element).onchange = function () {
-			var file = this.files[0];
-			markFileAsRead(element + "Label", file.name);
-		}
-	});
+    document.getElementById(labelId).innerHTML = text + "<img src=\"img/checked.png\">";
 }
 
 /**
@@ -71,7 +58,11 @@ function sameNumberColumns(col1, col2) {
  */
 function checks() {
     console.log("performing checks...");
-    return (missingUpload(file1, file2) === false) && (sameUpload(file1, file2) === false) && (sameNumberColumns(columns_1, columns_2));
+    return (checkPhysicalProp() &&
+        checkEmail() &&
+        missingUpload(file1, file2) === false) &&
+        (sameUpload(file1, file2) === false) &&
+        (sameNumberColumns(columns_1, columns_2));
 }
 
 /**
@@ -102,13 +93,13 @@ function setFileColumnsNumber_1(evt) {
 		if (numFileUploaded1 >= 1 && numFileUploaded2 >= 1) {
 			if (checks()) {
 				setLimit(columns_1);
-				loadChoosen();
             } else {
                 alertErrors();
             }
 		}
 	};
 	reader.readAsText(file);
+    markFileAsRead("fileInputsLabel", file.name);
 }
 
 /**
@@ -124,34 +115,22 @@ function setFileColumnsNumber_2(evt) {
 		if (numFileUploaded1 >= 1 && numFileUploaded2 >= 1) {
 			if (checks()) {
 				setLimit(columns_1);
-				loadChoosen();
             } else {
                 alertErrors();
             }
 		}
 	};
 	reader.readAsText(file);
-}
-
-/**
- * Counts number of physical properties selected
- */
-function countPhysicalPropSelected() {
-	$(".checkbox").change(function () {
-		if (this.checked)
-			physicalPropSelected++;
-		else
-			physicalPropSelected--;
-	});
+    markFileAsRead("fileErrorsLabel", file.name);
 }
 
 /**
  * Checks if was selected at least 1 physicalProp
  * @returns {boolean} True iff was selected at least 1 physicalProp
  */
-function checkPhysicalProp(){
-	console.log(physicalPropSelected>0);
-	return physicalPropSelected>0;	
+function checkPhysicalProp() {
+    var numSelected = $("#labels_selector").find(":selected").length;
+    return numSelected === columns_1;
 }
 
 /**
@@ -229,8 +208,10 @@ function printAll() {
  */
 function setCheckEventListeners() {
     var elements = [
-        "fileInputs",
-        "fileErrors"
+        "fileInputs",  // files
+        "fileErrors",
+        "email",  // email
+        "labels_selector"  // labels selector
     ];  // ids of elements to set
 
     elements.forEach(function (element) {
@@ -246,8 +227,6 @@ function setCheckEventListeners() {
 function init() {
     document.getElementById("fileInputs").addEventListener("change", setFileColumnsNumber_1, false);
     document.getElementById("fileErrors").addEventListener("change", setFileColumnsNumber_2, false);
-    FileUploaded();
-    countPhysicalPropSelected();
     setCheckEventListeners();
 }
 
@@ -256,14 +235,12 @@ $("#run").click(function () {
 	printAll();
 });
 
-
 // global vars
 var columns_1, columns_2;  // number of columns in each input file
 var file1 = document.getElementById("fileInputs");
 var file2 = document.getElementById("fileErrors");
 var numFileUploaded1 = 0;
 var numFileUploaded2 = 0;
-var physicalPropSelected = 0;
 
 // global functions
 init();
