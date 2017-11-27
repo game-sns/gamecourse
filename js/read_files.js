@@ -69,12 +69,27 @@ function checks() {
  * Shows alert boxes with errors
  */
 function alertErrors() {
+    if (!checkPhysicalProp()) {
+        var missingLabels = columns_1 - $("#labels_selector").find(":selected").length;
+        if (missingLabels < 0) {
+            alert("Too many labels! Please, remove exactly " + (-missingLabels) + " labels");
+        } else {
+            alert("Too few labels! Please, add exactly " + missingLabels + " labels");
+        }
+    }
+
+    if (!checkEmail()) {
+        alert("Invalid email! Please fix the email address.")
+    }
+
     if (missingUpload(file1, file2)) {
         alert("There is an error with uploaded files: Missing a file");
     }
+
     if (sameUpload(file1, file2)) {
         alert("There is an error with uploaded files: Same files uploaded");
     }
+
     if (sameNumberColumns(columns_1, columns_2) === false) {
         alert("There is an error with uploaded files: Different number of columns");
     }
@@ -93,8 +108,6 @@ function setFileColumnsNumber_1(evt) {
 		if (numFileUploaded1 >= 1 && numFileUploaded2 >= 1) {
 			if (checks()) {
 				setLimit(columns_1);
-            } else {
-                alertErrors();
             }
 		}
 	};
@@ -115,8 +128,6 @@ function setFileColumnsNumber_2(evt) {
 		if (numFileUploaded1 >= 1 && numFileUploaded2 >= 1) {
 			if (checks()) {
 				setLimit(columns_1);
-            } else {
-                alertErrors();
             }
 		}
 	};
@@ -228,12 +239,12 @@ function init() {
     document.getElementById("fileInputs").addEventListener("change", setFileColumnsNumber_1, false);
     document.getElementById("fileErrors").addEventListener("change", setFileColumnsNumber_2, false);
     setCheckEventListeners();
-}
 
-/* RUN button click*/
-$("#run").click(function () {
-	printAll();
-});
+    $("#run").click(function () {
+        alertErrors();
+        printAll();
+    });
+}
 
 // global vars
 var columns_1, columns_2;  // number of columns in each input file
