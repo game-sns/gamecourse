@@ -21,7 +21,7 @@
 </head>
 
 <body class="noselect">
-	<div id="frost_pannel">
+	<div class="frost_pannel" id="frost1">
 		<div class="row">
 			<h1>Galaxy Machine Learning for Emission Lines</h1>
 			<h4>Upload your files :</h4>
@@ -46,8 +46,9 @@
 			<h4>Check these physical properties :</h4>
 			<form>
 				<ul>
-					<li><form>
-						<label class="small_input_label" for="checkbox1">
+					<li>
+						<form>
+							<label class="small_input_label" for="checkbox1">
 						<div class="small_input_style">
 							<input class="checkbox" id="checkbox1" type="checkbox" for="checkbox1"> n / cm<sup>-3</sup></div>
 						</label></form>
@@ -113,13 +114,13 @@
 		<div class="row">
 			<h4>Your email address:</h4>
 			<div class="medium-6 large-4 columns">
-				<input id="email" type="email" placeholder="Valid email">
+				<input id="email" type="email" placeholder="Valid email" onchange="checkEmail()">
 			</div>
 			<div class="medium-6 large-4 columns">
 				<button class="alert button expanded run" id="run">You are NOT ready to run</button>
 			</div>
 		</div>
-		
+
 
 		<!--TODO: mettere in modo che compaia quando si preme il tasto run. è l'ultimo check prima di inviare i dati al server-->
 		<!--		<div class="large-4">
@@ -127,8 +128,8 @@
 		</div>-->
 
 	</div>
-	
-	<div id="frost_pannel">
+
+	<div class="frost_pannel">
 		<h1>CONSOLE FOR DEBUG</h1>
 		<div id=result></div>
 	</div>
@@ -139,6 +140,6 @@
 <script src="js/foundation.js"></script>
 <script src="js/read_files.js"></script>
 <script src="js/small_input_style.js"></script>
+<script src="js/load_choosen.js"></script>
 
-	
 </html>

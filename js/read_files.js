@@ -70,60 +70,14 @@ function checks() {
 		return true;
 	} else {
 		if (missingUpload(file1, file2)) {
-			alert("Missing a file");
+			alert("There is an error with uploaded files: Missing a file");
 		}
 		if (sameUpload(file1, file2)) {
-			alert("Same files uploaded");
+			alert("There is an error with uploaded files: Same files uploaded");
 		}
 		if (sameNumberColumns(columns_1, columns_2) === false) {
-			alert("Different number of columns");
+			alert("There is an error with uploaded files: Different number of columns");
 		}
-	}
-}
-/**
- * Limit selectable elements
- * @param limit number of selectable elements
- */
-
-var limit = 0;
-
-function setLimit(colonne) {
-	limit = colonne;
-}
-
-function getLimit() {
-	return limit;
-}
-
-function loadChosen() {
-	loadScript("js/chosen.jquery.js", function () {
-		//alert('jQuery has been loaded. 1');
-		loadScript("js/docsupport/prism.js", function () {
-			//alert('jQuery has been loaded. 2');
-			loadScript("js/docsupport/init.js", function () {
-				//alert('jQuery has been loaded. 3');
-				loadScript("js/init.js", function () {
-					//alert('jQuery has been loaded. 4');
-				});
-			});
-		});
-	});
-
-	function loadScript(url, completeCallback) {
-		var script = document.createElement('script'),
-			done = false,
-			head = document.getElementsByTagName("head")[0];
-		script.src = url;
-		script.onload = script.onreadystatechange = function () {
-			if (!done && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {
-				done = true;
-				completeCallback();
-				// IE memory leak
-				script.onload = script.onreadystatechange = null;
-				head.removeChild(script);
-			}
-		};
-		head.appendChild(script);
 	}
 }
 
@@ -142,7 +96,7 @@ function setFileColumnsNumber_1(evt) {
 		if (numFileUploaded1 >= 1 && numFileUploaded2 >= 1) {
 			if (checks()) {
 				setLimit(columns_1);
-				loadChosen();
+				loadChoosen();
 			}
 		}
 	};
@@ -162,7 +116,7 @@ function setFileColumnsNumber_2(evt) {
 		if (numFileUploaded1 >= 1 && numFileUploaded2 >= 1) {
 			if (checks()) {
 				setLimit(columns_1);
-				loadChosen();
+				loadChoosen();
 			}
 		}
 	};
@@ -171,28 +125,71 @@ function setFileColumnsNumber_2(evt) {
 document.getElementById("fileInputs").addEventListener("change", setFileColumnsNumber_1, false);
 document.getElementById("fileErrors").addEventListener("change", setFileColumnsNumber_2, false);
 
+var physicalPropSelected = 0;
+countPhysicalPropSelected();
 
-function markRunButtonReady(labelId) {
-	document.getElementById(labelId).innerHTML = 'You are ready to run';
-	document.getElementById(labelId).style.backgroundColor = "green";
+function countPhysicalPropSelected() {
+	$(".checkbox").change(function () {
+		if (this.checked)
+			physicalPropSelected++;
+		else
+			physicalPropSelected--;
+	});
 }
 
-function stampa() {
+//return true if was selected at least 1 physicalProp
+function checkPhysicalProp(){
+	console.log(physicalPropSelected>0);
+	return physicalPropSelected>0;	
+}
+
+//return true if valid email
+function checkEmail() {
+	var re = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+	return re.test($("#email").val());
+}
+
+markRunButtonReady("run");
+
+function markRunButtonReady(labelId) {
+	var e = document.getElementById(labelId);
+	e.innerHTML = 'You are ready to run';
+	e.classList.remove('alert');
+	e.className += ' success';
+
+}
+
+function checkEverything(){
+	
+}
+
+//se tutto ok
+	//pulsante verde
+		//se premo pulsante run verde
+			//controllo captcha
+				//se captcha ok
+					//invio dati
+//se qlk cambia e non va bene
+	//pulsante rosso
+
+function printAll() {
 	document.getElementById('result').innerHTML = "";
 	//$('#result').html("<br />$(form).serializeArray():<br />" + JSON.stringify($('form').serializeArray()));
-	
+
 	//checkbox state
 	var checks = [];
 	for (var i = 1; i < 8; i++) {
 		checks[i] = document.getElementById('checkbox' + i);
 		$('#result').append("Checkbox" + i + ": " + checks[i].checked + '<br />');
 	}
-	
-	//optional
-	var optionalprop = document.getElementsByName('optional_files');
-	$('#result').append("Optional files yes: " + optionalprop[0].value + '<br />');
-	$('#result').append("Optional files no: " + optionalprop[1].value + '<br />');
-	
+
+	//optional files
+	var optionalFiles = document.getElementsByName('optional_files');
+	if (optionalFiles[0].checked)
+		$('#result').append("Optional files: " + optionalFiles[0].value + '<br />');
+	else
+		$('#result').append("Optional files: " + optionalFiles[1].value + '<br />');
+
 	//email
 	var email = document.getElementById('email');
 	$('#result').append("Email: " + email.value + '<br />');
@@ -200,6 +197,5 @@ function stampa() {
 
 /* RUN button click*/
 $("#run").click(function () {
-	markRunButtonReady("run");
-	stampa();
+	printAll();
 });

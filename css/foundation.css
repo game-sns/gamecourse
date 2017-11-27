@@ -1606,8 +1606,8 @@ select {
     cursor: default; }
   select::-ms-expand {
     display: none; }
-  select[multiple] {
-    height: auto; }
+  /*select[multiple] {
+    height: auto; }*/
 
 .is-invalid-input:not(:focus) {
   background-color: rgba(236, 88, 64, 0.1);
