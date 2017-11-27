@@ -1,8 +1,3 @@
-var columns_1, columns_2; // number of columns in each input file
-var file1 = document.getElementById("fileInputs");
-var file2 = document.getElementById("fileErrors");
-var blob1 = file1.files[0];
-var blob2 = file2.files[0];
 /**
  * Marks file label as read
  * @param labelId id of label to mark
@@ -11,6 +6,7 @@ var blob2 = file2.files[0];
 function markFileAsRead(labelId, text) {
 	document.getElementById(labelId).innerHTML = text + "    <img src=\"img/checked.png\">";
 }
+
 /**
  * Mark Files button on upload
  */
@@ -23,7 +19,7 @@ function FileUploaded() {
 		}
 	});
 }
-FileUploaded();
+
 /**
  * Counts columns in file
  * @param result reader of file to read
@@ -39,6 +35,7 @@ function countColumns(result, separator) {
 	}
 	return counter;
 }
+
 /**
  * Checks if both files were uploaded
  * @param file1 file1
@@ -48,6 +45,7 @@ function countColumns(result, separator) {
 function missingUpload(file1, file2) {
 	return file1.value === "" || file2.value === "";
 }
+
 /**
  * Checks if uploaded files have same value
  * @param file1 blob
@@ -58,9 +56,16 @@ function sameUpload(file1, file2) {
 	return file1.value === file2.value
 }
 
+/**
+ * Check if number of column is the same
+ * @param col1 numb column 1
+ * @param col2 numb column 2
+ * @returns {boolean} True iff number of column is the same
+ */
 function sameNumberColumns(col1, col2) {
-	return col1 === col2;
+    return col1 === col2;
 }
+
 /**
  * Performs various checks on files before running GAME
  */
@@ -81,8 +86,6 @@ function checks() {
 	}
 }
 
-var numFileUploaded1 = 0;
-var numFileUploaded2 = 0;
 /**
  * Sets number of column of file 1
  * @param evt event
@@ -122,12 +125,10 @@ function setFileColumnsNumber_2(evt) {
 	};
 	reader.readAsText(file);
 }
-document.getElementById("fileInputs").addEventListener("change", setFileColumnsNumber_1, false);
-document.getElementById("fileErrors").addEventListener("change", setFileColumnsNumber_2, false);
 
-var physicalPropSelected = 0;
-countPhysicalPropSelected();
-
+/**
+ * Counts number of physical properties selected
+ */
 function countPhysicalPropSelected() {
 	$(".checkbox").change(function () {
 		if (this.checked)
@@ -137,20 +138,28 @@ function countPhysicalPropSelected() {
 	});
 }
 
-//return true if was selected at least 1 physicalProp
+/**
+ * Checks if was selected at least 1 physicalProp
+ * @returns {boolean} True iff was selected at least 1 physicalProp
+ */
 function checkPhysicalProp(){
 	console.log(physicalPropSelected>0);
 	return physicalPropSelected>0;	
 }
 
-//return true if valid email
+/**
+ * Checks for valid email
+ * @returns {boolean} True iff input is a valid email
+ */
 function checkEmail() {
 	var re = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
 	return re.test($("#email").val());
 }
 
-markRunButtonReady("run");
-
+/**
+ * Makes button green (shows user that program is ready)
+ * @param labelId id of button to change
+ */
 function markRunButtonReady(labelId) {
 	var e = document.getElementById(labelId);
 	e.innerHTML = 'You are ready to run';
@@ -159,19 +168,32 @@ function markRunButtonReady(labelId) {
 
 }
 
-function checkEverything(){
-	
+/**
+ * Makes button red (shows user that program is NOT ready)
+ * @param labelId id of button to change
+ */
+function markRunButtonNotReady(labelId) {
+    var e = document.getElementById(labelId);
+    e.innerHTML = 'You are NOT ready to run';
+    e.classList.add('alert');
+    e.classList.remove('success');
+
 }
 
-//se tutto ok
-	//pulsante verde
-		//se premo pulsante run verde
-			//controllo captcha
-				//se captcha ok
-					//invio dati
-//se qlk cambia e non va bene
-	//pulsante rosso
+/**
+ * Checks if every input is valid
+ */
+function checkEverything() {
+    if (false) {
+        markRunButtonReady("run");
+    } else {
+        markRunButtonNotReady("run");
+    }
+}
 
+/**
+ * Creates HTML visual output with debug info
+ */
 function printAll() {
 	document.getElementById('result').innerHTML = "";
 	//$('#result').html("<br />$(form).serializeArray():<br />" + JSON.stringify($('form').serializeArray()));
@@ -199,3 +221,15 @@ function printAll() {
 $("#run").click(function () {
 	printAll();
 });
+
+
+var columns_1, columns_2; // number of columns in each input file
+var file1 = document.getElementById("fileInputs");
+var file2 = document.getElementById("fileErrors");
+FileUploaded();
+var numFileUploaded1 = 0;
+var numFileUploaded2 = 0;
+document.getElementById("fileInputs").addEventListener("change", setFileColumnsNumber_1, false);
+document.getElementById("fileErrors").addEventListener("change", setFileColumnsNumber_2, false);
+var physicalPropSelected = 0;
+countPhysicalPropSelected();
