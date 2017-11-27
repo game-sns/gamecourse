@@ -1,29 +1,12 @@
-var columns_1, columns_2; // number of columns in each input file
-var file1 = document.getElementById("fileInputs");
-var file2 = document.getElementById("fileErrors");
-var blob1 = file1.files[0];
-var blob2 = file2.files[0];
 /**
  * Marks file label as read
  * @param labelId id of label to mark
  * @param text optional text to show
  */
 function markFileAsRead(labelId, text) {
-	document.getElementById(labelId).innerHTML = text + "    <img src=\"img/checked.png\">";
+    document.getElementById(labelId).innerHTML = text + "<img src=\"img/checked.png\">";
 }
-/**
- * Mark Files button on upload
- */
-function FileUploaded() {
-	var files = ["fileInputs", "fileErrors"];
-	files.forEach(function (element) {
-		document.getElementById(element).onchange = function () {
-			var file = this.files[0];
-			markFileAsRead(element + "Label", file.name);
-		}
-	});
-}
-FileUploaded();
+
 /**
  * Counts columns in file
  * @param result reader of file to read
@@ -39,6 +22,7 @@ function countColumns(result, separator) {
 	}
 	return counter;
 }
+
 /**
  * Checks if both files were uploaded
  * @param file1 file1
@@ -48,6 +32,7 @@ function countColumns(result, separator) {
 function missingUpload(file1, file2) {
 	return file1.value === "" || file2.value === "";
 }
+
 /**
  * Checks if uploaded files have same value
  * @param file1 blob
@@ -58,31 +43,58 @@ function sameUpload(file1, file2) {
 	return file1.value === file2.value
 }
 
+/**
+ * Check if number of column is the same
+ * @param col1 numb column 1
+ * @param col2 numb column 2
+ * @returns {boolean} True iff number of column is the same
+ */
 function sameNumberColumns(col1, col2) {
-	return col1 === col2;
+    return col1 === col2;
 }
+
 /**
  * Performs various checks on files before running GAME
  */
 function checks() {
-	if (
-		(missingUpload(file1, file2) === false) && (sameUpload(file1, file2) === false) && (sameNumberColumns(columns_1, columns_2))) {
-		return true;
-	} else {
-		if (missingUpload(file1, file2)) {
-			alert("There is an error with uploaded files: Missing a file");
-		}
-		if (sameUpload(file1, file2)) {
-			alert("There is an error with uploaded files: Same files uploaded");
-		}
-		if (sameNumberColumns(columns_1, columns_2) === false) {
-			alert("There is an error with uploaded files: Different number of columns");
-		}
-	}
+    console.log("performing checks...");
+    return (checkPhysicalProp() &&
+        checkEmail() &&
+        missingUpload(file1, file2) === false) &&
+        (sameUpload(file1, file2) === false) &&
+        (sameNumberColumns(columns_1, columns_2));
 }
 
-var numFileUploaded1 = 0;
-var numFileUploaded2 = 0;
+/**
+ * Shows alert boxes with errors
+ */
+function alertErrors() {
+    if (!checkPhysicalProp()) {
+        var missingLabels = columns_1 - $("#labels_selector").find(":selected").length;
+        if (missingLabels < 0) {
+            alert("Too many labels! Please, remove exactly " + (-missingLabels) + " labels");
+        } else {
+            alert("Too few labels! Please, add exactly " + missingLabels + " labels");
+        }
+    }
+
+    if (!checkEmail()) {
+        alert("Invalid email! Please fix the email address.")
+    }
+
+    if (missingUpload(file1, file2)) {
+        alert("There is an error with uploaded files: Missing a file");
+    }
+
+    if (sameUpload(file1, file2)) {
+        alert("There is an error with uploaded files: Same files uploaded");
+    }
+
+    if (sameNumberColumns(columns_1, columns_2) === false) {
+        alert("There is an error with uploaded files: Different number of columns");
+    }
+}
+
 /**
  * Sets number of column of file 1
  * @param evt event
@@ -96,11 +108,11 @@ function setFileColumnsNumber_1(evt) {
 		if (numFileUploaded1 >= 1 && numFileUploaded2 >= 1) {
 			if (checks()) {
 				setLimit(columns_1);
-				loadChoosen();
-			}
+            }
 		}
 	};
 	reader.readAsText(file);
+    markFileAsRead("fileInputsLabel", file.name);
 }
 
 /**
@@ -116,41 +128,35 @@ function setFileColumnsNumber_2(evt) {
 		if (numFileUploaded1 >= 1 && numFileUploaded2 >= 1) {
 			if (checks()) {
 				setLimit(columns_1);
-				loadChoosen();
-			}
+            }
 		}
 	};
 	reader.readAsText(file);
-}
-document.getElementById("fileInputs").addEventListener("change", setFileColumnsNumber_1, false);
-document.getElementById("fileErrors").addEventListener("change", setFileColumnsNumber_2, false);
-
-var physicalPropSelected = 0;
-countPhysicalPropSelected();
-
-function countPhysicalPropSelected() {
-	$(".checkbox").change(function () {
-		if (this.checked)
-			physicalPropSelected++;
-		else
-			physicalPropSelected--;
-	});
+    markFileAsRead("fileErrorsLabel", file.name);
 }
 
-//return true if was selected at least 1 physicalProp
-function checkPhysicalProp(){
-	console.log(physicalPropSelected>0);
-	return physicalPropSelected>0;	
+/**
+ * Checks if was selected at least 1 physicalProp
+ * @returns {boolean} True iff was selected at least 1 physicalProp
+ */
+function checkPhysicalProp() {
+    var numSelected = $("#labels_selector").find(":selected").length;
+    return numSelected === columns_1;
 }
 
-//return true if valid email
+/**
+ * Checks for valid email
+ * @returns {boolean} True iff input is a valid email
+ */
 function checkEmail() {
 	var re = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
 	return re.test($("#email").val());
 }
 
-markRunButtonReady("run");
-
+/**
+ * Makes button green (shows user that program is ready)
+ * @param labelId id of button to change
+ */
 function markRunButtonReady(labelId) {
 	var e = document.getElementById(labelId);
 	e.innerHTML = 'You are ready to run';
@@ -159,19 +165,32 @@ function markRunButtonReady(labelId) {
 
 }
 
-function checkEverything(){
-	
+/**
+ * Makes button red (shows user that program is NOT ready)
+ * @param labelId id of button to change
+ */
+function markRunButtonNotReady(labelId) {
+    var e = document.getElementById(labelId);
+    e.innerHTML = 'You are NOT ready to run';
+    e.classList.add('alert');
+    e.classList.remove('success');
+
 }
 
-//se tutto ok
-	//pulsante verde
-		//se premo pulsante run verde
-			//controllo captcha
-				//se captcha ok
-					//invio dati
-//se qlk cambia e non va bene
-	//pulsante rosso
+/**
+ * Checks if every input is valid
+ */
+function checkEverything() {
+    if (checks()) {
+        markRunButtonReady("run");
+    } else {
+        markRunButtonNotReady("run");
+    }
+}
 
+/**
+ * Creates HTML visual output with debug info
+ */
 function printAll() {
 	document.getElementById('result').innerHTML = "";
 	//$('#result').html("<br />$(form).serializeArray():<br />" + JSON.stringify($('form').serializeArray()));
@@ -195,7 +214,44 @@ function printAll() {
 	$('#result').append("Email: " + email.value + '<br />');
 }
 
-/* RUN button click*/
-$("#run").click(function () {
-	printAll();
-});
+/**
+ * Sets event listeners
+ */
+function setCheckEventListeners() {
+    var elements = [
+        "fileInputs",  // files
+        "fileErrors",
+        "email",  // email
+        "labels_selector"  // labels selector
+    ];  // ids of elements to set
+
+    elements.forEach(function (element) {
+        document.getElementById(element).onchange = function () {
+            checkEverything();
+        };  // add event listener on change event
+    });
+}
+
+/**
+ * Start program
+ */
+function init() {
+    document.getElementById("fileInputs").addEventListener("change", setFileColumnsNumber_1, false);
+    document.getElementById("fileErrors").addEventListener("change", setFileColumnsNumber_2, false);
+    setCheckEventListeners();
+
+    $("#run").click(function () {
+        alertErrors();
+        printAll();
+    });
+}
+
+// global vars
+var columns_1, columns_2;  // number of columns in each input file
+var file1 = document.getElementById("fileInputs");
+var file2 = document.getElementById("fileErrors");
+var numFileUploaded1 = 0;
+var numFileUploaded2 = 0;
+
+// global functions
+init();

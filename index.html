@@ -16,7 +16,7 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
 	<!-- icon -->
 	<link rel="icon" type="image/png" href="/img/logo.png">
-	<!-- Google APIs fore ReCaptcha -->
+    <!-- Google APIs for ReCaptcha -->
 	<script src="https://www.google.com/recaptcha/api.js"></script>
 </head>
 
@@ -114,7 +114,7 @@
 		<div class="row">
 			<h4>Your email address:</h4>
 			<div class="medium-6 large-4 columns">
-				<input id="email" type="email" placeholder="Valid email" onchange="checkEmail()">
+                <input id="email" type="email" placeholder="Valid email">
 			</div>
 			<div class="medium-6 large-4 columns">
 				<button class="alert button expanded run" id="run">You are NOT ready to run</button>
@@ -134,12 +134,21 @@
 		<div id=result></div>
 	</div>
 </body>
+
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-1.9.0.min.js"></script>
+
 <!-- files -->
 <script src="js/foundation.js"></script>
-<script src="js/read_files.js"></script>
 <script src="js/small_input_style.js"></script>
-<script src="js/load_choosen.js"></script>
+<script src="js/read_files.js"></script>
+
+<!-- multi select -->
+<script src="js/chosen.jquery.js" type="text/javascript"></script>
+<script src="js/docsupport/prism.js" type="text/javascript"
+        charset="utf-8"></script>
+<script src="js/docsupport/init.js" type="text/javascript"
+        charset="utf-8"></script>
+<script type="text/javascript" src="js/init.js"></script>
 
 </html>
