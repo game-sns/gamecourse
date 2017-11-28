@@ -58,8 +58,9 @@ function sameNumberColumns(col1, col2) {
  */
 function checks() {
     console.log("performing checks...");
-    return (checkPhysicalProp() &&
-        checkEmail() &&
+    return (checkSelectedLabels() &&
+        checkEmail() && 
+		checkPhysicalProp() &&
         missingUpload(file1, file2) === false) &&
         (sameUpload(file1, file2) === false) &&
         (sameNumberColumns(columns_1, columns_2));
@@ -69,7 +70,7 @@ function checks() {
  * Shows alert boxes with errors
  */
 function alertErrors() {
-    if (!checkPhysicalProp()) {
+    if (!checkSelectedLabels()) {
         var missingLabels = columns_1 - $("#labels_selector").find(":selected").length;
         if (missingLabels < 0) {
             alert("Too many labels! Please, remove exactly " + (-missingLabels) + " labels");
@@ -81,6 +82,10 @@ function alertErrors() {
     if (!checkEmail()) {
         alert("Invalid email! Please fix the email address.")
     }
+	
+	if(!checkPhysicalProp()) {
+		alert("You need to select at least 1 physical proprety")
+	}
 
     if (missingUpload(file1, file2)) {
         alert("There is an error with uploaded files: Missing a file");
@@ -136,12 +141,22 @@ function setFileColumnsNumber_2(evt) {
 }
 
 /**
+ * Checks if selected labels correspond to # of columns in the uploaded files
+ * @returns {boolean} True iff were selected same # of columns_1
+ */
+function checkSelectedLabels() {
+    var numSelected = $("#labels_selector").find(":selected").length;
+    return numSelected === columns_1;
+}
+
+/**
  * Checks if was selected at least 1 physicalProp
  * @returns {boolean} True iff was selected at least 1 physicalProp
  */
 function checkPhysicalProp() {
-    var numSelected = $("#labels_selector").find(":selected").length;
-    return numSelected === columns_1;
+    var numSelected = $("checkbox").find(":checked").length;
+	console.log(numSelected);
+    return numSelected > 0;
 }
 
 /**
@@ -161,7 +176,7 @@ function markRunButtonReady(labelId) {
 	var e = document.getElementById(labelId);
 	e.innerHTML = 'You are ready to run';
 	e.classList.remove('alert');
-	e.className += ' success';
+	e.classList.add('success');
 
 }
 
@@ -222,7 +237,14 @@ function setCheckEventListeners() {
         "fileInputs",  // files
         "fileErrors",
         "email",  // email
-        "labels_selector"  // labels selector
+        "labels_selector",  // labels selector
+		"checkbox1",
+		"checkbox2",
+		"checkbox3",
+		"checkbox4",
+		"checkbox5",
+		"checkbox6",
+		"checkbox7",
     ];  // ids of elements to set
 
     elements.forEach(function (element) {
