@@ -185,7 +185,6 @@ function markRunButtonNotReady(labelId) {
 	e.innerHTML = 'You are NOT ready to run';
 	e.classList.add('alert');
 	e.classList.remove('success');
-
 }
 
 /**
@@ -228,7 +227,7 @@ function printAll() {
 /**
  * Sets event listeners
  */
-function setCheckEventListeners() {
+/*function setCheckEventListeners() {
 	var elements = [
         "fileInputs", // files
         "fileErrors",
@@ -249,6 +248,7 @@ function setCheckEventListeners() {
 		}; // add event listener on change event
 	});
 }
+*/
 
 /**
  * Start program
@@ -256,7 +256,7 @@ function setCheckEventListeners() {
 function init() {
 	document.getElementById("fileInputs").addEventListener("change", setFileColumnsNumber_1, false);
 	document.getElementById("fileErrors").addEventListener("change", setFileColumnsNumber_2, false);
-	setCheckEventListeners();
+	//setCheckEventListeners();
 
 	$("#run").click(function () {
 		alertErrors();
