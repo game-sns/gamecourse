@@ -57,7 +57,6 @@ function sameNumberColumns(col1, col2) {
  * Performs various checks on files before running GAME
  */
 function checks() {
-    console.log("performing checks...");
     return (checkSelectedLabels() &&
         checkEmail() && 
 		checkPhysicalProp() &&
