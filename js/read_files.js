@@ -69,7 +69,13 @@ function checks() {
  * Shows alert boxes with errors
  */
 function alertErrors() {
-	if (!checkSelectedLabels()) {
+	if (missingUpload(file1, file2)) {
+		alert("There is an error with uploaded files: Missing a file");
+	} else if (sameUpload(file1, file2)) {
+		alert("There is an error with uploaded files: Same files uploaded");
+	} else if (sameNumberColumns(columns_1, columns_2) === false) {
+		alert("There is an error with uploaded files: Different number of columns");
+	} else if (!checkSelectedLabels()) {
 		var missingLabels = columns_1 - $("#labels_selector").find(":selected").length;
 		if (isNaN(missingLabels)) {
 			missingLabels = 0;
@@ -79,26 +85,10 @@ function alertErrors() {
 		} else {
 			alert("Too few labels! Please, add exactly " + missingLabels + " labels");
 		}
-	}
-
-	if (!checkEmail()) {
-		alert("Invalid email! Please fix the email address.")
-	}
-
-	if (!checkPhysicalProp()) {
+	} else if (!checkPhysicalProp()) {
 		alert("You need to select at least 1 physical proprety")
-	}
-
-	if (missingUpload(file1, file2)) {
-		alert("There is an error with uploaded files: Missing a file");
-	}
-
-	if (sameUpload(file1, file2)) {
-		alert("There is an error with uploaded files: Same files uploaded");
-	}
-
-	if (sameNumberColumns(columns_1, columns_2) === false) {
-		alert("There is an error with uploaded files: Different number of columns");
+	} else if (!checkEmail()) {
+		alert("Invalid email! Please fix the email address.")
 	}
 }
 
