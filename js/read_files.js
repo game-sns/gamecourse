@@ -71,7 +71,9 @@ function checks() {
 function alertErrors() {
 	if (!checkSelectedLabels()) {
 		var missingLabels = columns_1 - $("#labels_selector").find(":selected").length;
-		isNaN(missingLabels) missingLabels = 0;
+		if (isNaN(missingLabels)) {
+			missingLabels = 0;
+		}
 		if (missingLabels < 0) {
 			alert("Too many labels! Please, remove exactly " + (-missingLabels) + " labels");
 		} else {
