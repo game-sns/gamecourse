@@ -154,8 +154,12 @@ function checkSelectedLabels() {
  * @returns {boolean} True iff was selected at least 1 physicalProp
  */
 function checkPhysicalProp() {
-    var numSelected = $("checkbox").find(":checked").length;
-	console.log(numSelected);
+	var checks = [];
+	var numSelected = 0;
+	for (var i = 1; i < 8; i++) {
+		checks[i] = document.getElementById('checkbox' + i);
+		if(checks[i].checked) numSelected++;
+	}
     return numSelected > 0;
 }
 
