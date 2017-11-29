@@ -244,7 +244,6 @@ function printAll() {
 
 	elements.forEach(function (element) {
 		document.getElementById(element).onchange = function () {
-			checkEverything();
 		}; // add event listener on change event
 	});
 }
@@ -259,6 +258,7 @@ function init() {
 	//setCheckEventListeners();
 
 	$("#run").click(function () {
+		checkEverything();
 		alertErrors();
 		printAll();
 	});
