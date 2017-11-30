@@ -204,7 +204,14 @@ function checkEverything() {
 function printAll() {
 	document.getElementById('result').innerHTML = "";
 	//$('#result').html("<br />$(form).serializeArray():<br />" + JSON.stringify($('form').serializeArray()));
-
+	
+	//labels
+	var numSelected = $("#labels_selector").find(":selected").length;
+	var selected = $("#labels_selector").find(":selected");
+	for(var i=0; i<numSelected; i++){
+		$('#result').append("Label"+i+": "+selected[i].value + '<br />');
+	}
+	
 	//checkbox state
 	var checks = [];
 	for (var i = 1; i < 8; i++) {
