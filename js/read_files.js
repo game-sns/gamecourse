@@ -4,7 +4,7 @@
  * @param text optional text to show
  */
 function markFileAsRead(labelId, text) {
-	document.getElementById(labelId).innerHTML = text + "<img src=\"img/checked.png\">";
+	document.getElementById(labelId).innerHTML = text + " <img src=\"img/checked.png\">";
 }
 
 /**
@@ -101,12 +101,12 @@ function setFileColumnsNumber_1(evt) {
 	var file = evt.target.files[0];
 	reader.onload = function (progressEvent) {
 		columns_1 = countColumns(this.result, ' ');
-		numFileUploaded1++;
+		/*numFileUploaded1++;
 		if (numFileUploaded1 >= 1 && numFileUploaded2 >= 1) {
 			if (checks()) {
 				setLimit(columns_1);
 			}
-		}
+		}*/
 	};
 	reader.readAsText(file);
 	markFileAsRead("fileInputsLabel", file.name);
@@ -121,12 +121,12 @@ function setFileColumnsNumber_2(evt) {
 	var file = evt.target.files[0];
 	reader.onload = function (progressEvent) {
 		columns_2 = countColumns(this.result, ' ');
-		numFileUploaded2++;
+		/*numFileUploaded2++;
 		if (numFileUploaded1 >= 1 && numFileUploaded2 >= 1) {
 			if (checks()) {
 				setLimit(columns_1);
 			}
-		}
+		}*/
 	};
 	reader.readAsText(file);
 	markFileAsRead("fileErrorsLabel", file.name);
@@ -170,7 +170,7 @@ function checkEmail() {
  */
 function markRunButtonReady(labelId) {
 	var e = document.getElementById(labelId);
-	e.innerHTML = 'You are ready to run';
+	e.innerHTML = 'You are ready';
 	e.classList.remove('alert');
 	e.classList.add('success');
 
@@ -182,7 +182,7 @@ function markRunButtonReady(labelId) {
  */
 function markRunButtonNotReady(labelId) {
 	var e = document.getElementById(labelId);
-	e.innerHTML = 'You are NOT ready to run';
+	e.innerHTML = 'You are NOT ready';
 	e.classList.add('alert');
 	e.classList.remove('success');
 }
