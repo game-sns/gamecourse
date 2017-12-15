@@ -148,7 +148,7 @@ function checkSelectedLabels() {
 function checkPhysicalProp() {
 	var checks = [];
 	var numSelected = 0;
-	for (var i = 1; i < 8; i++) {
+	for (var i = 0; i < 7; i++) {
 		checks[i] = document.getElementById('checkbox' + i);
 		if (checks[i].checked) numSelected++;
 	}
@@ -202,33 +202,44 @@ function checkEverything() {
  * Creates HTML visual output with debug info
  */
 function printAll() {
-	document.getElementById('result').innerHTML = "";
-	//$('#result').html("<br />$(form).serializeArray():<br />" + JSON.stringify($('form').serializeArray()));
-	
+
+	var obj = new Object();
+
 	//labels
 	var numSelected = $("#labels_selector").find(":selected").length;
+	var array = new Array();
 	var selected = $("#labels_selector").find(":selected");
-	for(var i=0; i<numSelected; i++){
-		$('#result').append("Label"+i+": "+selected[i].value + '<br />');
+	obj.LabelsNumber = numSelected;
+	for (var i = 0; i < numSelected; i++) {
+		array[i] = selected[i].text;
+		//sono in ordine alfabetico e non va bene
+		obj.LabelsArray = array;
 	}
-	
+
 	//checkbox state
 	var checks = [];
-	for (var i = 1; i < 8; i++) {
+	var array = new Array();
+	for (var i = 0; i < 7; i++) {
 		checks[i] = document.getElementById('checkbox' + i);
-		$('#result').append("Checkbox" + i + ": " + checks[i].checked + '<br />');
+		array[i] = checks[i].checked;
+		obj.PhysicalProprieties = array;
 	}
 
 	//optional files
 	var optionalFiles = document.getElementsByName('optional_files');
-	if (optionalFiles[0].checked)
-		$('#result').append("Optional files: " + optionalFiles[0].value + '<br />');
-	else
-		$('#result').append("Optional files: " + optionalFiles[1].value + '<br />');
-
+	if (optionalFiles[0].checked) {
+		obj.OptionalFiles = optionalFiles[0].value;
+	} else {
+		obj.OptionalFiles = optionalFiles[1].value;
+	}
+	
 	//email
 	var email = document.getElementById('email');
-	$('#result').append("Email: " + email.value + '<br />');
+	obj.Email = email.value;
+
+	var jsonString = JSON.stringify(obj);
+
+	console.log(jsonString);
 }
 
 /**
