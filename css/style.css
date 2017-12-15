@@ -99,3 +99,11 @@ li label {
 #fileErrorsLabel {
 	display: inherit;
 }
+
+.chosen-choices {
+	border-radius: 2px;
+}
+
+#email {
+	border-radius: 2px;
+}
