@@ -58,6 +58,10 @@ li {
 	background-color: rgba(255, 255, 255, 0.4);
 }
 
+li:hover {
+	background-color: rgba(100, 100, 100, 0.4);
+}
+
 li:active {
 	background-color: rgba(255, 255, 255, 0.8);
 }
@@ -70,6 +74,7 @@ li label {
 	color: #fff;
 	padding: 5px;
 	min-width: 100px;
+	cursor: pointer;
 }
 
 .small_input_style {
