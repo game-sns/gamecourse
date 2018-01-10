@@ -206,14 +206,8 @@ function printAll() {
 	var obj = new Object();
 
 	//labels
-	var numSelected = $("#labels_selector").find(":selected").length;
-	var array = new Array();
-	var selected = $("#labels_selector").find(":selected");
-	obj.LabelsNumber = numSelected;
-	for (var i = 0; i < numSelected; i++) {
-		array[i] = selected[i].text;
-		//sono in ordine alfabetico e non va bene
-		obj.LabelsArray = array;
+	for (var i = 0; i < globalLalebs.length; i++) {
+		obj.LabelsArray = globalLalebs;
 	}
 
 	//checkbox state
@@ -259,27 +253,18 @@ function printAll() {
 /**
  * Sets event listeners
  */
-/*function setCheckEventListeners() {
+function setCheckEventListeners() {
 	var elements = [
-        "fileInputs", // files
-        "fileErrors",
-        "email", // email
-        "labels_selector", // labels selector
-		"checkbox1",
-		"checkbox2",
-		"checkbox3",
-		"checkbox4",
-		"checkbox5",
-		"checkbox6",
-		"checkbox7",
+        "labels_selector"
     ]; // ids of elements to set
 
 	elements.forEach(function (element) {
-		document.getElementById(element).onchange = function () {
+		document.getElementById(element).onchange = function(evt, params) {
+					globalLalebs.push(""+params.selected);
 		}; // add event listener on change event
 	});
 }
-*/
+
 
 /**
  * Start program
@@ -287,7 +272,7 @@ function printAll() {
 function init() {
 	document.getElementById("fileInputs").addEventListener("change", setFileColumnsNumber_1, false);
 	document.getElementById("fileErrors").addEventListener("change", setFileColumnsNumber_2, false);
-	//setCheckEventListeners();
+	setCheckEventListeners();
 
 	$("#run").click(function () {
 		checkEverything();
@@ -302,6 +287,7 @@ var file1 = document.getElementById("fileInputs");
 var file2 = document.getElementById("fileErrors");
 var numFileUploaded1 = 0;
 var numFileUploaded2 = 0;
+var globalLalebs = new Array();
 
 // global functions
 init();
