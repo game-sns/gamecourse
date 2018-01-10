@@ -232,7 +232,7 @@ function printAll() {
 	} else {
 		obj.OptionalFiles = optionalFiles[1].value;
 	}
-	
+
 	//email
 	var email = document.getElementById('email');
 	obj.Email = email.value;
@@ -240,6 +240,20 @@ function printAll() {
 	var jsonString = JSON.stringify(obj);
 
 	console.log(jsonString);
+
+	var xhr = new XMLHttpRequest();
+	var url = "http://localhost:5000/postjson";
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json");
+	xhr.onreadystatechange = function () {
+		/*if (xhr.readyState === 4 && xhr.status === 200) {
+			var json = JSON.parse(xhr.responseText);
+			console.log(json.email + ", " + json.password);
+		}*/
+	};
+	
+	xhr.send(jsonString);
+
 }
 
 /**
