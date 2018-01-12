@@ -16,33 +16,13 @@
 # limitations under the License.
 
 
-""" Startup the server """
+""" Tools """
 
 import os
 
-from flask import Flask, request, redirect, url_for
-from werkzeug import secure_filename
+from werkzeug.utils import secure_filename
 
-APP_NAME = "gamecourse"
-APP_HOST = "0.0.0.0"  # todo in cli
-APP_PORT = 1729
-
-THIS_FOLDER = os.path.dirname(os.path.realpath(__file__))
-UPLOAD_FOLDER = os.path.join(
-    THIS_FOLDER,
-    "uploads"
-)
-TEMPLATES_FOLDER = os.path.join(
-    THIS_FOLDER,
-    "templates"
-)
-UPLOAD_TEMPLATE = os.path.join(
-    TEMPLATES_FOLDER,
-    "upload.html"
-)
-ALLOWED_EXTENSIONS = {"dat"}  # allow only these extensions
-
-app = Flask(APP_NAME)
+from gamecourse.config import ALLOWED_EXTENSIONS, UPLOAD_FOLDER
 
 
 def get_extension(filename):
@@ -69,16 +49,18 @@ def can_upload(filename):
     return filename and get_extension(filename) in ALLOWED_EXTENSIONS
 
 
-def get_upload_path(filename):
+def get_upload_path(filename, upload_folder):
     """
     :param filename: str
         Path or file to upload
+    :param upload_folder: str
+        Default folder where uploads go
     :return: str
         Path where file should be uploaded
     """
 
     fil = secure_filename(filename)
-    return os.path.join(app.config["UPLOAD_FOLDER"], fil)
+    return os.path.join(upload_folder, fil)
 
 
 def prepare_folders():
@@ -101,30 +83,3 @@ def read_file(filename):
 
     with open(filename, "r") as inp:
         return inp.read()
-
-
-@app.route("/", methods=["GET", "POST"])
-def index():
-    if request.method == "POST":
-        file_to_upload = request.files["file"]
-        filename = file_to_upload.filename
-        if file_to_upload and can_upload(filename):
-            file_to_upload.save(get_upload_path(filename))
-            return redirect(url_for("index"))
-
-    return read_file(UPLOAD_TEMPLATE)
-
-
-def cli():
-    """
-    :return: void
-        Run this as cmd program
-    """
-
-    app.run(host=APP_HOST, port=APP_PORT, debug=True)
-
-
-if __name__ == "__main__":
-    prepare_folders()
-    app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
-    cli()

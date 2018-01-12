@@ -47,6 +47,6 @@ setup(
         "flask"
     ],
     entry_points={
-        "console_scripts": ["gamecourse = server:cli"]
+        "console_scripts": ["gamecourse = gamecourse.server:cli"]
     }
 )
