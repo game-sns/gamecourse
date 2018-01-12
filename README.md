@@ -1,6 +1,6 @@
 # GAME course
 
-> Run a server to accept GAME models input.
+> Run a server to accept GAME models input
 
 ## Table of content
 
@@ -13,7 +13,7 @@
 
 ## Usage
 ```python
-python3 server.py
+python3 setup.py install  # install depedencies
 ```
 to start the server
 
