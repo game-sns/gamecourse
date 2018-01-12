@@ -23,40 +23,96 @@ import os
 from flask import Flask, request, redirect, url_for
 from werkzeug import secure_filename
 
-UPLOAD_FOLDER = "/tmp/"
-ALLOWED_EXTENSIONS = {"txt"}
+APP_NAME = "gamecourse"
+APP_HOST = "0.0.0.0"  # todo in cli
+APP_PORT = 1729
 
-app = Flask(__name__)
-app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
+THIS_FOLDER = os.path.dirname(os.path.realpath(__file__))
+UPLOAD_FOLDER = os.path.join(
+    THIS_FOLDER,
+    "uploads"
+)
+TEMPLATES_FOLDER = os.path.join(
+    THIS_FOLDER,
+    "templates"
+)
+UPLOAD_TEMPLATE = os.path.join(
+    TEMPLATES_FOLDER,
+    "upload.html"
+)
+ALLOWED_EXTENSIONS = {"dat"}  # allow only these extensions
+
+app = Flask(APP_NAME)
 
 
-def allowed_file(filename):
-    allowed = "." in filename and \
-              filename.rsplit(".", 1)[1] in ALLOWED_EXTENSIONS
-    print(filename, "allowed?", allowed)
-    return allowed
+def get_extension(filename):
+    """
+    :param filename: str
+        Path or file
+    :return: str
+        Extension of file
+    """
+
+    if "." in filename:
+        return filename.rsplit(".", 1)[1]
+    return None
+
+
+def can_upload(filename):
+    """
+    :param filename: str
+        Path or file
+    :return: bool
+        True iff file is allowed tu be uploaded
+    """
+
+    return filename and get_extension(filename) in ALLOWED_EXTENSIONS
+
+
+def get_upload_path(filename):
+    """
+    :param filename: str
+        Path or file to upload
+    :return: str
+        Path where file should be uploaded
+    """
+
+    fil = secure_filename(filename)
+    return os.path.join(app.config["UPLOAD_FOLDER"], fil)
+
+
+def prepare_folders():
+    """
+    :return: void
+        Creates necessary folders to execute server
+    """
+
+    if not os.path.exists(UPLOAD_FOLDER):
+        os.makedirs(UPLOAD_FOLDER)
+
+
+def read_file(filename):
+    """
+    :param filename: str
+        Path or file
+    :return: str
+        Content of file
+    """
+
+    with open(filename, "r") as inp:
+        return inp.read()
 
 
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
-        file = request.files["file"]
-        if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            p = os.path.join(app.config["UPLOAD_FOLDER"], filename)
-            print("saved file to", p)
-            file.save(p)
+        file_to_upload = request.files["file"]
+        filename = file_to_upload.filename
+        if file_to_upload and can_upload(filename):
+            file_to_upload.save(get_upload_path(filename))
             return redirect(url_for("index"))
-    return """
-    <!doctype html>
-    <title>Upload new File</title>
-    <h1>Upload new File</h1>
-    <form action="" method=post enctype=multipart/form-data>
-      <p><input type=file name=file>
-         <input type=submit value=Upload>
-    </form>
-    <p>%s</p>
-    """ % "<br>".join(os.listdir(app.config["UPLOAD_FOLDER"], ))
+
+    return read_file(UPLOAD_TEMPLATE)
 
 
 def cli():
@@ -65,8 +121,10 @@ def cli():
         Run this as cmd program
     """
 
-    app.run(host="0.0.0.0", port=5001, debug=True)
+    app.run(host=APP_HOST, port=APP_PORT, debug=True)
 
 
 if __name__ == "__main__":
+    prepare_folders()
+    app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
     cli()
