@@ -16,25 +16,36 @@
 # limitations under the License.
 
 
-""" Server config """
+""" Fetches web pages """
 
 import os
 
-APP_NAME = "gamecourse"
-APP_HOST = "0.0.0.0"  # todo in cli
-APP_PORT = 1729
-THIS_FOLDER = os.path.dirname(os.path.realpath(__file__))
-ROOT_FOLDER = os.path.dirname(THIS_FOLDER)
-UPLOAD_FOLDER = os.path.join(
-    ROOT_FOLDER,
-    "uploads"
+from gamecourse.config import TEMPLATES_FOLDER
+from gamecourse.utils import read_file
+
+UPLOAD_TEMPLATE = os.path.join(
+    TEMPLATES_FOLDER,
+    "upload.html"
 )
-TEMPLATES_FOLDER = os.path.join(
-    ROOT_FOLDER,
-    "templates"
+INDEX_TEMPLATE = os.path.join(
+    TEMPLATES_FOLDER,
+    "index.html"
 )
-STATIC_FOLDER = os.path.join(
-    ROOT_FOLDER,
-    "static"
-)
-ALLOWED_EXTENSIONS = {"dat"}  # allow only these extensions
+
+
+def get_index():
+    """
+    :return: str
+        Index page
+    """
+
+    return read_file(INDEX_TEMPLATE)
+
+
+def get_simple_upload():
+    """
+    :return: str
+        Page with simple upload
+    """
+
+    return read_file(UPLOAD_TEMPLATE)

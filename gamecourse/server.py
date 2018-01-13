@@ -20,26 +20,38 @@
 
 from flask import Flask, request, redirect, url_for
 
-from gamecourse.config import APP_NAME, APP_HOST, APP_PORT, UPLOAD_FOLDER, \
-    UPLOAD_TEMPLATE
-from gamecourse.utils import can_upload, get_upload_path, prepare_folders, \
-    read_file
+from gamecourse.config import APP_NAME, APP_HOST, APP_PORT, UPLOAD_FOLDER
+from gamecourse.pages import get_index
+from gamecourse.utils import can_upload, get_upload_path, prepare_folders
 
 app = Flask(APP_NAME)
+
+
+def upload_file(req):
+    """
+    :param req: flask request
+        Server request
+    :return: void
+        Redirects to index after uploading file
+    """
+
+    file_to_upload = req.files["file"]
+    filename = file_to_upload.filename
+    if file_to_upload and can_upload(filename):
+        file_to_upload.save(
+            get_upload_path(filename, app.config["UPLOAD_FOLDER"])
+        )
+
+        return redirect(url_for("index"))
 
 
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
-        file_to_upload = request.files["file"]
-        filename = file_to_upload.filename
-        if file_to_upload and can_upload(filename):
-            file_to_upload.save(
-                get_upload_path(filename, app.config["UPLOAD_FOLDER"])
-            )
-            return redirect(url_for("index"))
+        upload_file(request)
+        return "file uploaded!"
 
-    return read_file(UPLOAD_TEMPLATE)
+    return get_index()
 
 
 def cli():
