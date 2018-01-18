@@ -21,5 +21,3 @@ function populateLabelsTable(url) {
         }
     })
 }
-
-populateLabelsTable("data/labels_options.txt");

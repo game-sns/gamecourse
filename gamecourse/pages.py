@@ -18,19 +18,10 @@
 
 """ Fetches web pages """
 
-import os
+from flask import render_template
 
-from gamecourse.config import TEMPLATES_FOLDER
-from gamecourse.utils import read_file
-
-UPLOAD_TEMPLATE = os.path.join(
-    TEMPLATES_FOLDER,
-    "upload.html"
-)
-INDEX_TEMPLATE = os.path.join(
-    TEMPLATES_FOLDER,
-    "index.html"
-)
+UPLOAD_TEMPLATE = "upload.html"
+INDEX_TEMPLATE = "index.html"
 
 
 def get_index():
@@ -39,7 +30,7 @@ def get_index():
         Index page
     """
 
-    return read_file(INDEX_TEMPLATE)
+    return render_template(INDEX_TEMPLATE)
 
 
 def get_simple_upload():
@@ -48,4 +39,4 @@ def get_simple_upload():
         Page with simple upload
     """
 
-    return read_file(UPLOAD_TEMPLATE)
+    return render_template(UPLOAD_TEMPLATE)

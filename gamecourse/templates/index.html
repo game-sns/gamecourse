@@ -10,14 +10,14 @@
     <link rel="stylesheet" type="text/css"
           href="https://fonts.googleapis.com/css?family=Quicksand"/>
     <link rel="stylesheet" type="text/css"
-          href="foundation-icons/foundation-icons.css"/>
-    <link rel="stylesheet" type="text/css" href="css/foundation.css"/>
+          href="{{ url_for('static', filename='foundation-icons/foundation-icons.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/foundation.css') }}"/>
     <!-- labels multi select form -->
-    <link rel="stylesheet" type="text/css" href="css/chosen.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/chosen.css') }}">
     <!-- style -->
-    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}"/>
     <!-- icon -->
-    <link rel="icon" type="image/png" href="img/logo.png">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/logo.png') }}">
     <!-- Google APIs for ReCaptcha -->
     <script src="https://www.google.com/recaptcha/api.js"></script>
 </head>
@@ -158,16 +158,18 @@
 <script src="https://code.jquery.com/jquery-1.9.0.min.js"></script>
 
 <!-- files -->
-<script src="js/foundation.js"></script>
-<script src="js/small_input_style.js"></script>
-<script src="js/read_files.js"></script>
+<script src="{{ url_for('static', filename='js/foundation.js') }}"></script>
+<script src="{{ url_for('static', filename='js/small_input_style.js') }}"></script>
+<script src="{{ url_for('static', filename='js/read_files.js') }}"></script>
 
 <!-- multi select -->
-<script src="js/chosen.jquery.js" type="text/javascript"></script>
-<script src="js/docsupport/prism.js" type="text/javascript"
+<script src="{{ url_for('static', filename='js/chosen.jquery.js') }}" type="text/javascript"></script>
+<script src="{{ url_for('static', filename='js/docsupport/prism.js') }}" type="text/javascript"
         charset="utf-8"></script>
-<script src="js/docsupport/init.js" type="text/javascript"
+<script src="{{ url_for('static', filename='js/docsupport/init.js') }}" type="text/javascript"
         charset="utf-8"></script>
-<script type="text/javascript" src="js/init.js"></script>
-
+<script src="{{ url_for('static', filename='js/init.js') }}" type="text/javascript"></script>
+<script type="text/javascript">
+    populateLabelsTable("{{ url_for('static', filename='data/labels_options.txt') }}");
+</script>
 </html>
