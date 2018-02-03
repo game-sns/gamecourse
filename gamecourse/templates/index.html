@@ -27,22 +27,20 @@
     <div class="row">
         <h1>Galaxy Machine Learning for Emission Lines</h1>
         <h4>Upload your files :</h4>
-        <div class="large-3 columns">
-            <form enctype="multipart/form-data">
+        <form action="" method=post enctype="multipart/form-data">
+            <div class="large-3 columns">
                 <label for="fileInputs" id="fileInputsLabel" class="button">Upload
                     input file
                     <br> (emission line intensities) </label>
                 <input type="file" id="fileInputs" class="show-for-sr">
-            </form>
-        </div>
-        <div class="large-3 columns end">
-            <form enctype="multipart/form-data">
+            </div>
+            <div class="large-3 columns end">
                 <label for="fileErrors" class="button" id="fileErrorsLabel">Upload
                     errors file
                     <br> (emission line uncertainties)</label>
                 <input type="file" id="fileErrors" class="show-for-sr">
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
     <div class="row">
         <div class="clearfix">
@@ -56,16 +54,14 @@
     </div>
     <div class="row">
         <h4>Check at least 1 of these physical properties :</h4>
-        <form>
             <ul>
                 <li>
-                    <form>
                         <label class="small_input_label" for="checkbox0">
                             <div class="small_input_style">
                                 <input class="checkbox" id="checkbox0"
                                        type="checkbox"> n / cm<sup>-3</sup>
                             </div>
-                        </label></form>
+                        </label>
                 </li>
                 <li>
                     <label class="small_input_label" for="checkbox1">
@@ -112,11 +108,9 @@
                     </label>
                 </li>
             </ul>
-        </form>
     </div>
     <div class="row">
         <h4>Do you want the optional files?</h4>
-        <form>
             <ul>
                 <li>
                     <label class="small_input_label" for="yes-optional">
@@ -135,19 +129,12 @@
                     </label>
                 </li>
             </ul>
-        </form>
     </div>
     <div class="row">
         <h4>Your email address:</h4>
-        <div class="medium-6 large-4 columns">
+        <div class="medium-6 large-4 columns" style="float: left;">
             <input id="email" type="email" placeholder="Valid email">
-        </div>
-
-        <div class="medium-6 large-4 columns">
-            <h4>Click to check if you are ready:</h4>
-            <button class="alert button expanded run" id="run">You are NOT
-                ready
-            </button>
+            <button class="alert button expanded run" id="run">You are NOT ready</button>
         </div>
     </div>
 </div>
