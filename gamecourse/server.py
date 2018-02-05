@@ -35,9 +35,9 @@ def print_post_request(req):
         Prints debug info about request
     """
 
-    print(str(request.data))
-    print("Found", len(req.files), "files:")
-    print(req.files)
+    print("data:", request.data)
+    print("files:", req.files)
+    print("form:", req.form)
 
 
 def upload_single_file(file_to_upload):

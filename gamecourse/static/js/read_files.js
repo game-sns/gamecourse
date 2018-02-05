@@ -199,18 +199,18 @@ function checkEverything() {
 }
 
 /**
- * Creates HTML visual output with debug info
+ * Package data in request
+ * @returns {Object} all data input by user
  */
-function printAll() {
+function getDataAsObj() {
+    var obj = new Object();
 
-	var obj = new Object();
-
-	//labels
+	// labels
 	for (var i = 0; i < globalLabels.length; i++) {
 		obj.LabelsArray = globalLabels;
 	}
 
-	//checkbox state
+	// checkbox state
 	var checks = [];
 	var array = new Array();
 	for (var i = 0; i < 7; i++) {
@@ -219,7 +219,7 @@ function printAll() {
 		obj.PhysicalProprieties = array;
 	}
 
-	//optional files
+	// optional files
 	var optionalFiles = document.getElementsByName('optional_files');
 	if (optionalFiles[0].checked) {
 		obj.OptionalFiles = optionalFiles[0].value;
@@ -227,26 +227,45 @@ function printAll() {
 		obj.OptionalFiles = optionalFiles[1].value;
 	}
 
-	//email
+	// email
 	var email = document.getElementById('email');
 	obj.Email = email.value;
 
-	var jsonString = JSON.stringify(obj);
+	return obj;
+}
 
-	console.log(jsonString);
-
-	var xhr = new XMLHttpRequest();
-	var url = "http://localhost:1729";
-	xhr.open("POST", url, true);
-	xhr.setRequestHeader("Content-type", "application/json");
+/**
+ * Creates a XMLHttpRequest to send data over
+ * @returns {XMLHttpRequest} request to send data
+ */
+function getXMLHttpRequest() {
+    var xhr = new XMLHttpRequest();
+	xhr.open("POST", "/", true);
 	xhr.onreadystatechange = function () {
 		if (xhr.readyState === 4 && xhr.status === 200) {
-			var json = JSON.parse(xhr.responseText);
-			console.log(json.email + ", " + json.password);
+			console.log("server responded: " + xhr.responseText)
 		}
 	};
-	
-	xhr.send(jsonString);
+    return xhr;
+}
+
+/**
+ * Form data with input files
+ * @returns FormData with input files
+ */
+function getFiles() {
+    var form = document.getElementById("filesForm");
+    var formData = new FormData(form);
+    return formData;
+}
+
+/**
+ * Creates HTML visual output with debug info
+ */
+function uploadAll() {
+	var files = getFiles();
+	files.append("meta-data", JSON.stringify(getDataAsObj()))
+    getXMLHttpRequest().send(files)
 }
 
 /**
@@ -274,9 +293,9 @@ function init(checkedIconUrl) {
 	setCheckEventListeners();
 
 	$("#run").click(function () {
-		checkEverything();
-		alertErrors();
-		printAll();
+		// checkEverything();
+		// alertErrors();
+		uploadAll();
 	});
 }
 
