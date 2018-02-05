@@ -40,6 +40,24 @@ def print_post_request(req):
     print(req.files)
 
 
+def upload_single_file(file_to_upload):
+    """
+    :param file_to_upload: file to upload in request
+        File request
+    :return: void
+        Redirects to index after uploading file
+    """
+
+    filename = file_to_upload.filename
+    if file_to_upload and can_upload(filename):
+        file_to_upload.save(
+            get_upload_path(filename, app.config["UPLOAD_FOLDER"])
+        )
+        return True
+
+    return False
+
+
 def upload_file(req):
     """
     :param req: flask request
@@ -49,16 +67,10 @@ def upload_file(req):
     """
 
     print_post_request(req)  # todo debug only
-    file_to_upload = req.files["file"]
-    filename = file_to_upload.filename
-    if file_to_upload and can_upload(filename):
-        file_to_upload.save(
-            get_upload_path(filename, app.config["UPLOAD_FOLDER"])
-        )
-
-        return redirect(url_for("index"))
-
-    return False
+    for file_up in req.files:
+        if not upload_single_file(file_up):
+            return False
+    return redirect(url_for("index"))
 
 
 @app.route("/", methods=["GET", "POST"])
