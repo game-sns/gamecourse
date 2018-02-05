@@ -118,7 +118,7 @@ class XMLHttpRequest:
             if not can_upload(file.filename):
                 return False
 
-        if len(self.meta_data) != 3:
+        if len(self.meta_data) != 4:
             return False
 
         if not validate_email(self.meta_data["Email"]):
