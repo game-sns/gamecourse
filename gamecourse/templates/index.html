@@ -27,7 +27,6 @@
     <div class="row">
         <h1>Galaxy Machine Learning for Emission Lines</h1>
         <h4>Upload your files :</h4>
-        <form action="" method=post enctype="multipart/form-data">
             <div class="large-3 columns">
                 <label for="fileInputs" id="fileInputsLabel" class="button">Upload
                     input file
@@ -42,8 +41,6 @@
                 <input type="file" id="fileErrors" name="fileErrors"
                        class="show-for-sr">
             </div>
-            <input type=submit value=Upload>
-        </form>
     </div>
     <div class="row">
         <div class="clearfix">
@@ -148,18 +145,22 @@
 
 <!-- files -->
 <script src="{{ url_for('static', filename='js/foundation.js') }}"></script>
-<script src="{{ url_for('static', filename='js/small_input_style.js') }}"></script>
+<script
+        src="{{ url_for('static', filename='js/small_input_style.js') }}"></script>
 <script src="{{ url_for('static', filename='js/read_files.js') }}"></script>
 
 <!-- multi select -->
-<script src="{{ url_for('static', filename='js/chosen.jquery.js') }}" type="text/javascript"></script>
-<script src="{{ url_for('static', filename='js/docsupport/prism.js') }}" type="text/javascript"
+<script src="{{ url_for('static', filename='js/chosen.jquery.js') }}"
+        type="text/javascript"></script>
+<script src="{{ url_for('static', filename='js/docsupport/prism.js') }}"
+        type="text/javascript"
         charset="utf-8"></script>
-<script src="{{ url_for('static', filename='js/docsupport/init.js') }}" type="text/javascript"
+<script src="{{ url_for('static', filename='js/docsupport/init.js') }}"
+        type="text/javascript"
         charset="utf-8"></script>
-<script src="{{ url_for('static', filename='js/init.js') }}"
-type="text/javascript"></script>
+<script src="{{ url_for('static', filename='js/init.js') }}" type="text/javascript"></script>
 <script type="text/javascript">
+    init("{{url_for('static', filename='img/checked.png') }}");
     populateLabelsTable("{{ url_for('static', filename='data/labels_options.txt') }}");
 </script>
 </html>

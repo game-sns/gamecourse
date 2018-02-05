@@ -4,7 +4,7 @@
  * @param text optional text to show
  */
 function markFileAsRead(labelId, text) {
-	document.getElementById(labelId).innerHTML = text + " <img src=\"img/checked.png\">";
+	document.getElementById(labelId).innerHTML = text + " <img src=\"" + checkedIcon + "\">";
 }
 
 /**
@@ -206,8 +206,8 @@ function printAll() {
 	var obj = new Object();
 
 	//labels
-	for (var i = 0; i < globalLalebs.length; i++) {
-		obj.LabelsArray = globalLalebs;
+	for (var i = 0; i < globalLabels.length; i++) {
+		obj.LabelsArray = globalLabels;
 	}
 
 	//checkbox state
@@ -259,7 +259,7 @@ function setCheckEventListeners() {
 
 	elements.forEach(function (element) {
 		document.getElementById(element).onchange = function(evt, params) {
-					globalLalebs.push(""+params.selected);
+					globalLabels.push(""+params.selected);
 		}; // add event listener on change event
 	});
 }
@@ -267,7 +267,8 @@ function setCheckEventListeners() {
 /**
  * Start program
  */
-function init() {
+function init(checkedIconUrl) {
+    checkedIcon = checkedIconUrl;
 	document.getElementById("fileInputs").addEventListener("change", setFileColumnsNumber_1, false);
 	document.getElementById("fileErrors").addEventListener("change", setFileColumnsNumber_2, false);
 	setCheckEventListeners();
@@ -285,7 +286,5 @@ var file1 = document.getElementById("fileInputs");
 var file2 = document.getElementById("fileErrors");
 var numFileUploaded1 = 0;
 var numFileUploaded2 = 0;
-var globalLalebs = new Array();
-
-// global functions
-init();
+var globalLabels = new Array();
+var checkedIcon = "";
