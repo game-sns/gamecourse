@@ -20,6 +20,10 @@
 
 import json
 
+from validate_email import validate_email
+
+from gamecourse.utils import can_upload
+
 
 class XMLHttpRequest:
     """ Parse XMLHttpRequest """
@@ -77,6 +81,30 @@ class XMLHttpRequest:
 
         self.meta_data = self.form["meta-data"] or None
         self.meta_data = json.loads(self.meta_data)
+
+    def is_good_request(self):
+        """
+        :return: bool
+            True iff request is written in valid format
+        """
+
+        if len(self.files) != 2:
+            return False
+
+        if not can_upload(self.files[0].filename) or \
+                not can_upload(self.files[0].filename):
+            return False
+
+        if len(self.meta_data) != 3:
+            return False
+
+        if not validate_email(self.meta_data["Email"]):
+            return False
+
+        if len(self.meta_data["PhysicalProprieties"]) != 7:
+            return False
+
+        return True
 
     def __str__(self):
         out = "*** files: " + str(self.files) + "\n"

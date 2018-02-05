@@ -44,7 +44,8 @@ setup(
     include_package_data=True,
     install_requires=[
         "werkzeug",
-        "flask"
+        "flask",
+        "validate_email"
     ],
     entry_points={
         "console_scripts": ["gamecourse = gamecourse.server:cli"]
