@@ -21,23 +21,11 @@
 from flask import Flask, request, redirect, url_for
 
 from gamecourse.config import APP_NAME, APP_HOST, APP_PORT, UPLOAD_FOLDER
+from gamecourse.models import XMLHttpRequest
 from gamecourse.pages import get_index
 from gamecourse.utils import can_upload, get_upload_path, prepare_folders
 
 app = Flask(APP_NAME)
-
-
-def print_post_request(req):
-    """
-    :param req: flask request
-        Server request
-    :return: void
-        Prints debug info about request
-    """
-
-    print("data:", request.data)
-    print("files:", req.files)
-    print("form:", req.form)
 
 
 def upload_single_file(file_to_upload):
@@ -66,7 +54,7 @@ def upload_file(req):
         Redirects to index after uploading file
     """
 
-    print_post_request(req)  # todo debug only
+    print(XMLHttpRequest(req))  # todo debug only
     for filename in req.files:
         if not upload_single_file(req.files[filename]):
             return False
