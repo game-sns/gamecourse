@@ -39,6 +39,7 @@ class XMLHttpRequest:
 
         self.data = req.data
         self.files = req.files
+        self.input_file, self.error_file = None, None
         self.form = req.form
         self.meta_data = None
         self.upload_folder = None
@@ -65,6 +66,11 @@ class XMLHttpRequest:
         files = {}
         for filename in self.files:
             files[filename] = self.files[filename]
+            if filename == "fileInputs":
+                self.input_file = files[filename]
+            elif filename == "fileErrors":
+                self.error_file = files[filename]
+
         self.files = files
 
     def _parse_form(self):
@@ -103,7 +109,12 @@ class XMLHttpRequest:
         """
 
         self.upload_folder = self.get_upload_folder()
-        os.makedirs(self.upload_folder)
+        self.meta_data["InputFile"] = os.path.join(
+            self.upload_folder, self.input_file.filename
+        )
+        self.meta_data["ErrorFile"] = os.path.join(
+            self.upload_folder, self.error_file.filename
+        )
 
     def is_good_request(self):
         """
@@ -118,7 +129,7 @@ class XMLHttpRequest:
             if not can_upload(file.filename):
                 return False
 
-        if len(self.meta_data) != 4:
+        if len(self.meta_data) != 6:
             return False
 
         if not validate_email(self.meta_data["Email"]):
@@ -135,6 +146,7 @@ class XMLHttpRequest:
             Saves meta data to file
         """
 
+        os.makedirs(self.upload_folder)
         output_file = os.path.join(self.upload_folder, "data.json")
         with open(output_file, "w") as out:
             json.dump(
