@@ -67,8 +67,8 @@ def upload_file(req):
     """
 
     print_post_request(req)  # todo debug only
-    for file_up in req.files:
-        if not upload_single_file(file_up):
+    for filename in req.files:
+        if not upload_single_file(req.files[filename]):
             return False
     return redirect(url_for("index"))
 
