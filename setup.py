@@ -40,7 +40,6 @@ setup(
     keywords="game flask server",
     url="https://github.com/sirfoga/gamecourse",
     packages=find_packages(exclude=["tests"]),
-    # todo package_data={"gamecourse": [".*", "*.json"]},
     include_package_data=True,
     install_requires=[
         "werkzeug",

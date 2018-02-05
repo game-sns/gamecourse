@@ -18,7 +18,7 @@
 
 """ Startup the server """
 
-from flask import Flask, request, redirect, url_for
+from flask import Flask, request
 
 from gamecourse.config import APP_NAME, APP_HOST, APP_PORT, UPLOAD_FOLDER
 from gamecourse.models import XMLHttpRequest
@@ -28,10 +28,12 @@ from gamecourse.utils import can_upload, get_upload_path, prepare_folders
 app = Flask(APP_NAME)
 
 
-def upload_single_file(file_to_upload):
+def upload_file(file_to_upload, folder=UPLOAD_FOLDER):
     """
     :param file_to_upload: file to upload in request
         File request
+    :param folder: str
+        Path to folder where to upload file
     :return: void
         Redirects to index after uploading file
     """
@@ -39,33 +41,37 @@ def upload_single_file(file_to_upload):
     filename = file_to_upload.filename
     if file_to_upload and can_upload(filename):
         file_to_upload.save(
-            get_upload_path(filename, app.config["UPLOAD_FOLDER"])
+            get_upload_path(filename, folder)
         )
         return True
 
     return False
 
 
-def upload_file(req):
+def handle_request(req):
     """
     :param req: flask request
         Server request
     :return: void
-        Redirects to index after uploading file
+        Parses request, if good format, then uploads data
     """
 
-    print(XMLHttpRequest(req))  # todo debug only
-    for filename in req.files:
-        if not upload_single_file(req.files[filename]):
-            return False
-    return redirect(url_for("index"))
+    xhr = XMLHttpRequest(req)
+    if xhr.is_good_request():
+        xhr.write_data_to_file()  # write meta-data
+        for _, file in xhr.files.items():
+            if not upload_file(file, folder=xhr.upload_folder):
+                return False
+
+        return True
+
+    return False
 
 
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
-        print(str(request.headers))
-        if upload_file(request):
+        if handle_request(request):
             return "file uploaded!"
 
         return "file NOT uploaded!"
