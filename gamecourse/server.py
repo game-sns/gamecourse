@@ -27,6 +27,19 @@ from gamecourse.utils import can_upload, get_upload_path, prepare_folders
 app = Flask(APP_NAME)
 
 
+def print_post_request(req):
+    """
+    :param req: flask request
+        Server request
+    :return: void
+        Prints debug info about request
+    """
+
+    print(str(request.data))
+    print("Found", len(req.files), "files:")
+    print(req.files)
+
+
 def upload_file(req):
     """
     :param req: flask request
@@ -35,6 +48,7 @@ def upload_file(req):
         Redirects to index after uploading file
     """
 
+    print_post_request(req)  # todo debug only
     file_to_upload = req.files["file"]
     filename = file_to_upload.filename
     if file_to_upload and can_upload(filename):
@@ -44,12 +58,17 @@ def upload_file(req):
 
         return redirect(url_for("index"))
 
+    return False
+
 
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
-        upload_file(request)
-        return "file uploaded!"
+        print(str(request.headers))
+        if upload_file(request):
+            return "file uploaded!"
+
+        return "file NOT uploaded!"
 
     return get_index()
 
