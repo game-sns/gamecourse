@@ -37,4 +37,4 @@ STATIC_FOLDER = os.path.join(
     ROOT_FOLDER,
     "static"
 )
-ALLOWED_EXTENSIONS = {"dat", "jpg"}  # todo allow only these extensions
+ALLOWED_EXTENSIONS = {"dat"}

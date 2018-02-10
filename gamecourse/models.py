@@ -106,12 +106,12 @@ class XMLHttpRequest:
         }
 
         self.meta_data["labels"] = [
-            label for label in self.meta_data["PhysicalProprieties"] if
-            label and label in LABELS
+            key for key, val in self.meta_data["PhysicalProprieties"].items()
+            if val and key in LABELS
         ]
         self.meta_data["additional labels"] = [
-            label for label in self.meta_data["PhysicalProprieties"] if
-            label and label in ADDITIONAL_LABELS
+            key for key, val in self.meta_data["PhysicalProprieties"].items()
+            if val and key in ADDITIONAL_LABELS
         ]
 
     def _create_upload_folder(self):
@@ -142,7 +142,7 @@ class XMLHttpRequest:
             if not can_upload(file.filename):
                 return False
 
-        if len(self.meta_data) != 6:
+        if len(self.meta_data) != 9:
             return False
 
         if not validate_email(self.meta_data["Email"]):
