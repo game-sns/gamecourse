@@ -121,6 +121,7 @@ class XMLHttpRequest:
         """
 
         self.upload_folder = self.get_upload_folder()
+        self.meta_data["UploadFolder"] = self.upload_folder
         self.meta_data["InputFile"] = os.path.join(
             self.upload_folder, self.input_file.filename
         )
