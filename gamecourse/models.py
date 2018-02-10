@@ -27,6 +27,9 @@ from validate_email import validate_email
 from gamecourse.config import UPLOAD_FOLDER
 from gamecourse.utils import can_upload
 
+LABELS = ["g0", "n", "NH", "U", "Z"]
+ADDITIONAL_LABELS = ["AV", "fesc"]
+
 
 class XMLHttpRequest:
     """ Parse XMLHttpRequest """
@@ -91,16 +94,25 @@ class XMLHttpRequest:
         """
 
         self.meta_data = self.form["meta-data"] or None
-        self.meta_data = json.loads(self.meta_data)
+        self.meta_data = json.loads(self.meta_data) or {}
         self.meta_data["PhysicalProprieties"] = {
             "n": self.meta_data["PhysicalProprieties"][0],
-            "nh": self.meta_data["PhysicalProprieties"][1],
-            "g": self.meta_data["PhysicalProprieties"][2],
-            "u": self.meta_data["PhysicalProprieties"][3],
-            "z": self.meta_data["PhysicalProprieties"][4],
-            "f": self.meta_data["PhysicalProprieties"][5],
-            "a": self.meta_data["PhysicalProprieties"][6],
+            "NH": self.meta_data["PhysicalProprieties"][1],
+            "g0": self.meta_data["PhysicalProprieties"][2],
+            "U": self.meta_data["PhysicalProprieties"][3],
+            "Z": self.meta_data["PhysicalProprieties"][4],
+            "fesc": self.meta_data["PhysicalProprieties"][5],
+            "AV": self.meta_data["PhysicalProprieties"][6],
         }
+
+        self.meta_data["labels"] = [
+            label for label in self.meta_data["PhysicalProprieties"] if
+            label and label in LABELS
+        ]
+        self.meta_data["additional labels"] = [
+            label for label in self.meta_data["PhysicalProprieties"] if
+            label and label in ADDITIONAL_LABELS
+        ]
 
     def _create_upload_folder(self):
         """
