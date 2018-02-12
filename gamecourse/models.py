@@ -128,6 +128,9 @@ class XMLHttpRequest:
         self.meta_data["ErrorFile"] = os.path.join(
             self.upload_folder, self.error_file.filename
         )
+        self.meta_data["LabelsFile"] = os.path.join(
+            self.upload_folder, "labels.dat"
+        )
         os.makedirs(self.upload_folder)
 
     def is_good_request(self):
