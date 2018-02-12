@@ -59,6 +59,7 @@ def handle_request(req):
     xhr = XMLHttpRequest(req)
     if xhr.is_good_request():
         xhr.write_data_to_file()  # write meta-data
+        xhr.write_labels_to_file()
         for _, file in xhr.files.items():
             if not upload_file(file, folder=xhr.upload_folder):
                 return False

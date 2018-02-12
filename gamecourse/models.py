@@ -128,6 +128,7 @@ class XMLHttpRequest:
         self.meta_data["ErrorFile"] = os.path.join(
             self.upload_folder, self.error_file.filename
         )
+        os.makedirs(self.upload_folder)
 
     def is_good_request(self):
         """
@@ -159,7 +160,6 @@ class XMLHttpRequest:
             Saves meta data to file
         """
 
-        os.makedirs(self.upload_folder)
         output_file = os.path.join(self.upload_folder, "data.json")
         with open(output_file, "w") as out:
             json.dump(
@@ -167,6 +167,17 @@ class XMLHttpRequest:
                 out,
                 indent=4, sort_keys=True  # pretty print
             )
+
+    def write_labels_to_file(self):
+        """
+        :return: void
+            Saves labels data to file
+        """
+
+        output_file = os.path.join(self.upload_folder, "labels.dat")
+        labels = "\n".join(self.meta_data)
+        with open(output_file, "w") as out:
+            out.write(labels)
 
     @staticmethod
     def get_upload_folder():
