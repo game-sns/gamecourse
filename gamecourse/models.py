@@ -146,7 +146,7 @@ class XMLHttpRequest:
             if not can_upload(file.filename):
                 return False
 
-        if len(self.meta_data) != 9:
+        if len(self.meta_data) != 10:
             return False
 
         if not validate_email(self.meta_data["Email"]):
@@ -178,7 +178,7 @@ class XMLHttpRequest:
         """
 
         output_file = os.path.join(self.upload_folder, "labels.dat")
-        labels = "\n".join(self.meta_data)
+        labels = "\n".join(self.meta_data["LabelsArray"])
         with open(output_file, "w") as out:
             out.write(labels)
 
