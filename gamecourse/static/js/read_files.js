@@ -242,12 +242,22 @@ function getDataAsObj() {
 	return obj;
 }
 
+function showResponse(){
+	document.getElementById("server-response").style.display = "block";
+	document.getElementById("cover-body").style.display = "block";
+	document.getElementById("frost1").scrollIntoView();
+}
+
 function displayGoodDialog(){
 	console.log("Il server ha risposto ME GUSTA");
+	//inject text
+	showResponse();
 }
 
 function displayBadDialog(){
 	console.log("Il server ha risposto NON ME GUSTA");
+	//inject text
+	showResponse();
 }
 
 /**
@@ -260,10 +270,11 @@ function getXMLHttpRequest() {
 	xhr.onreadystatechange = function () {
 		if (xhr.readyState === 4 && xhr.status === 200) {
 			//console.log("server responded: " + xhr.responseText);
-			if(xhr.status !== 200)
-				displayBadDialog();
-			else
+			if(xhr.responseText === "200"){
 				displayGoodDialog();
+			} else {
+				displayBadDialog();
+			}
 		}
 	};
 	return xhr;
@@ -327,3 +338,11 @@ var numFileUploaded1 = 0;
 var numFileUploaded2 = 0;
 var globalLabels = new Array();
 var checkedIcon = "";
+
+
+function hideServerResponse(){
+	document.getElementById("server-response").style.display = "none";
+	document.getElementById("cover-body").style.display = "none";
+}
+
+document.body.addEventListener('click', function() { hideServerResponse() }, true);
