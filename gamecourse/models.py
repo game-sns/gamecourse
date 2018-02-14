@@ -178,9 +178,13 @@ class XMLHttpRequest:
         """
 
         output_file = os.path.join(self.upload_folder, "labels.dat")
-        labels = "\n".join(self.meta_data["LabelsArray"])
+        labels = self.meta_data["LabelsArray"]
+        for i, label in enumerate(labels):
+            if "\"" in label:
+                labels[i] = label.split("\"")[1]
+
         with open(output_file, "w") as out:
-            out.write(labels)
+            out.write("\n".join(labels))
 
     @staticmethod
     def get_upload_folder():
