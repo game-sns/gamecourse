@@ -57,12 +57,12 @@ function sameNumberColumns(col1, col2) {
  * Performs various checks on files before running GAME
  */
 function checks() {
-	return (checkSelectedLabels() &&
+	return !missingUpload(file1, file2) &&
+			!sameUpload(file1, file2) &&
+			sameNumberColumns(columns_1, columns_2) &&
+			checkSelectedLabels() &&
 			checkEmail() &&
-			checkPhysicalProp() &&
-			missingUpload(file1, file2) === false) &&
-		(sameUpload(file1, file2) === false) &&
-		(sameNumberColumns(columns_1, columns_2));
+			checkPhysicalProp();
 }
 
 /**
@@ -71,13 +71,10 @@ function checks() {
 function alertErrors() {
 	if (missingUpload(file1, file2)) {
 		alert("There is an error with uploaded files: Missing a file");
-		return false;
 	} else if (sameUpload(file1, file2)) {
 		alert("There is an error with uploaded files: Same files uploaded");
-		return false;
-	} else if (sameNumberColumns(columns_1, columns_2) === false) {
+	} else if (!sameNumberColumns(columns_1, columns_2)) {
 		alert("There is an error with uploaded files: Different number of columns");
-		return false;
 	} else if (!checkSelectedLabels()) {
 		var missingLabels = columns_1 - $("#labels_selector").find(":selected").length;
 		if (isNaN(missingLabels)) {
@@ -85,19 +82,14 @@ function alertErrors() {
 		}
 		if (missingLabels < 0) {
 			alert("Too many labels! Please, remove exactly " + (-missingLabels) + " labels");
-			return false;
 		} else {
 			alert("Too few labels! Please, add exactly " + missingLabels + " more labels");
-			return false;
 		}
 	} else if (!checkPhysicalProp()) {
 		alert("You need to select at least 1 physical proprety");
-		return false;
 	} else if (!checkEmail()) {
 		alert("Invalid email! Please fix the email address.");
-		return false;
 	}
-	return true;
 }
 
 /**
@@ -181,7 +173,6 @@ function markRunButtonReady(labelId) {
 	e.innerHTML = 'You are ready';
 	e.classList.remove('alert');
 	e.classList.add('success');
-
 }
 
 /**
@@ -250,13 +241,13 @@ function showResponse(){
 
 function displayGoodDialog(){
 	console.log("Il server ha risposto ME GUSTA");
-	//inject text
+	//inject text TODO
 	showResponse();
 }
 
 function displayBadDialog(){
 	console.log("Il server ha risposto NON ME GUSTA");
-	//inject text
+	//inject text TODO
 	showResponse();
 }
 
@@ -325,8 +316,10 @@ function init(checkedIconUrl) {
 
 	$("#run").click(function () {
 		checkEverything();
-		if(alertErrors())
+		alertErrors();
+		if(checks()){
 			uploadAll();
+		}
 	});
 }
 
@@ -345,4 +338,7 @@ function hideServerResponse(){
 	document.getElementById("cover-body").style.display = "none";
 }
 
-document.body.addEventListener('click', function() { hideServerResponse() }, true);
+document.body.addEventListener('click', function() { hideServerResponse(); }, true);
+
+document.addEventListener('click', function() { checkEverything(); }, true);
+
