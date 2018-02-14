@@ -83,7 +83,7 @@ function alertErrors() {
 		if (missingLabels < 0) {
 			alert("Too many labels! Please, remove exactly " + (-missingLabels) + " labels");
 		} else {
-			alert("Too few labels! Please, add exactly " + missingLabels + " labels");
+			alert("Too few labels! Please, add exactly " + missingLabels + " more labels");
 		}
 	} else if (!checkPhysicalProp()) {
 		alert("You need to select at least 1 physical proprety")
@@ -293,8 +293,8 @@ function init(checkedIconUrl) {
 	setCheckEventListeners();
 
 	$("#run").click(function () {
-		// checkEverything();
-		// alertErrors();
+		checkEverything();
+		alertErrors();
 		uploadAll();
 	});
 }

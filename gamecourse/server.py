@@ -58,12 +58,11 @@ def handle_request(req):
 
     xhr = XMLHttpRequest(req)
     if xhr.is_good_request():
-        xhr.write_data_to_file()  # write meta-data
-        xhr.write_labels_to_file()
         for _, file in xhr.files.items():
             if not upload_file(file, folder=xhr.upload_folder):
                 return False
-
+        xhr.write_data_to_file()  # write meta-data
+        xhr.write_labels_to_file()
         return True
 
     return False
@@ -72,12 +71,14 @@ def handle_request(req):
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
-        if handle_request(request):
-            return "file uploaded!"
+        try:
+            if handle_request(request):
+                return 200
+            return -1
+        except Exception as e:
+            print("Cannot handle request due to", e)
 
-        return "file NOT uploaded!"
-
-    return get_index()
+    return get_index()  # GET request
 
 
 def cli():
