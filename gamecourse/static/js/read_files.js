@@ -71,10 +71,13 @@ function checks() {
 function alertErrors() {
 	if (missingUpload(file1, file2)) {
 		alert("There is an error with uploaded files: Missing a file");
+		return false;
 	} else if (sameUpload(file1, file2)) {
 		alert("There is an error with uploaded files: Same files uploaded");
+		return false;
 	} else if (sameNumberColumns(columns_1, columns_2) === false) {
 		alert("There is an error with uploaded files: Different number of columns");
+		return false;
 	} else if (!checkSelectedLabels()) {
 		var missingLabels = columns_1 - $("#labels_selector").find(":selected").length;
 		if (isNaN(missingLabels)) {
@@ -82,14 +85,19 @@ function alertErrors() {
 		}
 		if (missingLabels < 0) {
 			alert("Too many labels! Please, remove exactly " + (-missingLabels) + " labels");
+			return false;
 		} else {
 			alert("Too few labels! Please, add exactly " + missingLabels + " more labels");
+			return false;
 		}
 	} else if (!checkPhysicalProp()) {
-		alert("You need to select at least 1 physical proprety")
+		alert("You need to select at least 1 physical proprety");
+		return false;
 	} else if (!checkEmail()) {
-		alert("Invalid email! Please fix the email address.")
+		alert("Invalid email! Please fix the email address.");
+		return false;
 	}
+	return true;
 }
 
 /**
@@ -203,7 +211,7 @@ function checkEverything() {
  * @returns {Object} all data input by user
  */
 function getDataAsObj() {
-    var obj = new Object();
+	var obj = new Object();
 
 	// labels
 	for (var i = 0; i < globalLabels.length; i++) {
@@ -234,19 +242,31 @@ function getDataAsObj() {
 	return obj;
 }
 
+function displayGoodDialog(){
+	console.log("Il server ha risposto ME GUSTA");
+}
+
+function displayBadDialog(){
+	console.log("Il server ha risposto NON ME GUSTA");
+}
+
 /**
  * Creates a XMLHttpRequest to send data over
  * @returns {XMLHttpRequest} request to send data
  */
 function getXMLHttpRequest() {
-    var xhr = new XMLHttpRequest();
+	var xhr = new XMLHttpRequest();
 	xhr.open("POST", "/", true);
 	xhr.onreadystatechange = function () {
 		if (xhr.readyState === 4 && xhr.status === 200) {
-			console.log("server responded: " + xhr.responseText)
+			//console.log("server responded: " + xhr.responseText);
+			if(xhr.status !== 200)
+				displayBadDialog();
+			else
+				displayGoodDialog();
 		}
 	};
-    return xhr;
+	return xhr;
 }
 
 /**
@@ -254,9 +274,9 @@ function getXMLHttpRequest() {
  * @returns FormData with input files
  */
 function getFiles() {
-    var form = document.getElementById("filesForm");
-    var formData = new FormData(form);
-    return formData;
+	var form = document.getElementById("filesForm");
+	var formData = new FormData(form);
+	return formData;
 }
 
 /**
@@ -265,7 +285,7 @@ function getFiles() {
 function uploadAll() {
 	var files = getFiles();
 	files.append("meta-data", JSON.stringify(getDataAsObj()))
-    getXMLHttpRequest().send(files)
+	getXMLHttpRequest().send(files)
 }
 
 /**
@@ -273,8 +293,8 @@ function uploadAll() {
  */
 function setCheckEventListeners() {
 	var elements = [
-        "labels_selector"
-    ]; // ids of elements to set
+		"labels_selector"
+	]; // ids of elements to set
 
 	elements.forEach(function (element) {
 		document.getElementById(element).onchange = function(evt, params) {
@@ -287,15 +307,15 @@ function setCheckEventListeners() {
  * Start program
  */
 function init(checkedIconUrl) {
-    checkedIcon = checkedIconUrl;
+	checkedIcon = checkedIconUrl;
 	document.getElementById("fileInputs").addEventListener("change", setFileColumnsNumber_1, false);
 	document.getElementById("fileErrors").addEventListener("change", setFileColumnsNumber_2, false);
 	setCheckEventListeners();
 
 	$("#run").click(function () {
 		checkEverything();
-		alertErrors();
-		uploadAll();
+		if(alertErrors())
+			uploadAll();
 	});
 }
 
