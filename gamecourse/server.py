@@ -73,8 +73,8 @@ def index():
     if request.method == "POST":
         try:
             if handle_request(request):
-                return 200
-            return -1
+                return "200"
+            return "-1"
         except Exception as e:
             print("Cannot handle request due to", e)
 
