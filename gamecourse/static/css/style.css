@@ -13,14 +13,8 @@ body {
 	background-size: cover;
 	color: #fff;
 	font-size: 1.7em;
-	font-family: Quicksand;
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+body * {
 	font-family: Quicksand;
 }
 h1 {
@@ -39,26 +33,25 @@ h1 {
 .button {
 	border-radius: 2px;
 }
-ul {
+#frost2 ul {
 	margin: 0;
 	list-style: none;
 }
-li {
+#frost2 li {
 	display: inline-block;
 	border-radius: 2px;
 	background-color: rgba(255, 255, 255, 0.4);
 }
-li:hover {
+#frost2 li:hover {
 	background-color: rgba(100, 100, 100, 0.4);
 }
-li:active {
+#frost2 li:active {
 	background-color: rgba(255, 255, 255, 0.8);
 }
 .blueBackground {
 	background-color: rgba(33, 153, 232, 0.80);
 }
-li label {
-	padding: 5px;
+#frost2 li label {
 	min-width: 100px;
 	color: #fff;
 	cursor: pointer;
@@ -110,7 +103,7 @@ li label {
 	width: 50%;
 	height: 80%;
 	border-radius: 2px;
-	background-color: rgba(33, 153, 232);
+	background-color: rgb(33, 153, 232);
 }
 #response-foot {
 	position: absolute;

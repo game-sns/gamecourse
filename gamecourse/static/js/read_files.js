@@ -236,7 +236,7 @@ function getDataAsObj() {
 function showResponse(){
 	document.getElementById("server-response").style.display = "block";
 	document.getElementById("cover-body").style.display = "block";
-	document.getElementById("frost1").scrollIntoView();
+	document.getElementById("frost0").scrollIntoView();
 }
 
 function displayGoodDialog(){
