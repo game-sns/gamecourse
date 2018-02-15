@@ -16,8 +16,9 @@
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
 	<!-- icon -->
 	<link rel="icon" type="image/png" href="{{ url_for('static', filename='img/logo.png') }}">
-	<!-- Google APIs for ReCaptcha -->
+	<!-- google recaptcha-->
 	<script src="https://www.google.com/recaptcha/api.js"></script>
+
 </head>
 
 <body class="noselect">
@@ -163,6 +164,7 @@
 			<h4>Click to send data:</h4>
 			<div class="medium-6 large-4 columns" style="float: left;">
 				<button class="alert button expanded run" id="run">You are NOT ready</button>
+				<div id="captcha_container"></div>
 			</div>
 		</div>
 

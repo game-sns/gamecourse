@@ -318,7 +318,17 @@ function init(checkedIconUrl) {
 		checkEverything();
 		alertErrors();
 		if(checks()){
-			uploadAll();
+			var captchaContainer = null;
+			var loadCaptcha = function() {
+				captchaContainer = grecaptcha.render('captcha_container', {
+					'sitekey' : '6LeW4zgUAAAAABhlLXIC9dNc6oMvBocVMm-rauNM',
+					'callback' : function(response) {
+						//console.log(response);
+						uploadAll();
+					}
+				});
+			};
+			loadCaptcha();
 		}
 	});
 }
