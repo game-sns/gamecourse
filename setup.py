@@ -23,7 +23,7 @@ DESCRIPTION = \
 
 setup(
     name="gamecourse",
-    version="0.1",
+    version="1.0",
     description=LITTLE_DESCRIPTION,
     long_description=DESCRIPTION,
     license="Apache License, Version 2.0",

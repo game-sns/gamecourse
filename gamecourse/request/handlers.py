@@ -29,7 +29,7 @@ def handle_request(req):
         except Exception as e:
             print("Cannot handle request due to", e)
 
-    return get_request(req)
+    return get_index()
 
 
 def post_request(req):

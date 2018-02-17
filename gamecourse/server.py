@@ -19,10 +19,12 @@ app = Flask(APP_NAME)
 
 @app.route("/", methods=["GET", "POST"])
 def index():
-    handle_request(request)
+    return handle_request(request)
 
 
 if __name__ == "__main__":
+    app.debug = True
+
     prepare_folders()
     app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
     app.run(host=APP_HOST, port=APP_PORT, debug=True)
