@@ -10,7 +10,7 @@
 
 from setuptools import setup, find_packages
 
-LITTLE_DESCRIPTION = "Run a server to accept GAME models input"
+LITTLE_DESCRIPTION = "Run a server to accept GAME request input"
 
 DESCRIPTION = \
     "gamecourse\n\n" + LITTLE_DESCRIPTION + "\n\

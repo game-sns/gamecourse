@@ -73,3 +73,23 @@ def read_file(filename):
 
     with open(filename, "r") as inp:
         return inp.read()
+
+
+def upload_file(file_to_upload, folder=UPLOAD_FOLDER):
+    """
+    :param file_to_upload: file to upload in request
+        File request
+    :param folder: str
+        Path to folder where to upload file
+    :return: void
+        Redirects to index after uploading file
+    """
+
+    filename = file_to_upload.filename
+    if file_to_upload and can_upload(filename):
+        file_to_upload.save(
+            get_upload_path(filename, folder)
+        )
+        return True
+
+    return False

@@ -15,7 +15,7 @@ import uuid
 from validate_email import validate_email
 
 from gamecourse.config import UPLOAD_FOLDER
-from gamecourse.utils import can_upload
+from gamecourse.utils import can_upload, upload_file
 
 LABELS = ["g0", "n", "NH", "U", "Z"]
 ADDITIONAL_LABELS = ["AV", "fesc"]
@@ -175,6 +175,15 @@ class XMLHttpRequest:
 
         with open(output_file, "w") as out:
             out.write("\n".join(labels))
+
+    def upload(self):
+        if self.is_good_request():
+            for _, file in self.files.items():
+                if not upload_file(file, folder=self.upload_folder):
+                    return False
+            self.write_data_to_file()  # write meta-data
+            self.write_labels_to_file()
+        return True
 
     @staticmethod
     def get_upload_folder():
