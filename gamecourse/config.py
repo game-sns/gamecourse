@@ -11,7 +11,7 @@
 import os
 
 APP_NAME = "gamecourse"
-APP_HOST = "0.0.0.0"  # todo in cli
+APP_HOST = "127.0.0.1"
 APP_PORT = 1729
 THIS_FOLDER = os.path.dirname(os.path.realpath(__file__))
 ROOT_FOLDER = os.path.dirname(THIS_FOLDER)
@@ -26,5 +26,9 @@ TEMPLATES_FOLDER = os.path.join(
 STATIC_FOLDER = os.path.join(
     ROOT_FOLDER,
     "static"
+)
+DATA_FOLDER = os.path.join(
+    ROOT_FOLDER,
+    "data"
 )
 ALLOWED_EXTENSIONS = {"dat"}
