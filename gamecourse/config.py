@@ -32,5 +32,13 @@ DATA_FOLDER = os.path.join(
     "data"
 )
 ALLOWED_EXTENSIONS = {"dat"}
-MAX_POST_REQUEST_PER_HOUR = 60  # one each minute
-MAX_GET_REQUEST_PER_HOUR = 60 * 4  # one each 15 seconds
+MAX_REQUESTS_PER_HOUR = {
+    "get": {
+        "ip": 60 * 4,  # one each 15 seconds
+        "email": 60 * 4
+    },
+    "post": {
+        "ip": 12,  # one each 5 minutes
+        "email": 6  # one each 10 minutes
+    }
+}

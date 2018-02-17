@@ -10,17 +10,28 @@
 
 from flask import Flask, request, abort
 
-from gamecourse.config import APP_NAME, APP_HOST, APP_PORT, UPLOAD_FOLDER
+from gamecourse.config import APP_NAME, APP_HOST, APP_PORT, UPLOAD_FOLDER, \
+    MAX_REQUESTS_PER_HOUR
+from gamecourse.models.tables import ControlTable
 from gamecourse.request.handlers import handle_request
 from gamecourse.utils import prepare_folders
 
 app = Flask(APP_NAME)
+ip_table = ControlTable(
+    MAX_REQUESTS_PER_HOUR["get"]["ip"],
+    MAX_REQUESTS_PER_HOUR["post"]["ip"]
+)  # table to control requests by IP
+email_table = ControlTable(
+    MAX_REQUESTS_PER_HOUR["get"]["email"],
+    MAX_REQUESTS_PER_HOUR["post"]["email"]
+)  # table to control requests by email
 
 
 @app.before_request
 def limit_remote_addr():
-    if request.remote_addr != '10.20.30.40':
-        abort(403)  # forbidden
+    if not (ip_table.handle_request(request) and email_table.handle_request(
+            request)):
+        abort(429)  # too many request in given time
 
 
 @app.route("/", methods=["GET", "POST"])
