@@ -1,3 +1,13 @@
+# !/usr/bin/python3
+# coding: utf-8
+
+# Copyright YYYY AUTHORS
+#
+# YOUR COPYRIGHT HERE (IF YOU WANT IT)
+
+
+""" Handle server requests """
+
 from gamecourse.pages import get_index
 
 from gamecourse.request.core import XMLHttpRequest

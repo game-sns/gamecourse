@@ -15,7 +15,6 @@ from gamecourse.request.handlers import handle_request
 from gamecourse.utils import prepare_folders
 
 app = Flask(APP_NAME)
-app.debug = True
 
 
 @app.route("/", methods=["GET", "POST"])
@@ -24,6 +23,8 @@ def index():
 
 
 if __name__ == "__main__":
+    app.debug = True
+
     prepare_folders()
     app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
     app.run(host=APP_HOST, port=APP_PORT, debug=True)
