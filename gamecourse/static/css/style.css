@@ -33,25 +33,25 @@ h1 {
 .button {
 	border-radius: 2px;
 }
-#frost2 ul {
+.tool ul {
 	margin: 0;
 	list-style: none;
 }
-#frost2 li {
+.tool li {
 	display: inline-block;
 	border-radius: 2px;
 	background-color: rgba(255, 255, 255, 0.4);
 }
-#frost2 li:hover {
+.tool li:hover {
 	background-color: rgba(100, 100, 100, 0.4);
 }
-#frost2 li:active {
+.tool li:active {
 	background-color: rgba(255, 255, 255, 0.8);
 }
 .blueBackground {
 	background-color: rgba(33, 153, 232, 0.80);
 }
-#frost2 li label {
+.tool li label {
 	min-width: 100px;
 	color: #fff;
 	cursor: pointer;
