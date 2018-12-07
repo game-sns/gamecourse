@@ -1,19 +1,5 @@
 # !/usr/bin/python3
-# coding: utf_8
-
-# Copyright 2017-2018 Stefano Fogarollo
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-# http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
+# coding: utf-8
 
 
 """ Tools """
@@ -83,3 +69,34 @@ def read_file(filename):
 
     with open(filename, "r") as inp:
         return inp.read()
+
+
+def upload_file(file_to_upload, folder=UPLOAD_FOLDER):
+    """
+    :param file_to_upload: file to upload in request
+        File request
+    :param folder: str
+        Path to folder where to upload file
+    :return: void
+        Redirects to index after uploading file
+    """
+
+    filename = file_to_upload.filename
+    if file_to_upload and can_upload(filename):
+        file_to_upload.save(
+            get_upload_path(filename, folder)
+        )
+        return True
+
+    return False
+
+
+def get_actual_class_name(class_name):
+    """
+    :param class_name: str
+        Class name of object
+    :return: str
+        Actual class name (without all path)
+    """
+
+    return str(type(class_name)).split("'")[-2].split(".")[-1]

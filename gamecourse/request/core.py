@@ -1,19 +1,5 @@
 # !/usr/bin/python3
-# coding: utf_8
-
-# Copyright 2017-2018 Stefano Fogarollo
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-# http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
+# coding: utf-8
 
 
 """ Models and data structure """
@@ -25,7 +11,7 @@ import uuid
 from validate_email import validate_email
 
 from gamecourse.config import UPLOAD_FOLDER
-from gamecourse.utils import can_upload
+from gamecourse.utils import can_upload, upload_file
 
 LABELS = ["g0", "n", "NH", "U", "Z"]
 ADDITIONAL_LABELS = ["AV", "fesc"]
@@ -185,6 +171,15 @@ class XMLHttpRequest:
 
         with open(output_file, "w") as out:
             out.write("\n".join(labels))
+
+    def upload(self):
+        if self.is_good_request():
+            for _, file in self.files.items():
+                if not upload_file(file, folder=self.upload_folder):
+                    return False
+            self.write_data_to_file()  # write meta-data
+            self.write_labels_to_file()
+        return True
 
     @staticmethod
     def get_upload_folder():
