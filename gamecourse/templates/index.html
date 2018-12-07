@@ -16,8 +16,9 @@
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
 	<!-- icon -->
 	<link rel="icon" type="image/png" href="{{ url_for('static', filename='img/logo.png') }}">
-	<!-- Google APIs for ReCaptcha -->
+	<!-- google recaptcha-->
 	<script src="https://www.google.com/recaptcha/api.js"></script>
+
 </head>
 
 <body class="noselect">
@@ -46,19 +47,22 @@
 
 	<div class="frost_pannel tool" id="frost2">
 		<div class="row">
-			<h1>Try it out with your data</h1>
 			<h4>Upload your files :</h4>
 			<form action="" method=post enctype="multipart/form-data" id="filesForm">
 				<div class="large-3 columns">
-					<label for="fileInputs" id="fileInputsLabel" class="button">Upload
-					input file
-					<br> (emission line intensities) </label>
+					<label for="fileInputs" id="fileInputsLabel" class="button">
+						Upload input files
+						<br>
+						(emission line intensities)
+					</label>
 					<input type="file" id="fileInputs" name="fileInputs" class="show-for-sr">
 				</div>
 				<div class="large-3 columns end">
-					<label for="fileErrors" class="button" id="fileErrorsLabel">Upload
-					errors file
-					<br> (emission line uncertainties)</label>
+					<label for="fileErrors" class="button" id="fileErrorsLabel">
+						Upload errors file
+						<br>
+						(emission line uncertainties)
+					</label>
 					<input type="file" id="fileErrors" name="fileErrors" class="show-for-sr">
 				</div>
 			</form>
@@ -150,15 +154,10 @@
 			</ul>
 		</div>
 		<div class="row">
-			<h4>Your email address:</h4>
-			<div class="medium-6 large-4 columns" style="float: left;">
-				<input id="email" type="email" placeholder="Valid email" required>
-			</div>
-		</div>
-		<div class="row">
 			<h4>Click to send data:</h4>
 			<div class="medium-6 large-4 columns" style="float: left;">
 				<button class="alert button expanded run" id="run">You are NOT ready</button>
+				<div id="captcha_container"></div>
 			</div>
 		</div>
 
