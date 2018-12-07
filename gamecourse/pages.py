@@ -1,11 +1,6 @@
 # !/usr/bin/python3
 # coding: utf-8
 
-# Copyright YYYY AUTHORS
-#
-# YOUR COPYRIGHT HERE (IF YOU WANT IT)
-
-
 """ Fetches web pages """
 
 from flask import render_template
