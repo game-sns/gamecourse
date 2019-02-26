@@ -22,7 +22,7 @@ Install [flask](flask.pocoo.org)
 
 
 ## Changelog
-See [CHANGELOG](https://github.com/sirfoga/gamecourse/blob/master/CHANGELOG.md)
+See [CHANGELOG](https://github.com/game-sns/gamecourse/blob/master/CHANGELOG.md)
 
 
 ## License
