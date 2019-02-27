@@ -10,10 +10,11 @@ APP_HOST = "127.0.0.1"
 APP_PORT = 1729
 THIS_FOLDER = os.path.dirname(os.path.realpath(__file__))
 ROOT_FOLDER = os.path.dirname(THIS_FOLDER)
-UPLOAD_FOLDER = "/opt/game/gamecourse/uploads/"
+UPLOAD_FOLDER = os.path.join(os.getenv('HOME'), '_tmp', 'uploads/')
 TEMPLATES_FOLDER = os.path.join(
     ROOT_FOLDER,
     "templates"
+)
 STATIC_FOLDER = os.path.join(
     ROOT_FOLDER,
     "static"
