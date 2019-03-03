@@ -321,7 +321,7 @@ function init(checkedIconUrl) {
 			var captchaContainer = null;
 			var loadCaptcha = function() {
 				captchaContainer = grecaptcha.render('captcha_container', {
-					'sitekey' : '6LeW4zgUAAAAABhlLXIC9dNc6oMvBocVMm-rauNM',
+					'sitekey' : '6LdRLZUUAAAAANgqnksR7BUTb20l4vn_hcaGC5m5',
 					'callback' : function(response) {
 						//console.log(response);
 						uploadAll();
