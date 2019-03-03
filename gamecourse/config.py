@@ -6,11 +6,11 @@
 import os
 
 APP_NAME = "gamecourse"
-APP_HOST = "127.0.0.1"
-APP_PORT = 1729
+APP_HOST = "eos.sns.it"
+APP_PORT = 8001
 THIS_FOLDER = os.path.dirname(os.path.realpath(__file__))
 ROOT_FOLDER = os.path.dirname(THIS_FOLDER)
-UPLOAD_FOLDER = os.path.join(os.getenv('HOME'), '_tmp', 'uploads/')
+UPLOAD_FOLDER = os.path.join('/opt/game/gamecourse/uploads/')
 TEMPLATES_FOLDER = os.path.join(
     ROOT_FOLDER,
     "templates"
