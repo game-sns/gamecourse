@@ -11,7 +11,7 @@ body {
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
-	color: rgb(212, 212, 212);
+	color: #c7ebe8;
 	font-size: 1.8em;
 }
 body * {
@@ -34,7 +34,7 @@ b {
 	padding: 1.2em;
 	min-height: 700px;
 	border-radius: 2px;
-	background-color: rgba(0, 0, 0, 0.9);
+	background-color: rgb(29, 36, 42, 0.95);
 }
 .button {
 	border-radius: 2px;
