@@ -23,26 +23,34 @@
 
 <body class="noselect">
 	<div class="frost_pannel" id="frost0">
-		<h1>Galaxy Machine Learning for Emission Lines</h1>
-		<h2>What is GAME?</h2>
+		<h1><b>Ga</b>laxy <b>M</b>achine Learning for <b>E</b>mission Lines</h1>
 		<p>
-			<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit repudiandae, ea similique! Sit labore soluta dicta minima numquam quos voluptatem et earum, temporibus, quam, eum ut dolorum est perspiciatis excepturi.</span>
-			<span>Beatae amet, molestias ipsam velit voluptate minima quo reiciendis vitae voluptatem, provident cupiditate id dolore deserunt saepe fuga eaque similique. Officia repellat eligendi reprehenderit, voluptas dolorum dolore ab repudiandae debitis.</span>
-			<span>Accusantium qui voluptate animi quasi obcaecati error minima repudiandae laborum deleniti ut, voluptatem voluptates. Quis veniam obcaecati, aut cupiditate facilis non libero incidunt facere, placeat eveniet qui earum ullam nisi.</span>
-			<span>Repellat voluptates dolor corporis, ad, placeat sunt, dolore eligendi, autem eveniet aperiam nobis sit iure asperiores perspiciatis magnam odit eaque maiores. Sunt explicabo nemo molestiae recusandae officiis, odio necessitatibus deserunt.</span>
-			<span>Beatae iure voluptatum modi consequatur quia error accusantium distinctio sunt, illo qui. Autem possimus, quisquam ea tempore quasi pariatur doloribus, esse perferendis architecto eos, tempora veritatis, soluta fugit quam cumque?</span>
+			<span>GAME is a Machine Learning code that infers the ISM physical properties by analyzing the emission-line intensities in a galaxy spectrum (for the complete description see <a href="http://adsabs.harvard.edu/abs/2017MNRAS.465.1144U">Ucci et al. 2017</a> and <a href="http://adsabs.harvard.edu/abs/2018MNRAS.477.1484U">Ucci et al. 2018</a>). The code is based on a Supervised Machine Learning algorithm, and it is trained with a library of 100,000 synthetic spectra spanning many different ISM phases, including HII (ionized) regions, PDRs, and neutral regions.
+		</p>
+		<p>
+			Given a set of input lines in a spectrum, GAME performs a training on the library, then evaluates the line intensities to give a determination of the physical properties. The errors on the input emission-line intensities and the uncertainties on the physical properties determinations are also taken into account (Ucci et al, 2018).
+		</p>
+		<p>
+			The physical properties that GAME is able to infer are: gas density (n), column density (N<sub>H</sub>), far-ultraviolet (FUV, 6–13.6 eV) flux (G), ionization parameter (U), metallicity (Z), escape fraction (f<sub>esc</sub>), visual extinction (A<sub>V</sub>).
+		</p>
+		<p>
+			For full details, and tutorial, we recommend the <a href="#linkPDF">README</a>.</br>
+			We would appreciate the inclusion of the following acknowledgement where appropriate:</br>
+			"This work made use of GAME code as described in <a href="http://adsabs.harvard.edu/abs/2017MNRAS.465.1144U">Ucci et al. (2017)</a> and <a href="http://adsabs.harvard.edu/abs/2018MNRAS.477.1484U">Ucci et al. (2018)</a>.
 		</p>
 	</div>
-	<div class="frost_pannel" id="frost1">
-		<h1>How to use our site</h1>
-			<ol>
-				<li>You must use two '.dat' files and upload them with the corresponding upload button.</li>
-				<li>You must select the correct "emission lines" in the exact same order that they are on your files.</li>
-				<li>Select at least 1 physical propriety.</li>
-				<li>If u need ("SOMETHING") then select YES for the optional files.</li>
-				<li>Please check your email or else you won't be able to receive your results</li>
-			</ol>
-	</div>
+	<!-- SOSTITUIRE CON PDF ?
+		<div class="frost_pannel" id="frost1">
+			<h1>How to use our site</h1>
+				<ol>
+					<li>You must use two '.dat' files and upload them with the corresponding upload button.</li>
+					<li>You must select the correct "emission lines" in the exact same order that they are on your files.</li>
+					<li>Select at least 1 physical propriety.</li>
+					<li>If u need ("SOMETHING") then select YES for the optional files.</li>
+					<li>Please check your email or else you won't be able to receive your results</li>
+				</ol>
+		</div>
+	-->
 
 	<div class="frost_pannel tool" id="frost2">
 		<div class="row">

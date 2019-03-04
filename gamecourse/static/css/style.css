@@ -11,14 +11,20 @@ body {
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
-	color: #fff;
-	font-size: 1.7em;
+	color: rgb(212, 212, 212);
+	font-size: 1.8em;
 }
 body * {
 	font-family: Quicksand;
 }
 h1 {
 	margin-bottom: 1em;
+}
+p {
+	font-size: 0.8em;
+}
+b {
+	font-size: 1.2em;
 }
 .row {
 	margin-bottom: 1em;
@@ -28,7 +34,7 @@ h1 {
 	padding: 1.2em;
 	min-height: 700px;
 	border-radius: 2px;
-	background-color: rgba(0, 0, 0, 0.8);
+	background-color: rgba(0, 0, 0, 0.9);
 }
 .button {
 	border-radius: 2px;
