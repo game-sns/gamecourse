@@ -239,15 +239,8 @@ function showResponse(){
 	document.getElementById("frost0").scrollIntoView();
 }
 
-function displayGoodDialog(){
-	console.log("Il server ha risposto ME GUSTA");
-	//inject text TODO
-	showResponse();
-}
-
-function displayBadDialog(){
-	console.log("Il server ha risposto NON ME GUSTA");
-	//inject text TODO
+function injectTextResponse(text){
+	document.getElementById("text-response").innerHTML = text;
 	showResponse();
 }
 
@@ -260,10 +253,47 @@ function getXMLHttpRequest() {
 	xhr.open("POST", "/", true);
 	xhr.onreadystatechange = function () {
 		if (xhr.readyState === 4 && xhr.status === 200) {
-			//console.log("server responded: " + xhr.responseText);
+			console.log("server responded: " + xhr.responseText);
 			if(xhr.responseText === "200"){
-				displayGoodDialog();
-			} else {
+				console.log("Il server ha risposto 200");
+				injectTextResponse("Tutto ok");
+			}
+			/* 210-219 errori con files
+			if(xhr.responseText === "2XX"){
+				CODE
+			}
+			*/
+			/* 220-229 problemi con server (carico...cores...memoria)
+			if(xhr.responseText === "2XX"){
+				CODE
+			}
+			*/
+			/* 230-239 list of emission lines??
+			if(xhr.responseText === "2XX"){
+				CODE
+			}
+			*/
+			/* 240-249 physical proprieties
+			if(xhr.responseText === "2XX"){
+				CODE
+			}
+			*/
+			/* 250-259 errori con optional files
+			if(xhr.responseText === "2XX"){
+				CODE
+			}
+			*/
+			/* 260-269 errori con email
+			if(xhr.responseText === "2XX"){
+				CODE
+			}
+			*/
+			/* 270-299 altri errori
+			if(xhr.responseText === "2XX"){
+				CODE
+			}
+			*/
+			else {
 				displayBadDialog();
 			}
 		}
