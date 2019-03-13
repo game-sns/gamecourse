@@ -230,6 +230,13 @@ function getDataAsObj() {
 	var email = document.getElementById('email');
 	obj.Email = email.value;
 
+	//time
+	let date = new Date();  
+	let options = {  
+		year: "numeric", month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit", second: "2-digit" 
+	};
+	obj.time = date.toLocaleTimeString("sv-SE", options);
+
 	return obj;
 }
 
@@ -313,8 +320,9 @@ function getFiles() {
  */
 function uploadAll() {
 	var files = getFiles();
-	files.append("meta-data", JSON.stringify(getDataAsObj()))
-	getXMLHttpRequest().send(files)
+	files.append("meta-data", JSON.stringify(getDataAsObj()));
+	console.log(JSON.stringify(getDataAsObj()));
+	getXMLHttpRequest().send(files);
 }
 
 /**
@@ -350,7 +358,6 @@ function init(checkedIconUrl) {
 				captchaContainer = grecaptcha.render('captcha_container', {
 					'sitekey' : '6LdRLZUUAAAAANgqnksR7BUTb20l4vn_hcaGC5m5',
 					'callback' : function(response) {
-						//console.log(response);
 						uploadAll();
 					}
 				});
