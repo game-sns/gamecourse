@@ -95,10 +95,6 @@ class XMLHttpRequest:
             key for key, val in self.meta_data["PhysicalProprieties"].items()
             if val and key in LABELS
         ]
-        self.meta_data["additional labels"] = [
-            key for key, val in self.meta_data["PhysicalProprieties"].items()
-            if val and key in ADDITIONAL_LABELS
-        ]
 
     def _create_upload_folder(self):
         """
@@ -107,7 +103,9 @@ class XMLHttpRequest:
         """
 
         self.upload_folder = self.get_upload_folder()
-        self.meta_data["UploadFolder"] = self.upload_folder
+        self.meta_data["OutputFolder"] = os.path.join(
+            self.upload_folder, 'output'
+        )
         self.meta_data["InputFile"] = os.path.join(
             self.upload_folder, self.input_file.filename
         )
