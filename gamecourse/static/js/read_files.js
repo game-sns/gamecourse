@@ -256,7 +256,7 @@ function getXMLHttpRequest() {
 			console.log("server responded: " + xhr.responseText);
 			if(xhr.responseText === "200"){
 				console.log("Il server ha risposto 200");
-				injectTextResponse("Tutto ok");
+				injectTextResponse("Every thing is fine");
 			}
 			/* 210-219 errori con files
 			if(xhr.responseText === "2XX"){
@@ -293,9 +293,6 @@ function getXMLHttpRequest() {
 				CODE
 			}
 			*/
-			else {
-				displayBadDialog();
-			}
 		}
 	};
 	return xhr;
