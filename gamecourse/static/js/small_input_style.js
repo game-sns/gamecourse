@@ -30,3 +30,9 @@ $(document).ready(function () {
 		$(this).parent().removeClass("blueBackground");
 	});
 });
+
+document.getElementById("frost0").addEventListener("click", scompari);
+
+function scompari() {
+	document.getElementById("frost0").classList.toggle("mostra");
+}

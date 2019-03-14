@@ -32,7 +32,6 @@ b {
 .frost_pannel {
 	margin: 1em;
 	padding: 1.2em;
-	min-height: 700px;
 	border-radius: 2px;
 	background-color: rgb(29, 36, 42, 0.95);
 }
@@ -120,4 +119,33 @@ b {
 	margin-right: 1em;
 	cursor: pointer;
 	font-size: 1.5em;
+}
+
+.frost0 {
+	cursor: pointer;
+	max-height: 5em;
+	overflow: hidden;
+	-webkit-transition: max-height .5s ease;
+  	transition: max-height .5s ease;
+}
+
+.frost0:hover {
+	background-color: rgba(17, 19, 20, 0.95);
+}
+
+.mostra {
+	-webkit-transition: max-height 2s ease;
+	transition: max-height 2s ease;
+	max-height: 7000px;
+	overflow: auto;
+}
+
+.mostra:hover {
+	background-color: rgb(29, 36, 42, 0.95);
+}
+
+.title_pannel img {
+	float: left;
+	width: 3em;
+	margin-right: 1em;
 }
