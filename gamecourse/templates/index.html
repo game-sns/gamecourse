@@ -23,20 +23,31 @@
 
 <body class="noselect">
 	<div class="frost_pannel frost0" id="frost0">
-		<div class="title_pannel"><img src="{{ url_for('static', filename='img/logo_big.png') }}" alt=""><h1><b>GA</b>laxy <b>M</b>achine learning for <b>E</b>mission lines</h1></div>
+		<div class="title_pannel"><img src="{{ url_for('static', filename='img/logo_big.png') }}" alt="">
+			<h1><b>GA</b>laxy <b>M</b>achine learning for <b>E</b>mission lines</h1>
+		</div>
 		<p>
-			<span>GAME is a Machine Learning code that infers the ISM physical properties by analyzing the emission-line intensities in a galaxy spectrum (for the complete description see <a href="http://adsabs.harvard.edu/abs/2017MNRAS.465.1144U">Ucci et al. 2017</a> and <a href="http://adsabs.harvard.edu/abs/2018MNRAS.477.1484U">Ucci et al. 2018</a>). The code is based on a Supervised Machine Learning algorithm, and it is trained with a library of 100,000 synthetic spectra spanning many different ISM phases, including HII (ionized) regions, PDRs, and neutral regions.
+			<span>GAME is a Machine Learning code that infers the ISM physical properties by analyzing the emission-line
+				intensities in a galaxy spectrum (for the complete description see <a href="http://adsabs.harvard.edu/abs/2017MNRAS.465.1144U">Ucci
+					et al. 2017</a> and <a href="http://adsabs.harvard.edu/abs/2018MNRAS.477.1484U">Ucci et al. 2018</a>). The code is
+				based on a Supervised Machine Learning algorithm, and it is trained with a library of 100,000 synthetic spectra
+				spanning many different ISM phases, including HII (ionized) regions, PDRs, and neutral regions.
 		</p>
 		<p>
-			Given a set of input lines in a spectrum, GAME performs a training on the library, then evaluates the line intensities to give a determination of the physical properties. The errors on the input emission-line intensities and the uncertainties on the physical properties determinations are also taken into account (Ucci et al, 2018).
+			Given a set of input lines in a spectrum, GAME performs a training on the library, then evaluates the line
+			intensities to give a determination of the physical properties. The errors on the input emission-line intensities
+			and the uncertainties on the physical properties determinations are also taken into account (Ucci et al, 2018).
 		</p>
 		<p>
-			The physical properties that GAME is able to infer are: gas density (n), column density (N<sub>H</sub>), far-ultraviolet (FUV, 6–13.6 eV) flux (G), ionization parameter (U), metallicity (Z), escape fraction (f<sub>esc</sub>), visual extinction (A<sub>V</sub>).
+			The physical properties that GAME is able to infer are: gas density (n), column density (N<sub>H</sub>),
+			far-ultraviolet (FUV, 6–13.6 eV) flux (G), ionization parameter (U), metallicity (Z), escape fraction (f<sub>esc</sub>),
+			visual extinction (A<sub>V</sub>).
 		</p>
 		<p>
 			For full details, and tutorial, we recommend the <a href="#linkPDF">README</a>.</br>
 			We would appreciate the inclusion of the following acknowledgement where appropriate:</br>
-			"This work made use of GAME code as described in <a href="http://adsabs.harvard.edu/abs/2017MNRAS.465.1144U">Ucci et al. (2017)</a> and <a href="http://adsabs.harvard.edu/abs/2018MNRAS.477.1484U">Ucci et al. (2018)</a>.
+			"This work made use of GAME code as described in <a href="http://adsabs.harvard.edu/abs/2017MNRAS.465.1144U">Ucci et
+				al. (2017)</a> and <a href="http://adsabs.harvard.edu/abs/2018MNRAS.477.1484U">Ucci et al. (2018)</a>.
 		</p>
 	</div>
 	<!-- SOSTITUIRE CON PDF ?
@@ -78,7 +89,8 @@
 			<div class="clearfix">
 				<h4>List of emission lines corresponding in the input files :</h4>
 				<div class="large-6">
-					<select data-placeholder="Select labels of input file" multiple class="chosen-select" tabindex="-1" id="labels_selector"> </select>
+					<select data-placeholder="Select labels of input file" multiple class="chosen-select" tabindex="-1" id="labels_selector">
+					</select>
 				</div>
 			</div>
 		</div>
@@ -87,54 +99,47 @@
 			<ul>
 				<li>
 					<label class="small_input_label" for="checkbox0">
-							<div class="small_input_style">
-								<input class="checkbox" id="checkbox0"
-									   type="checkbox"> n / cm<sup>-3</sup>
-							</div>
-						</label>
+						<div class="small_input_style">
+							<input class="checkbox" id="checkbox0" type="checkbox"> n / cm<sup>-3</sup>
+						</div>
+					</label>
 				</li>
 				<li>
 					<label class="small_input_label" for="checkbox1">
 						<div class="small_input_style">
-							<input class="checkbox" id="checkbox1"
-								   type="checkbox"> N <sub>H</sub> /
+							<input class="checkbox" id="checkbox1" type="checkbox"> N <sub>H</sub> /
 							cm<sup>-2</sup></div>
 					</label>
 				</li>
 				<li>
 					<label class="small_input_label" for="checkbox2">
 						<div class="small_input_style">
-							<input class="checkbox" id="checkbox2"
-								   type="checkbox"> G / G <sub>0</sub></div>
+							<input class="checkbox" id="checkbox2" type="checkbox"> G / G <sub>0</sub></div>
 					</label>
 				</li>
 				<li>
 					<label class="small_input_label" for="checkbox3">
 						<div class="small_input_style">
-							<input class="checkbox" id="checkbox3"
-								   type="checkbox"> U
+							<input class="checkbox" id="checkbox3" type="checkbox"> U
 						</div>
 					</label>
 				</li>
 				<li>
 					<label class="small_input_label" for="checkbox4">
 						<div class="small_input_style">
-							<input class="checkbox" id="checkbox4"
-								   type="checkbox"> Z / Z <sub>0</sub></div>
+							<input class="checkbox" id="checkbox4" type="checkbox"> Z / Z <sub>0</sub></div>
 					</label>
 				</li>
 				<li>
 					<label class="small_input_label" for="checkbox5">
 						<div class="small_input_style">
-							<input class="checkbox" id="checkbox5"
-								   type="checkbox"> F<sub>esc</sub></div>
+							<input class="checkbox" id="checkbox5" type="checkbox"> F<sub>esc</sub></div>
 					</label>
 				</li>
 				<li>
 					<label class="small_input_label" for="checkbox6">
 						<div class="small_input_style">
-							<input class="checkbox" id="checkbox6"
-								   type="checkbox"> A<sub>V</sub></div>
+							<input class="checkbox" id="checkbox6" type="checkbox"> A<sub>V</sub></div>
 					</label>
 				</li>
 			</ul>
@@ -145,16 +150,14 @@
 				<li>
 					<label class="small_input_label" for="yes-optional">
 						<div class="small_input_style">
-							<input type="radio" name="optional_files"
-								   value="True" id="yes-optional"> YES
+							<input type="radio" name="optional_files" value="True" id="yes-optional"> YES
 						</div>
 					</label>
 				</li>
 				<li>
 					<label class="small_input_label" for="no-optional">
 						<div class="small_input_style blueBackground">
-							<input type="radio" name="optional_files"
-								   value="False" id="no-optional" checked> NO
+							<input type="radio" name="optional_files" value="False" id="no-optional" checked> NO
 						</div>
 					</label>
 				</li>
@@ -197,7 +200,7 @@
 			Server response:
 		</div>
 		<div id="text-response">
-			
+
 		</div>
 	</div>
 
