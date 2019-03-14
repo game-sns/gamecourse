@@ -14,65 +14,82 @@ body {
 	color: #c7ebe8;
 	font-size: 1.8em;
 }
+
 body * {
 	font-family: Quicksand;
 }
+
 h1 {
 	margin-bottom: 1em;
 }
+
 p {
 	font-size: 0.8em;
 }
+
 b {
 	font-size: 1.2em;
 }
+
 .row {
 	margin-bottom: 1em;
 }
+
 .frost_pannel {
 	margin: 1em;
 	padding: 1.2em;
 	border-radius: 2px;
 	background-color: rgb(29, 36, 42, 0.95);
 }
+
 .button {
 	border-radius: 2px;
 }
+
 .tool ul {
 	margin: 0;
 	list-style: none;
 }
+
 .tool li {
 	display: inline-block;
 	border-radius: 2px;
 	background-color: rgba(255, 255, 255, 0.4);
 }
+
 .tool li:hover {
 	background-color: rgba(100, 100, 100, 0.4);
 }
+
 .tool li:active {
 	background-color: rgba(255, 255, 255, 0.8);
 }
+
 .blueBackground {
 	background-color: rgba(33, 153, 232, 0.80);
 }
+
 .tool li label {
 	min-width: 100px;
 	color: #fff;
 	cursor: pointer;
 }
+
 .small_input_style {
 	padding: 5px;
 	border-radius: 2px;
 }
+
 .small_input_label {
 	margin: 0;
 	padding: 0;
 }
+
 .checkbox {
 	width: 15px;
 	height: 15px;
 }
+
 .noselect {
 	-webkit-user-select: none;
 	-khtml-user-select: none;
@@ -80,16 +97,20 @@ b {
 	-ms-user-select: none;
 	user-select: none;
 }
+
 #fileInputsLabel,
 #fileErrorsLabel {
 	display: inherit;
 }
+
 .chosen-choices {
 	border-radius: 2px;
 }
+
 #email {
 	border-radius: 2px;
 }
+
 #cover-body {
 	position: fixed;
 	top: 0px;
@@ -100,6 +121,7 @@ b {
 	background-color: rgba(0, 0, 0, 0.9);
 	cursor: pointer;
 }
+
 #server-response {
 	position: absolute;
 	top: 10%;
@@ -111,6 +133,7 @@ b {
 	border-radius: 2px;
 	background-color: rgb(29, 36, 42, 0.95);
 }
+
 #response-head {
 	position: absolute;
 	top: 0;
@@ -126,7 +149,7 @@ b {
 	max-height: 5em;
 	overflow: hidden;
 	-webkit-transition: max-height .5s ease;
-  	transition: max-height .5s ease;
+	transition: max-height .5s ease;
 }
 
 .frost0:hover {
@@ -148,4 +171,14 @@ b {
 	float: left;
 	width: 3em;
 	margin-right: 1em;
+}
+
+footer {
+	font-size: .5em;
+	text-align: right;
+	margin-right: .5em;
+}
+
+footer a {
+	text-decoration: underline;
 }
