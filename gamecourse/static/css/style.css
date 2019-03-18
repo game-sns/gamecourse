@@ -186,7 +186,15 @@ footer a {
 	text-decoration: underline;
 }
 
+.codice{
+	max-width: 100%;
+}
+
 pre {
 	font-family: monospace;
-	font-size: .6em;
+	font-size: .5em;
+	border: 0;
+	padding: 0;
+	line-height: 1.7;
+
 }
