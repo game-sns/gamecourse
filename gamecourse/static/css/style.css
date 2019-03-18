@@ -166,7 +166,7 @@ b {
 }
 
 .mostra:hover {
-	background-color: rgb(29, 36, 42, 0.95);
+	background-color: rgb(29, 36, 42, 0.80);
 }
 
 .title_pannel img {
@@ -191,10 +191,19 @@ footer a {
 }
 
 pre {
-	font-family: monospace;
 	font-size: .5em;
 	border: 0;
-	padding: 0;
-	line-height: 1.7;
+	padding: .5em;
+	line-height: 1.1;
+	background-color: #eeeeee;
+	border-radius: 2px;
+}
 
+code {
+	background-color: transparent;
+	border: none;
+}
+
+code span {
+	color: #555555;
 }
