@@ -31,7 +31,7 @@ $(document).ready(function () {
 	});
 });
 
-document.getElementById("frost0").addEventListener("click", scompari);
+document.getElementById("title0").addEventListener("click", scompari);
 
 function scompari() {
 	document.getElementById("frost0").classList.toggle("mostra");

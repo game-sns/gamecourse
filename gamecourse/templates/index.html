@@ -21,22 +21,23 @@
 
 </head>
 
-<body class="noselect">
+<body>
 	<div class="frost_pannel frost0" id="frost0">
-		<div class="title_pannel"><img src="{{ url_for('static', filename='img/logo_big.png') }}" alt="">
+		<div class="title_pannel" id="title0"><img src="{{ url_for('static', filename='img/logo_big.png') }}" alt="">
 			<h1><b>GA</b>laxy <b>M</b>achine learning for <b>E</b>mission lines</h1>
 		</div>
 		<p>
 			<span>GAME is a Machine Learning code that infers the ISM physical properties by analyzing the emission-line
 				intensities in a galaxy spectrum (for the complete description see <a href="http://adsabs.harvard.edu/abs/2017MNRAS.465.1144U">Ucci
 					et al. 2017</a> and <a href="http://adsabs.harvard.edu/abs/2018MNRAS.477.1484U">Ucci et al. 2018</a>). The code is
-				based on a Supervised Machine Learning algorithm, and it is trained with a library of 100,000 synthetic spectra
+				based on a Supervised Machine Learning algorithm, and it is trained with a large library of synthetica spectra
 				spanning many different ISM phases, including HII (ionized) regions, PDRs, and neutral regions.
 		</p>
 		<p>
 			Given a set of input lines in a spectrum, GAME performs a training on the library, then evaluates the line
 			intensities to give a determination of the physical properties. The errors on the input emission-line intensities
-			and the uncertainties on the physical properties determinations are also taken into account (Ucci et al, 2018).
+			and the uncertainties on the physical properties determinations are also taken into account (<a href="http://adsabs.harvard.edu/abs/2018MNRAS.477.1484U">Ucci
+				et al. 2018</a>).
 		</p>
 		<p>
 			The physical properties that GAME is able to infer are: gas density (n), column density (N<sub>H</sub>),
@@ -44,26 +45,49 @@
 			visual extinction (A<sub>V</sub>).
 		</p>
 		<p>
-			For full details, and tutorial, we recommend the <a href="#linkPDF">README</a>.</br>
-			We would appreciate the inclusion of the following acknowledgement where appropriate:</br>
-			"This work made use of GAME code as described in <a href="http://adsabs.harvard.edu/abs/2017MNRAS.465.1144U">Ucci et
-				al. (2017)</a> and <a href="http://adsabs.harvard.edu/abs/2018MNRAS.477.1484U">Ucci et al. (2018)</a>.
-		</p>
-	</div>
-	<!-- SOSTITUIRE CON PDF ?
-		<div class="frost_pannel" id="frost1">
-			<h1>How to use our site</h1>
-				<ol>
-					<li>You must use two '.dat' files and upload them with the corresponding upload button.</li>
-					<li>You must select the correct "emission lines" in the exact same order that they are on your files.</li>
-					<li>Select at least 1 physical propriety.</li>
-					<li>If u need ("SOMETHING") then select YES for the optional files.</li>
-					<li>Please check your email or else you won't be able to receive your results</li>
-				</ol>
-		</div>
-	-->
+			For full details, and tutorial, we recommend the <a href="{{ url_for('static', filename='data/readme_GAME.pdf') }}"
+			 target="_blank">README</a>.</br>
+			We would appreciate that if you use game in preparing a scientific publication, you cite it using the following
+			BibTex:</br>
+			
+<pre><code><span>@ARTICLE{Ucci2017,
+	author = <span>{</span>{Ucci}, G. and {Ferrara}, A. and {Gallerani}, S. and {Pallottini}, A.},
+	title = "{Inferring physical properties of galaxies from their emission-line spectra}",
+	journal = {\mnras},
+	archivePrefix = "arXiv",
+	eprint = {1611.00768},
+	keywords = {methods: data analysis, ISM: general, ISM: H II regions, ISM: lines and bands, galaxies: ISM},
+	year = 2017,
+	month = feb,
+	volume = 465,
+	pages = {1144-1156},
+	doi = {10.1093/mnras/stw2836},
+	adsurl = {http://adsabs.harvard.edu/abs/2017MNRAS.465.1144U},
+	adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+	}</span></code>
+</pre>
+</br>
+<pre><code><span>@ARTICLE{Ucci2018,
+	author = <span>{</span>{Ucci}, G. and {Ferrara}, A. and {Pallottini}, A. and {Gallerani}, S.},
+	title = "{GAME: GAlaxy Machine learning for Emission lines}",
+	journal = {\mnras},
+	archivePrefix = "arXiv",
+	eprint = {1803.10236},
+	keywords = {methods: data analysis, galaxies: ISM, ISM: general},
+	year = 2018,
+	month = jun,
+	volume = 477,
+	pages = {1484-1494},
+	doi = {10.1093/mnras/sty804},
+	adsurl = {http://adsabs.harvard.edu/abs/2018MNRAS.477.1484U},
+	adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+	}</span></code></pre>
 
-	<div class="frost_pannel tool" id="frost2">
+		</p>
+
+	</div>
+
+	<div class="frost_pannel tool noselect" id="frost2">
 		<div class="row">
 			<h4>Upload your files :</h4>
 			<form action="" method=post enctype="multipart/form-data" id="filesForm">
@@ -205,7 +229,7 @@
 	</div>
 
 	<footer>
-		&copy; <a href="https://www.sns.it/">sns.it</a> All Rights Reserved
+		&copy; <a href="#">Graziano Ucci</a> All Rights Reserved
 	</footer>
 
 </body>

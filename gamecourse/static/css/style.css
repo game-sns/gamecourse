@@ -5,7 +5,7 @@ body {
 	right: 0;
 	bottom: 0;
 	left: 0;
-	background: url(../img/galaxy.jpeg) no-repeat fixed;
+	background: url(../img/ngc2237_1024.jpg) no-repeat fixed;
 	background-position: bottom center;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
@@ -39,7 +39,7 @@ b {
 	margin: 1em;
 	padding: 1.2em;
 	border-radius: 2px;
-	background-color: rgb(29, 36, 42, 0.95);
+	background-color: rgb(29, 36, 42, 0.8);
 }
 
 .button {
@@ -145,7 +145,6 @@ b {
 }
 
 .frost0 {
-	cursor: pointer;
 	max-height: 5em;
 	overflow: hidden;
 	-webkit-transition: max-height .5s ease;
@@ -156,10 +155,13 @@ b {
 	background-color: rgba(17, 19, 20, 0.95);
 }
 
+#title0 {
+	cursor: pointer;
+}
 .mostra {
 	-webkit-transition: max-height 2s ease;
 	transition: max-height 2s ease;
-	max-height: 7000px;
+	max-height: 700000px;
 	overflow: auto;
 }
 
@@ -177,8 +179,14 @@ footer {
 	font-size: .5em;
 	text-align: right;
 	margin-right: .5em;
+	margin-bottom: .5em;
 }
 
 footer a {
 	text-decoration: underline;
+}
+
+pre {
+	font-family: monospace;
+	font-size: .6em;
 }
