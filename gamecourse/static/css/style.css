@@ -191,12 +191,13 @@ footer a {
 }
 
 pre {
-	font-size: .5em;
+	font-size: .4em;
 	border: 0;
 	padding: .5em;
 	line-height: 1.1;
 	background-color: #eeeeee;
 	border-radius: 2px;
+	overflow: hidden;
 }
 
 code {
@@ -206,4 +207,5 @@ code {
 
 code span {
 	color: #555555;
+	font-family: 'Consolas', 'Menlo', 'Deja Vu Sans Mono', 'Bitstream Vera Sans Mono', monospace;
 }
