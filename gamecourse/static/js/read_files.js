@@ -62,7 +62,9 @@ function checks() {
 			sameNumberColumns(columns_1, columns_2) &&
 			checkSelectedLabels() &&
 			checkEmail() &&
-			checkPhysicalProp();
+			checkPhysicalProp() &&
+			checkNotEmpty("name_surname") &&
+			checkNotEmpty("institution");
 }
 
 /**
@@ -89,7 +91,11 @@ function alertErrors() {
 		alert("You need to select at least 1 physical proprety");
 	} else if (!checkEmail()) {
 		alert("Invalid email! Please fix the email address.");
-	}
+	} else if (!checkNotEmpty("name_surname")) {
+		alert("Please enter your name");
+	} else if (!checkNotEmpty("institution")) {
+		alert("Please enter your institution");
+	} 
 }
 
 /**
@@ -165,6 +171,17 @@ function checkEmail() {
 }
 
 /**
+ * Checks for not empty
+ * @returns {boolean} True iff input is not empty
+ */
+function checkNotEmpty(inputTextId) {
+	var data = document.getElementById(inputTextId).value;
+	if(data != null && data != '') {
+		return true;
+	}
+}
+
+/**
  * Makes button green (shows user that program is ready)
  * @param labelId id of button to change
  */
@@ -236,6 +253,14 @@ function getDataAsObj() {
 		year: "numeric", month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit", second: "2-digit" 
 	};
 	obj.time = date.toLocaleTimeString("sv-SE", options);
+
+	//name & surname
+	var name_surname = document.getElementById('name_surname');
+	obj.name_surname = name_surname.value;
+
+	//institution
+	var institution = document.getElementById('institution');
+	obj.institution = institution.value;
 
 	return obj;
 }

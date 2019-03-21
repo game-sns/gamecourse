@@ -209,3 +209,15 @@ code span {
 	color: #555555;
 	font-family: 'Consolas', 'Menlo', 'Deja Vu Sans Mono', 'Bitstream Vera Sans Mono', monospace;
 }
+
+.text_input div{
+	padding-left: 0;
+}
+
+.row div {
+	padding-bottom: 5px;
+}
+
+#send_data {
+	float: right;
+}
