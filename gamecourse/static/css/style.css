@@ -221,3 +221,13 @@ code span {
 #send_data {
 	float: right;
 }
+
+#info {
+	float: right;
+	font-size: 35px;
+	color: #fff;
+}
+
+#info:hover {
+	color: #2199e8;
+}
