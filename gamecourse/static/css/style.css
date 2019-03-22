@@ -15,6 +15,11 @@ body {
 	font-size: 1.8em;
 }
 
+@font-face {
+	font-family: "Quicksand";
+	src:url(../fonts/Quicksand-Regular.ttf?family=Quicksand);
+}
+
 body * {
 	font-family: Quicksand;
 }
@@ -236,4 +241,12 @@ code span {
 
 #info:hover {
 	color: #2199e8;
+}
+
+#titolocredits {
+	color: #c7ebe8;
+}
+
+#lista_credits {
+	
 }
