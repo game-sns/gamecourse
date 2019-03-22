@@ -177,12 +177,18 @@ b {
 
 footer {
 	font-size: .5em;
-	text-align: right;
-	margin-right: .5em;
-	margin-bottom: .5em;
+	margin: 0 0.5em 0.5em 0.5em;
 }
 
-footer a {
+#devs {
+	text-decoration: none;
+}
+
+#rights {
+	float: right;
+}
+
+#rights a{
 	text-decoration: underline;
 }
 
