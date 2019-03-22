@@ -17,7 +17,7 @@ body {
 
 @font-face {
 	font-family: "Quicksand";
-	src:url(../fonts/Quicksand-Regular.ttf?family=Quicksand);
+	src:url(../fonts/Quicksand-Regular.ttf);
 }
 
 body * {
@@ -245,8 +245,4 @@ code span {
 
 #titolocredits {
 	color: #c7ebe8;
-}
-
-#lista_credits {
-	
 }
