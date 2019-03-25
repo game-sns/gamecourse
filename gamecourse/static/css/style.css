@@ -193,10 +193,6 @@ footer {
 	float: right;
 }
 
-#rights a{
-	text-decoration: underline;
-}
-
 .codice{
 	max-width: 100%;
 }
@@ -245,4 +241,21 @@ code span {
 
 #titolocredits {
 	color: #c7ebe8;
+}
+
+#credits_h2 {
+	text-align: center;
+}
+
+.link_under {
+	color: #c7ebe8;
+	text-decoration: underline;
+}
+
+.column-wrapper ul {
+    list-style-type:none;
+    margin:auto;
+    padding:0;
+    position:relative;
+    left: 4em;
 }
