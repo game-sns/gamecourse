@@ -11,6 +11,7 @@ from gamecourse.request.handlers import handle_request
 from gamecourse.utils import prepare_folders
 
 app = Flask(APP_NAME)
+app.config['MAX_CONTENT_LENGTH'] = 6 * 1024 * 1024  # 6 MB
 
 
 @app.route("/", methods=["GET", "POST"])
