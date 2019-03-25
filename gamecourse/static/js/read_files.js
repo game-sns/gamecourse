@@ -346,7 +346,7 @@ function getFiles() {
 function uploadAll() {
 	var files = getFiles();
 	files.append("meta-data", JSON.stringify(getDataAsObj()));
-	console.log(JSON.stringify(getDataAsObj()));
+	files.append("g-recaptcha-response", grecaptcha.getResponse());
 	getXMLHttpRequest().send(files);
 }
 
