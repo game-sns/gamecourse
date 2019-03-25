@@ -354,15 +354,19 @@ function uploadAll() {
  * Sets event listeners
  */
 function setCheckEventListeners() {
-	var elements = [
-		"labels_selector"
-	]; // ids of elements to set
+	
+	var lis = document.getElementsByClassName("chosen-choices")[0].getElementsByTagName("li");
 
-	elements.forEach(function (element) {
-		document.getElementById(element).onchange = function(evt, params) {
-					globalLabels.push(""+params.selected);
-		}; // add event listener on change event
-	});
+	document.getElementById("labels_selector_chosen").addEventListener("click", aggiungi);
+	document.getElementById("labels_selector_chosen").addEventListener("mouseout", aggiungi);
+
+	function aggiungi() {
+		globalLabels = [];
+		for (var i = 0; i < lis.length - 1; i++) {
+			var innerspan = lis[i].getElementsByTagName("span");
+			globalLabels[i] = (innerspan[0].innerHTML);
+		}
+	}
 }
 
 /**
