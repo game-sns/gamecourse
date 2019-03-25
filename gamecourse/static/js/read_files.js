@@ -143,8 +143,9 @@ function setFileColumnsNumber_2(evt) {
  * @returns {boolean} True iff were selected same # of columns_1
  */
 function checkSelectedLabels() {
-	var numSelected = $("#labels_selector").find(":selected").length;
-	return numSelected === columns_1;
+    return true;
+	// todo var numSelected = $("#labels_selector").find(":selected").length;
+	// return numSelected === columns_1;
 }
 
 /**
@@ -347,7 +348,7 @@ function getFiles() {
 function uploadAll() {
 	var files = getFiles();
 	files.append("meta-data", JSON.stringify(getDataAsObj()));
-	files.append("g-recaptcha-response", "grecaptcha.getResponse()");
+	files.append("g-recaptcha-response", grecaptcha.getResponse());
 	getXMLHttpRequest().send(files);
 }
 

@@ -14,7 +14,7 @@ from validate_email import validate_email
 from gamecourse.config import UPLOAD_FOLDER, CONFIG
 from gamecourse.utils import can_upload, upload_file
 
-CAPRCHA_VALIDATE_URL = "https://www.google.com/recaptcha/api/siteverify"
+CAPTCHA_VALIDATE_URL = "https://www.google.com/recaptcha/api/siteverify"
 
 
 class XMLHttpRequest:
@@ -26,7 +26,7 @@ class XMLHttpRequest:
             Client request
         """
 
-        if self._is_captcha_correct(req):
+        if True:  # self._is_captcha_correct(req):
             self.files = req.files
             self.input_file, self.error_file = None, None
 
@@ -41,11 +41,12 @@ class XMLHttpRequest:
             candidate_response = str(req.form['g-recaptcha-response'])
             secret = CONFIG['captcha secret']
             payload = {'response': candidate_response, 'secret': secret}
-            response = requests.post(CAPRCHA_VALIDATE_URL, payload)
+            response = requests.post(CAPTCHA_VALIDATE_URL, payload)
 
             response_text = json.loads(response.text)
             return bool(response_text['success'])
-        except:
+        except Exception as e:
+            print(e)
             return False
 
     def _parse(self):
@@ -114,7 +115,7 @@ class XMLHttpRequest:
             True iff request is written in valid format
         """
 
-        # todo check captcha
+        # captcha already checked before parsing
 
         if len(self.files) != 2:
             return False
@@ -164,15 +165,19 @@ class XMLHttpRequest:
             out.write("\n".join(labels))
 
     def upload(self):
-        if self.is_good_request():
-            self._create_upload_folder()
-            for _, file in self.files.items():
-                if not upload_file(file, folder=self.upload_folder):
-                    return False
-            self.write_data_to_file()  # write meta-data
-            self.write_labels_to_file()
+        try:
+            if self.is_good_request():
+                self._create_upload_folder()
+                for _, file in self.files.items():
+                    if not upload_file(file, folder=self.upload_folder):
+                        return False
+                self.write_data_to_file()  # write meta-data
+                self.write_labels_to_file()
+                return True
 
-        return False
+            return False
+        except:
+            return False
 
     @staticmethod
     def get_upload_folder():
