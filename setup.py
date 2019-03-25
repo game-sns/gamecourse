@@ -1,11 +1,6 @@
 # !/usr/bin/python3
 # coding: utf-8
 
-# Copyright YYYY AUTHORS
-#
-# YOUR COPYRIGHT HERE (IF YOU WANT IT)
-
-
 """ Install dependencies """
 
 from setuptools import setup, find_packages
@@ -23,10 +18,10 @@ DESCRIPTION = \
 
 setup(
     name="gamecourse",
-    version="1.0",
+    version="1.1.0",
     description=LITTLE_DESCRIPTION,
     long_description=DESCRIPTION,
-    license="Apache License, Version 2.0",
+    license="MIT",
     keywords="game flask server",
     url="https://github.com/sirfoga/gamecourse",
     packages=find_packages(exclude=["tests"]),
@@ -34,7 +29,8 @@ setup(
     install_requires=[
         "werkzeug",
         "flask",
-        "validate_email"
+        "validate_email",
+        'requests'
     ],
     entry_points={
         "console_scripts": ["gamecourse = gamecourse.server:cli"]

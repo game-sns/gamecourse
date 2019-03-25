@@ -3,15 +3,21 @@
 
 """ Server config """
 
+import json
 import os
 
 APP_NAME = "gamecourse"
 APP_HOST = "localhost"
 APP_PORT = 8001
+
 THIS_FOLDER = os.path.dirname(os.path.realpath(__file__))
 ROOT_FOLDER = os.path.dirname(THIS_FOLDER)
-UPLOAD_FOLDER = os.path.join('/opt/game/gamecourse/uploads/')
-TEMPLATES_FOLDER = os.path.join(
+CONFIG_FILE = os.path.join(ROOT_FOLDER, 'config', 'config.json')
+CONFIG = json.load(open(CONFIG_FILE, 'r'))
+
+UPLOAD_FOLDER = CONFIG['upload folder']
+
+TEMPLATES_FOLDER = os.path.join(  # todo
     ROOT_FOLDER,
     "templates"
 )

@@ -21,7 +21,7 @@ def handle_request(req):
         try:
             if post_request(req):
                 return "200"
-            return "-1"
+            return "500"
         except Exception as e:
             print("Cannot handle request due to", e)
 

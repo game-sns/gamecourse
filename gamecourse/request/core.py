@@ -8,13 +8,13 @@ import json
 import os
 import uuid
 
+import requests
 from validate_email import validate_email
 
-from gamecourse.config import UPLOAD_FOLDER
+from gamecourse.config import UPLOAD_FOLDER, CONFIG
 from gamecourse.utils import can_upload, upload_file
 
-LABELS = ["g0", "n", "NH", "U", "Z"]
-ADDITIONAL_LABELS = ["AV", "fesc"]
+CAPRCHA_VALIDATE_URL = "https://www.google.com/recaptcha/api/siteverify"
 
 
 class XMLHttpRequest:
@@ -26,15 +26,27 @@ class XMLHttpRequest:
             Client request
         """
 
-        self.data = req.data
-        self.files = req.files
-        self.input_file, self.error_file = None, None
-        self.form = req.form
-        self.meta_data = None
-        self.upload_folder = None
+        if self._is_captcha_correct(req):
+            self.files = req.files
+            self.input_file, self.error_file = None, None
 
-        self._parse()
-        self._create_upload_folder()
+            self.form = req.form
+            self.meta_data = None
+            self.upload_folder = None
+
+            self._parse()
+
+    def _is_captcha_correct(self, req):
+        try:
+            candidate_response = str(req.form['g-recaptcha-response'])
+            secret = CONFIG['captcha secret']
+            payload = {'response': candidate_response, 'secret': secret}
+            response = requests.post(CAPRCHA_VALIDATE_URL, payload)
+
+            response_text = json.loads(response.text)
+            return bool(response_text['success'])
+        except:
+            return False
 
     def _parse(self):
         """
@@ -44,7 +56,6 @@ class XMLHttpRequest:
 
         self._parse_files()
         self._parse_form()
-        self._parse_data()
 
     def _parse_files(self):
         """
@@ -52,15 +63,8 @@ class XMLHttpRequest:
             Parse and prettify raw data files
         """
 
-        files = {}
-        for filename in self.files:
-            files[filename] = self.files[filename]
-            if filename == "fileInputs":
-                self.input_file = files[filename]
-            elif filename == "fileErrors":
-                self.error_file = files[filename]
-
-        self.files = files
+        self.input_file = self.files['fileInputs']
+        self.error_file = self.files['fileErrors']
 
     def _parse_form(self):
         """
@@ -68,20 +72,8 @@ class XMLHttpRequest:
             Parse and prettify raw data form
         """
 
-        form = {}
-        for entry in self.form:
-            form[entry] = self.form[entry]
-        self.form = form
-
-    def _parse_data(self):
-        """
-        :return: void
-            Sets metadata
-        """
-
-        self.meta_data = self.form["meta-data"] or None
-        self.meta_data = json.loads(self.meta_data) or {}
-        self.meta_data["PhysicalProprieties"] = {
+        self.meta_data = json.loads(self.form["meta-data"])
+        labels = {
             "n": self.meta_data["PhysicalProprieties"][0],
             "NH": self.meta_data["PhysicalProprieties"][1],
             "g0": self.meta_data["PhysicalProprieties"][2],
@@ -90,11 +82,10 @@ class XMLHttpRequest:
             "fesc": self.meta_data["PhysicalProprieties"][5],
             "AV": self.meta_data["PhysicalProprieties"][6],
         }
-
         self.meta_data["labels"] = [
-            key for key, val in self.meta_data["PhysicalProprieties"].items()
-            if val and key in LABELS
-        ]
+            key for key, val in labels.items()
+            if val
+        ]  # just the requested labels
 
     def _create_upload_folder(self):
         """
@@ -122,6 +113,8 @@ class XMLHttpRequest:
         :return: bool
             True iff request is written in valid format
         """
+
+        # todo check captcha
 
         if len(self.files) != 2:
             return False
@@ -172,12 +165,14 @@ class XMLHttpRequest:
 
     def upload(self):
         if self.is_good_request():
+            self._create_upload_folder()
             for _, file in self.files.items():
                 if not upload_file(file, folder=self.upload_folder):
                     return False
             self.write_data_to_file()  # write meta-data
             self.write_labels_to_file()
-        return True
+
+        return False
 
     @staticmethod
     def get_upload_folder():

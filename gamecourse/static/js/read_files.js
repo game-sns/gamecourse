@@ -107,7 +107,7 @@ function setFileColumnsNumber_1(evt) {
 	var file = evt.target.files[0];
 	reader.onload = function (progressEvent) {
 		columns_1 = countColumns(this.result, ' ');
-		/*numFileUploaded1++;
+		/* todo numFileUploaded1++;
 		if (numFileUploaded1 >= 1 && numFileUploaded2 >= 1) {
 			if (checks()) {
 				setLimit(columns_1);
@@ -127,7 +127,7 @@ function setFileColumnsNumber_2(evt) {
 	var file = evt.target.files[0];
 	reader.onload = function (progressEvent) {
 		columns_2 = countColumns(this.result, ' ');
-		/*numFileUploaded2++;
+		/* todo numFileUploaded2++;
 		if (numFileUploaded1 >= 1 && numFileUploaded2 >= 1) {
 			if (checks()) {
 				setLimit(columns_1);
@@ -285,10 +285,11 @@ function getXMLHttpRequest() {
 	xhr.open("POST", "/", true);
 	xhr.onreadystatechange = function () {
 		if (xhr.readyState === 4 && xhr.status === 200) {
-			console.log("server responded: " + xhr.responseText);
-			if(xhr.responseText === "200"){
-				console.log("Il server ha risposto 200");
+			if(xhr.responseText === "200") {
 				injectTextResponse("Every thing is fine");
+			} else {
+				injectTextResponse("Ooops we encountered an error in" +
+					" processing your request!");
 			}
 			/* 210-219 errori con files
 			if(xhr.responseText === "2XX"){
@@ -346,7 +347,7 @@ function getFiles() {
 function uploadAll() {
 	var files = getFiles();
 	files.append("meta-data", JSON.stringify(getDataAsObj()));
-	files.append("g-recaptcha-response", grecaptcha.getResponse());
+	files.append("g-recaptcha-response", "grecaptcha.getResponse()");
 	getXMLHttpRequest().send(files);
 }
 

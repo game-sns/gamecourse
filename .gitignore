@@ -1,4 +1,5 @@
 uploads/
+config/
 
 ### project specifics ###
 .coveralls.yml
