@@ -17,7 +17,7 @@ CONFIG = json.load(open(CONFIG_FILE, 'r'))
 
 UPLOAD_FOLDER = CONFIG['upload folder']
 
-TEMPLATES_FOLDER = os.path.join(  # todo
+TEMPLATES_FOLDER = os.path.join(
     ROOT_FOLDER,
     "templates"
 )

@@ -143,9 +143,8 @@ function setFileColumnsNumber_2(evt) {
  * @returns {boolean} True iff were selected same # of columns_1
  */
 function checkSelectedLabels() {
-    return true;
-	// todo var numSelected = $("#labels_selector").find(":selected").length;
-	// return numSelected === columns_1;
+    var numSelected = $("#labels_selector").find(":selected").length;
+	return numSelected === columns_1;
 }
 
 /**

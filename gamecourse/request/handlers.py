@@ -37,9 +37,7 @@ def post_request(req):
     """
 
     xhr = XMLHttpRequest(req)
-    x = xhr.upload()
-    print(x)
-    return x
+    return xhr.upload()
 
 
 def get_request(req):
