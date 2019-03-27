@@ -246,7 +246,7 @@ code span {
 	color: #c7ebe8;
 }
 
-#credits_h2 {
+.center-text {
 	text-align: center;
 }
 
@@ -262,4 +262,12 @@ code span {
     padding:0;
     position:relative;
     left: 4em;
+}
+
+.underline {
+	text-decoration: underline;
+}
+
+.color-text {
+	color: #c7ebe8;
 }

@@ -29,20 +29,30 @@
 			<h1><b>GA</b>laxy <b>M</b>achine learning for <b>E</b>mission lines</h1>
 			<p>
 				GAME is a self-contained and user-friendly Machine Learning code written in Python.
-				It allows the user to infer different ISM physical properties
-				(density <em>n</em>, column density <em>NH</em>, FUV flux <em>G</em>, ionization parameter <em>U</em>,
-				metallicity <em>Z</em>, escape fraction <em>f<sub>esc</sub></em>, optical extinction
-				<em>A<sub>V</sub></em>)
-				by analyzing the emission line intensities in a galaxy spectrum (for the complete description see <a
-					href="http://adsabs.harvard.edu/abs/2017MNRAS.465.1144U">Ucci
-					et al. 2017</a> and <a href="http://adsabs.harvard.edu/abs/2018MNRAS.477.1484U">Ucci et al.
-					2018</a>).
-				The code is trained with a large library of synthetica spectra spanning many different ISM phases,
+				It allows the user to infer different ISM physical properties by analyzing the emission line intensities
+				in a galaxy spectrum (for the complete description see <a href="http://adsabs.harvard.edu/abs/2017MNRAS.465.1144U">Ucci
+				et al. 2017</a> and <a href="http://adsabs.harvard.edu/abs/2018MNRAS.477.1484U">Ucci et al.
+				2018</a>).
+				The code is trained with a large library of synthetic spectra spanning many different ISM phases,
 				including HII (ionized) regions, PDRs, and neutral regions.
-				<a id="show_more">(read more)</a>
+				<a id="show_more">(<span class="underline">show more</span>)</a>
 			</p>
 		</div>
 		<div id="espandi" class="nascondi">
+			<p>
+				<span>
+					GAME is based on a Supervised Machine Learning algorithm called AdaBoost with Decision Trees as base
+					learner. Given a set of input lines in a spectrum, GAME performs a training on the library, then evaluates
+					the line intensities to give a determination of the physical properties. The errors on the input 
+					emission-line intensities and the uncertainties on the physical properties determinations are also taken 
+					into account (<a href="http://adsabs.harvard.edu/abs/2018MNRAS.477.1484U">Ucci et al. 2018</a>). 
+					The physical properties that GAME is able to infer are: gas density (<em>n</em>), column density
+					(<em>N<sub>H</sub></em>), far-ultraviolet (<em>FUV</em>, <em>6–13.6 eV</em>) flux (<em>G</em>), ionization parameter (<em>U</em>),
+					metallicity (<em>Z</em>), escape fraction (<em>f<sub>esc</sub></em>),
+					visual extinction (<em>A<sub>V</sub></em>).
+				</span>
+			</p>
+		<!--	
 			<p>
 				<span>GAME is a Machine Learning code that infers the ISM physical properties by analyzing the
 					emission-line
@@ -69,7 +79,7 @@
 				far-ultraviolet (<em>FUV</em>, <em>6–13.6 eV</em>) flux (<em>G</em>), ionization parameter (<em>U</em>),
 				metallicity (<em>Z</em>), escape fraction (<em>f<sub>esc</sub></em>),
 				visual extinction (<em>A<sub>V</sub></em>).
-			</p>
+			</p>-->
 			<p>
 				For full details, and tutorial, we recommend the <a
 					href="{{ url_for('static', filename='data/readme_GAME.pdf') }}" target="_blank">README</a>.
@@ -119,8 +129,8 @@
 	</div>
 
 	<div class="frost_pannel tool noselect" id="frost2">
-		<a id="info" class="link_under" href="{{ url_for('static', filename='data/readme_GAME.pdf') }}"
-			target="_blank"><i class="fi-book"></i> Start here (README)</a>
+		<a id="info" class="color-text" href="{{ url_for('static', filename='data/readme_GAME.pdf') }}"
+			target="_blank"><i class="fi-book"></i> <span class="underline">Start here</span> (<span class="underline">README</span>)</a>
 		<div class="row">
 			<h4>Upload your files :</h4>
 			<form action="" method=post enctype="multipart/form-data" id="filesForm">
@@ -136,7 +146,7 @@
 					<label for="fileErrors" class="button" id="fileErrorsLabel">
 						Upload errors file
 						<br>
-						(emission line uncertainties)
+						(emission line errors)
 					</label>
 					<input type="file" id="fileErrors" name="fileErrors" class="show-for-sr">
 				</div>
@@ -144,7 +154,7 @@
 		</div>
 		<div class="row">
 			<div class="clearfix">
-				<h4>List of emission lines corresponding in the input files :</h4>
+				<h4>List of emission lines present in the input files :</h4>
 				<div class="large-7">
 					<select data-placeholder="Search and select labels for input file" multiple class="chosen-select"
 						tabindex="-1" id="labels_selector">
@@ -274,7 +284,7 @@
 	<footer>
 		<span id="devs"><a class="link_under" href="{{ url_for('static', filename='credits.html') }}">Developed by S.
 				Fogarollo & M. Masevski</a></span>
-		<span id="rights">&copy; <a class="link_under" href="#">Graziano Ucci</a>, All Rights Reserved</span>
+				<span id="rights">&copy; <a title="graziano.ucci[at]sns.it" class="link_under" href="mailto:graziano.ucci@sns.it">Graziano Ucci</a>, All Rights Reserved</span>
 	</footer>
 
 </body>
