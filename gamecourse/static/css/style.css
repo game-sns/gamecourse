@@ -150,7 +150,7 @@ b {
 }
 
 .frost0 {
-	max-height: 5em;
+	//max-height: 5em;
 	overflow: hidden;
 	-webkit-transition: max-height .5s ease;
 	transition: max-height .5s ease;
@@ -172,6 +172,10 @@ b {
 
 .mostra:hover {
 	background-color: rgb(29, 36, 42, 0.80);
+}
+
+.nascondi {
+	display: none;
 }
 
 .title_pannel img {
@@ -231,8 +235,7 @@ code span {
 
 #info {
 	float: right;
-	font-size: 35px;
-	color: #fff;
+	font-size: 30px;
 }
 
 #info:hover {
@@ -251,6 +254,7 @@ code span {
 	color: #c7ebe8;
 	text-decoration: underline;
 }
+
 
 .column-wrapper ul {
     list-style-type:none;

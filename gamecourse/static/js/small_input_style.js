@@ -37,5 +37,14 @@ function scompari() {
 	document.getElementById("frost0").classList.toggle("mostra");
 }
 
+
+
 var link = document.getElementById("link_pdf");
 link.setAttribute("href", "/static/data/readme_GAME.pdf#page=6");
+
+
+document.getElementById("show_more").addEventListener("click", show_more);
+
+function show_more() {
+	document.getElementById("espandi").classList.toggle("nascondi");
+}
