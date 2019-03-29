@@ -51,6 +51,10 @@ b {
 	border-radius: 2px;
 }
 
+#frost2 {
+	margin-bottom: 2em;
+}
+
 .tool ul {
 	margin: 0;
 	list-style: none;
@@ -164,8 +168,18 @@ b {
 }
 
 footer {
+	clear: both;
+    position: relative;
 	font-size: .5em;
-	margin: 0 0.5em 0.5em 0.5em;
+	height: 12em;
+	padding: 1em;
+	background-color: rgb(29, 36, 42, 0.8);
+}
+
+#last-text {
+	width: 98%;
+	position: absolute;
+	bottom: 1em;
 }
 
 #devs {
