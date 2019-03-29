@@ -150,28 +150,7 @@ b {
 }
 
 .frost0 {
-	//max-height: 5em;
 	overflow: hidden;
-	-webkit-transition: max-height .5s ease;
-	transition: max-height .5s ease;
-}
-
-.frost0:hover {
-	background-color: rgba(17, 19, 20, 0.95);
-}
-
-#title0 {
-	cursor: pointer;
-}
-.mostra {
-	-webkit-transition: max-height 2s ease;
-	transition: max-height 2s ease;
-	max-height: 700000px;
-	overflow: auto;
-}
-
-.mostra:hover {
-	background-color: rgb(29, 36, 42, 0.80);
 }
 
 .nascondi {
