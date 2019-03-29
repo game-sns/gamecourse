@@ -35,9 +35,15 @@ var link = document.getElementById("link_pdf");
 link.setAttribute("href", "/static/data/readme_GAME.pdf#page=6");
 
 
-document.getElementById("show_more").addEventListener("click", show_more);
+document.getElementById("show_more").addEventListener("click", show_hide);
+document.getElementById("show_less").addEventListener("click", show_hide);
 
-function show_more() {
+function show_hide() {
 	var ele = document.getElementById("espandi");
 	ele.classList.toggle("nascondi");
+	if(!ele.classList.contains("nascondi")){
+		document.getElementById("show_more").style.display = "none";
+	}else{
+		document.getElementById("show_more").style.display = "block";
+	}
 }
