@@ -36,6 +36,16 @@ b {
 	font-size: 1.2em;
 }
 
+a {
+	color: #e8e821;
+	text-decoration: underline;
+}
+
+#info {
+	color: #e8e821;
+	text-decoration: none;
+}
+
 .row {
 	margin-bottom: 1em;
 }
@@ -47,8 +57,18 @@ b {
 	background-color: rgb(29, 36, 42, 0.8);
 }
 
+.first-button {
+	padding-left: 0;
+}
+
+#show_less {
+	font-size: 0.8em;
+}
+
 .button {
 	border-radius: 2px;
+	background-color: #ffcb2e;
+	color: #000;
 }
 
 #frost2 {
@@ -75,7 +95,10 @@ b {
 }
 
 .blueBackground {
-	background-color: rgba(33, 153, 232, 0.80);
+	/*background-color: rgba(33, 153, 232, 0.80);*/
+	background-color: rgba(254, 202, 45, 0.8);
+	color: #000;
+	
 }
 
 .tool li label {
