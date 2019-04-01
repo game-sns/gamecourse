@@ -30,12 +30,13 @@
 			<p>
 				GAME is a self-contained and user-friendly Machine Learning code written in Python.
 				It allows the user to infer different ISM physical properties by analyzing the emission line intensities
-				in a galaxy spectrum (for the complete description see <a href="http://adsabs.harvard.edu/abs/2017MNRAS.465.1144U">Ucci
-				et al. 2017</a> and <a href="http://adsabs.harvard.edu/abs/2018MNRAS.477.1484U">Ucci et al.
-				2018</a>).
+				in a galaxy spectrum (for the complete description see <a
+					href="http://adsabs.harvard.edu/abs/2017MNRAS.465.1144U">Ucci
+					et al. 2017</a> and <a href="http://adsabs.harvard.edu/abs/2018MNRAS.477.1484U">Ucci et al.
+					2018</a>).
 				The code is trained with a large library of synthetic spectra spanning many different ISM phases,
 				including HII (ionized) regions, PDRs, and neutral regions.
-				<br/>
+				<br />
 				<a id="show_more"><span class="underline">Click to read more >></span></a>
 			</p>
 		</div>
@@ -43,12 +44,15 @@
 			<p>
 				<span>
 					GAME is based on a Supervised Machine Learning algorithm called AdaBoost with Decision Trees as base
-					learner. Given a set of input lines in a spectrum, GAME performs a training on the library, then evaluates
-					the line intensities to give a determination of the physical properties. The errors on the input 
-					emission line intensities and the uncertainties on the physical properties determinations are also taken 
-					into account (<a href="http://adsabs.harvard.edu/abs/2018MNRAS.477.1484U">Ucci et al. 2018</a>). 
+					learner. Given a set of input lines in a spectrum, GAME performs a training on the library, then
+					evaluates
+					the line intensities to give a determination of the physical properties. The errors on the input
+					emission line intensities and the uncertainties on the physical properties determinations are also
+					taken
+					into account (<a href="http://adsabs.harvard.edu/abs/2018MNRAS.477.1484U">Ucci et al. 2018</a>).
 					The physical properties that GAME is able to infer are: gas density (<em>n</em>), column density
-					(<em>N<sub>H</sub></em>), far-ultraviolet (FUV, 6–13.6 eV) flux (<em>G</em>), ionization parameter (<em>U</em>),
+					(<em>N<sub>H</sub></em>), far-ultraviolet (FUV, 6–13.6 eV) flux (<em>G</em>), ionization parameter
+					(<em>U</em>),
 					metallicity (<em>Z</em>), escape fraction (<em>f<sub>esc</sub></em>),
 					visual extinction (<em>A<sub>V</sub></em>).
 				</span>
@@ -58,7 +62,7 @@
 					href="{{ url_for('static', filename='data/readme_GAME.pdf') }}" target="_blank">README</a>.
 				We would appreciate that if you use game in preparing a scientific publication, you cite it using the
 				following
-				BibTex:<br/>
+				BibTex:<br />
 			</p>
 
 			<div class="row codice">
@@ -80,9 +84,9 @@
 }</span></code>
 </pre>
 				</div>
-				
+
 				<div class="medium-12 large-6 columns">
-				<pre><code><span>@ARTICLE{Ucci2018,
+					<pre><code><span>@ARTICLE{Ucci2018,
 	author = <span>{</span>{Ucci}, G. and {Ferrara}, A. and {Pallottini}, A. and {Gallerani}, S.},
 	title = "{GAME: GAlaxy Machine learning for Emission lines}",
 	journal = {\mnras},
@@ -99,14 +103,15 @@
 }</span></code></pre>
 				</div>
 			</div>
-		
+
 			<a id="show_less"><span class="underline">Click to read less &lt;&lt;</span></a>
 		</div>
 	</div>
 
 	<div class="frost_pannel tool noselect" id="frost2">
 		<a id="info" class="color-text" href="{{ url_for('static', filename='data/readme_GAME.pdf') }}"
-			target="_blank"><i class="fi-page-pdf"></i> <span class="underline">Start here</span> (<span class="underline">README</span>)</a>
+			target="_blank"><i class="fi-page-pdf"></i> <span class="underline">Start here</span> (<span
+				class="underline">README</span>)</a>
 		<div class="row">
 			<h4>Upload your files :</h4>
 			<form method=post enctype="multipart/form-data" id="filesForm">
@@ -144,55 +149,55 @@
 				<ul>
 					<li>
 						<label class="small_input_label" for="checkbox0">
-							
-								<input class="checkbox" id="checkbox0" type="checkbox"> <em>n</em> &nbsp;
-								(cm<sup>-3</sup>)
-							
+
+							<input class="checkbox" id="checkbox0" type="checkbox"> <em>n</em> &nbsp;
+							(cm<sup>-3</sup>)
+
 						</label>
 					</li>
 					<li>
 						<label class="small_input_label" for="checkbox1">
-							
-								<input class="checkbox" id="checkbox1" type="checkbox"> <em>N <sub>H</sub></em> &nbsp;
-								(cm<sup>-2</sup>)
-							
+
+							<input class="checkbox" id="checkbox1" type="checkbox"> <em>N <sub>H</sub></em> &nbsp;
+							(cm<sup>-2</sup>)
+
 						</label>
 					</li>
 					<li>
 						<label class="small_input_label" for="checkbox2">
-							
-								<input class="checkbox" id="checkbox2" type="checkbox"> <em>G</em> &nbsp; (G
-								<sub>0</sub>)
-							
+
+							<input class="checkbox" id="checkbox2" type="checkbox"> <em>G</em> &nbsp; (G
+							<sub>0</sub>)
+
 						</label>
 					</li>
 					<li>
 						<label class="small_input_label" for="checkbox3">
-							
-								<input class="checkbox" id="checkbox3" type="checkbox"> <em>U</em>
-							
+
+							<input class="checkbox" id="checkbox3" type="checkbox"> <em>U</em>
+
 						</label>
 					</li>
 					<li>
 						<label class="small_input_label" for="checkbox4">
-							
-								<input class="checkbox" id="checkbox4" type="checkbox"> <em>Z</em> &nbsp; (Z
-								<sub>⊙</sub>)
-							
+
+							<input class="checkbox" id="checkbox4" type="checkbox"> <em>Z</em> &nbsp; (Z
+							<sub>⊙</sub>)
+
 						</label>
 					</li>
 					<li>
 						<label class="small_input_label" for="checkbox5">
-							
-								<input class="checkbox" id="checkbox5" type="checkbox"> <em>f<sub>esc</sub></em>
-							
+
+							<input class="checkbox" id="checkbox5" type="checkbox"> <em>f<sub>esc</sub></em>
+
 						</label>
 					</li>
 					<li>
 						<label class="small_input_label" for="checkbox6">
-							
-								<input class="checkbox" id="checkbox6" type="checkbox"> <em>A<sub>V</sub></em>
-							
+
+							<input class="checkbox" id="checkbox6" type="checkbox"> <em>A<sub>V</sub></em>
+
 						</label>
 					</li>
 				</ul>
@@ -221,16 +226,16 @@
 				<ul>
 					<li>
 						<label class="small_input_label" for="yes-optional">
-							
-								<input type="radio" name="optional_files" value="True" id="yes-optional"> YES
-							
+
+							<input type="radio" name="optional_files" value="True" id="yes-optional"> YES
+
 						</label>
 					</li>
 					<li>
 						<label class="small_input_label blueBackground" for="no-optional">
-							
-								<input type="radio" name="optional_files" value="False" id="no-optional" checked> NO
-							
+
+							<input type="radio" name="optional_files" value="False" id="no-optional" checked> NO
+
 						</label>
 					</li>
 				</ul>
@@ -260,9 +265,9 @@
 	<footer>
 		<div class="float-left">
 			<b>GA</b>laxy <b>M</b>achine learning for <b>E</b>mission lines
-			<br/>
-			For any questions please send an email to: 
-			<br/>
+			<br />
+			For any questions please send an email to:
+			<br />
 			graziano.ucci[at]sns.it
 		</div>
 		<div class="float-right">
@@ -270,32 +275,33 @@
 			<ul>
 				<li><a class="link_under" href="http://cosmology.sns.it" target="_blank">Cosmology SNS</a></li>
 				<li><a class="link_under" href="{{ url_for('static', filename='credits.html') }}">Credits page</a></li>
-			</ul>	
+			</ul>
 		</div>
 		<div id="last-text">
 			<span id="devs">Developed by S. Fogarollo & M. Masevski</span>
-			<span id="rights">&copy; <a title="graziano.ucci[at]sns.it" class="link_under" href="mailto:graziano.ucci@sns.it">Graziano Ucci</a>, All Rights Reserved</span>
+			<span id="rights">&copy; <a title="graziano.ucci[at]sns.it" class="link_under"
+					href="mailto:graziano.ucci@sns.it">Graziano Ucci</a>, All Rights Reserved</span>
 		</div>
 	</footer>
 
 	<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-1.9.0.min.js"></script>
+	<script src="https://code.jquery.com/jquery-1.9.0.min.js"></script>
 
-<!-- files -->
-<script src="{{ url_for('static', filename='js/foundation.js') }}"></script>
-<script src="{{ url_for('static', filename='js/small_input_style.js') }}"></script>
-<script src="{{ url_for('static', filename='js/read_files.js') }}"></script>
+	<!-- files -->
+	<script src="{{ url_for('static', filename='js/foundation.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/small_input_style.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/read_files.js') }}"></script>
 
-<!-- multi select -->
-<script src="{{ url_for('static', filename='js/chosen.jquery.js') }}"></script>
-<script src="{{ url_for('static', filename='js/docsupport/prism.js') }}">
-</script>
-<script src="{{ url_for('static', filename='js/docsupport/init.js') }}"></script>
-<script src="{{ url_for('static', filename='js/init.js') }}"></script>
-<script >
-	init("{{url_for('static', filename='img/checked.png') }}");
-	populateLabelsTable("{{ url_for('static', filename='data/labels_options.txt') }}");
-</script>
+	<!-- multi select -->
+	<script src="{{ url_for('static', filename='js/chosen.jquery.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/docsupport/prism.js') }}">
+	</script>
+	<script src="{{ url_for('static', filename='js/docsupport/init.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/init.js') }}"></script>
+	<script>
+		init("{{url_for('static', filename='img/checked.png') }}");
+		populateLabelsTable("{{ url_for('static', filename='data/labels_options.txt') }}");
+	</script>
 
 </body>
 
