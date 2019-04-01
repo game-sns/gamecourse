@@ -195,7 +195,7 @@ footer {
     position: relative;
 	font-size: .5em;
 	height: 12em;
-	padding: 1em;
+	padding: 1.5em;
 	background-color: rgb(29, 36, 42, 0.8);
 }
 
@@ -286,4 +286,12 @@ code span {
 
 .color-text {
 	color: #c7ebe8;
+}
+
+.float-right {
+	float: right;
+}
+
+.float-left {
+	float: left;
 }

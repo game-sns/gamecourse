@@ -258,15 +258,20 @@
 	</div>
 
 	<footer>
-		<b>GA</b>laxy <b>M</b>achine learning for <b>E</b>mission lines: for any questions please send an email to graziano.ucci[at]sns.it
-		</br>
-		</br>
-		Visiti also:
-		<ul>
-			<li><a class="link_under" href="http://cosmology.sns.it" target="_blank">Cosmology SNS</a></li>
-			<li><a class="link_under" href="{{ url_for('static', filename='credits.html') }}">Credits page</a></li>
-		</ul>	
-	
+		<div class="float-left">
+			<b>GA</b>laxy <b>M</b>achine learning for <b>E</b>mission lines
+			</br>
+			For any questions please send an email to: 
+			</br>
+			graziano.ucci[at]sns.it
+		</div>
+		<div class="float-right">
+			Visiti also:
+			<ul>
+				<li><a class="link_under" href="http://cosmology.sns.it" target="_blank">Cosmology SNS</a></li>
+				<li><a class="link_under" href="{{ url_for('static', filename='credits.html') }}">Credits page</a></li>
+			</ul>	
+		</div>
 		<div id="last-text">
 			<span id="devs">Developed by S. Fogarollo & M. Masevski</span>
 			<span id="rights">&copy; <a title="graziano.ucci[at]sns.it" class="link_under" href="mailto:graziano.ucci@sns.it">Graziano Ucci</a>, All Rights Reserved</span>
