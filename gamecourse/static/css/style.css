@@ -107,14 +107,9 @@ a {
 	cursor: pointer;
 }
 
-.small_input_style {
-	padding: 5px;
-	border-radius: 2px;
-}
-
 .small_input_label {
-	margin: 0;
-	padding: 0;
+	padding: 10px;
+	border-radius: 2px;
 }
 
 .checkbox {

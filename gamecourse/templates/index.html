@@ -35,7 +35,7 @@
 				2018</a>).
 				The code is trained with a large library of synthetic spectra spanning many different ISM phases,
 				including HII (ionized) regions, PDRs, and neutral regions.
-				</br>
+				<br/>
 				<a id="show_more"><span class="underline">Click to read more >></span></a>
 			</p>
 		</div>
@@ -58,7 +58,7 @@
 					href="{{ url_for('static', filename='data/readme_GAME.pdf') }}" target="_blank">README</a>.
 				We would appreciate that if you use game in preparing a scientific publication, you cite it using the
 				following
-				BibTex:</br>
+				BibTex:<br/>
 			</p>
 
 			<div class="row codice">
@@ -100,7 +100,7 @@
 				</div>
 			</div>
 		
-			<a id="show_less"><span class="underline">Click to read less <<</span></a>
+			<a id="show_less"><span class="underline">Click to read less &lt;&lt;</span></a>
 		</div>
 	</div>
 
@@ -109,7 +109,7 @@
 			target="_blank"><i class="fi-page-pdf"></i> <span class="underline">Start here</span> (<span class="underline">README</span>)</a>
 		<div class="row">
 			<h4>Upload your files :</h4>
-			<form action="" method=post enctype="multipart/form-data" id="filesForm">
+			<form method=post enctype="multipart/form-data" id="filesForm">
 				<div class="large-3 columns first-button">
 					<label for="fileInputs" id="fileInputsLabel" class="button">
 						Upload input files
@@ -144,55 +144,55 @@
 				<ul>
 					<li>
 						<label class="small_input_label" for="checkbox0">
-							<div class="small_input_style">
+							
 								<input class="checkbox" id="checkbox0" type="checkbox"> <em>n</em> &nbsp;
 								(cm<sup>-3</sup>)
-							</div>
+							
 						</label>
 					</li>
 					<li>
 						<label class="small_input_label" for="checkbox1">
-							<div class="small_input_style">
+							
 								<input class="checkbox" id="checkbox1" type="checkbox"> <em>N <sub>H</sub></em> &nbsp;
 								(cm<sup>-2</sup>)
-							</div>
+							
 						</label>
 					</li>
 					<li>
 						<label class="small_input_label" for="checkbox2">
-							<div class="small_input_style">
+							
 								<input class="checkbox" id="checkbox2" type="checkbox"> <em>G</em> &nbsp; (G
 								<sub>0</sub>)
-							</div>
+							
 						</label>
 					</li>
 					<li>
 						<label class="small_input_label" for="checkbox3">
-							<div class="small_input_style">
+							
 								<input class="checkbox" id="checkbox3" type="checkbox"> <em>U</em>
-							</div>
+							
 						</label>
 					</li>
 					<li>
 						<label class="small_input_label" for="checkbox4">
-							<div class="small_input_style">
+							
 								<input class="checkbox" id="checkbox4" type="checkbox"> <em>Z</em> &nbsp; (Z
 								<sub>⊙</sub>)
-							</div>
+							
 						</label>
 					</li>
 					<li>
 						<label class="small_input_label" for="checkbox5">
-							<div class="small_input_style">
+							
 								<input class="checkbox" id="checkbox5" type="checkbox"> <em>f<sub>esc</sub></em>
-							</div>
+							
 						</label>
 					</li>
 					<li>
 						<label class="small_input_label" for="checkbox6">
-							<div class="small_input_style">
+							
 								<input class="checkbox" id="checkbox6" type="checkbox"> <em>A<sub>V</sub></em>
-							</div>
+							
 						</label>
 					</li>
 				</ul>
@@ -221,16 +221,16 @@
 				<ul>
 					<li>
 						<label class="small_input_label" for="yes-optional">
-							<div class="small_input_style">
+							
 								<input type="radio" name="optional_files" value="True" id="yes-optional"> YES
-							</div>
+							
 						</label>
 					</li>
 					<li>
-						<label class="small_input_label" for="no-optional">
-							<div class="small_input_style blueBackground">
+						<label class="small_input_label blueBackground" for="no-optional">
+							
 								<input type="radio" name="optional_files" value="False" id="no-optional" checked> NO
-							</div>
+							
 						</label>
 					</li>
 				</ul>
@@ -260,9 +260,9 @@
 	<footer>
 		<div class="float-left">
 			<b>GA</b>laxy <b>M</b>achine learning for <b>E</b>mission lines
-			</br>
+			<br/>
 			For any questions please send an email to: 
-			</br>
+			<br/>
 			graziano.ucci[at]sns.it
 		</div>
 		<div class="float-right">
@@ -278,9 +278,7 @@
 		</div>
 	</footer>
 
-</body>
-
-<!-- jQuery -->
+	<!-- jQuery -->
 <script src="https://code.jquery.com/jquery-1.9.0.min.js"></script>
 
 <!-- files -->
@@ -289,14 +287,16 @@
 <script src="{{ url_for('static', filename='js/read_files.js') }}"></script>
 
 <!-- multi select -->
-<script src="{{ url_for('static', filename='js/chosen.jquery.js') }}" type="text/javascript"></script>
-<script src="{{ url_for('static', filename='js/docsupport/prism.js') }}" type="text/javascript" charset="utf-8">
+<script src="{{ url_for('static', filename='js/chosen.jquery.js') }}"></script>
+<script src="{{ url_for('static', filename='js/docsupport/prism.js') }}">
 </script>
-<script src="{{ url_for('static', filename='js/docsupport/init.js') }}" type="text/javascript" charset="utf-8"></script>
-<script src="{{ url_for('static', filename='js/init.js') }}" type="text/javascript"></script>
-<script type="text/javascript">
+<script src="{{ url_for('static', filename='js/docsupport/init.js') }}"></script>
+<script src="{{ url_for('static', filename='js/init.js') }}"></script>
+<script >
 	init("{{url_for('static', filename='img/checked.png') }}");
 	populateLabelsTable("{{ url_for('static', filename='data/labels_options.txt') }}");
 </script>
+
+</body>
 
 </html>
