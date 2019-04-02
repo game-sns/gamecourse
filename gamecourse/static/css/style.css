@@ -36,6 +36,16 @@ b {
 	font-size: 1.2em;
 }
 
+a {
+	color: #e8e821;
+	text-decoration: underline;
+}
+
+#info {
+	color: #e8e821;
+	text-decoration: none;
+}
+
 .row {
 	margin-bottom: 1em;
 }
@@ -47,8 +57,22 @@ b {
 	background-color: rgb(29, 36, 42, 0.8);
 }
 
+.first-button {
+	padding-left: 0;
+}
+
+#show_less {
+	font-size: 0.8em;
+}
+
 .button {
 	border-radius: 2px;
+	background-color: #ffcb2e;
+	color: #000;
+}
+
+#frost2 {
+	margin-bottom: 2em;
 }
 
 .tool ul {
@@ -71,7 +95,10 @@ b {
 }
 
 .blueBackground {
-	background-color: rgba(33, 153, 232, 0.80);
+	/*background-color: rgba(33, 153, 232, 0.80);*/
+	background-color: rgba(254, 202, 45, 0.8);
+	color: #000;
+	
 }
 
 .tool li label {
@@ -80,14 +107,9 @@ b {
 	cursor: pointer;
 }
 
-.small_input_style {
-	padding: 5px;
-	border-radius: 2px;
-}
-
 .small_input_label {
-	margin: 0;
-	padding: 0;
+	padding: 10px;
+	border-radius: 2px;
 }
 
 .checkbox {
@@ -150,28 +172,11 @@ b {
 }
 
 .frost0 {
-	max-height: 5em;
 	overflow: hidden;
-	-webkit-transition: max-height .5s ease;
-	transition: max-height .5s ease;
 }
 
-.frost0:hover {
-	background-color: rgba(17, 19, 20, 0.95);
-}
-
-#title0 {
-	cursor: pointer;
-}
-.mostra {
-	-webkit-transition: max-height 2s ease;
-	transition: max-height 2s ease;
-	max-height: 700000px;
-	overflow: auto;
-}
-
-.mostra:hover {
-	background-color: rgb(29, 36, 42, 0.80);
+.nascondi {
+	display: none;
 }
 
 .title_pannel img {
@@ -181,8 +186,18 @@ b {
 }
 
 footer {
+	clear: both;
+    position: relative;
 	font-size: .5em;
-	margin: 0 0.5em 0.5em 0.5em;
+	height: 12em;
+	padding: 1.5em;
+	background-color: rgb(29, 36, 42, 0.8);
+}
+
+#last-text {
+	width: 98%;
+	position: absolute;
+	bottom: .2em;
 }
 
 #devs {
@@ -231,8 +246,7 @@ code span {
 
 #info {
 	float: right;
-	font-size: 35px;
-	color: #fff;
+	font-size: 30px;
 }
 
 #info:hover {
@@ -243,7 +257,7 @@ code span {
 	color: #c7ebe8;
 }
 
-#credits_h2 {
+.center-text {
 	text-align: center;
 }
 
@@ -252,10 +266,27 @@ code span {
 	text-decoration: underline;
 }
 
+
 .column-wrapper ul {
     list-style-type:none;
     margin:auto;
     padding:0;
     position:relative;
     left: 4em;
+}
+
+.underline {
+	text-decoration: underline;
+}
+
+.color-text {
+	color: #c7ebe8;
+}
+
+.float-right {
+	float: right;
+}
+
+.float-left {
+	float: left;
 }

@@ -286,7 +286,7 @@ function getXMLHttpRequest() {
 	xhr.onreadystatechange = function () {
 		if (xhr.readyState === 4 && xhr.status === 200) {
 			if(xhr.responseText === "200") {
-				injectTextResponse("Every thing is fine");
+				injectTextResponse("Every thing is fine, please check your email in a few moments");
 			} else {
 				injectTextResponse("Ooops we encountered an error in" +
 					" processing your request!");
