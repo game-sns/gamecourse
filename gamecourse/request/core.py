@@ -81,7 +81,7 @@ class XMLHttpRequest:
             "U": self.meta_data["PhysicalProprieties"][3],
             "Z": self.meta_data["PhysicalProprieties"][4],
             "fesc": self.meta_data["PhysicalProprieties"][5],
-            "AV": self.meta_data["PhysicalProprieties"][6],
+            "Av": self.meta_data["PhysicalProprieties"][6],
         }
         self.meta_data["labels"] = [
             key for key, val in labels.items()
@@ -157,6 +157,15 @@ class XMLHttpRequest:
 
         output_file = os.path.join(self.upload_folder, "labels.dat")
         labels = self.meta_data["LabelsArray"]
+        for i, label in enumerate(labels):
+            out = label
+            if "\"" in label:
+                out = out.split("\"")[1]
+
+            out = out.split(' ')
+            out = ' '.join(out[:-1])
+            labels[i] = out
+
         with open(output_file, "w") as out:
             out.write("\n".join(labels))
 
